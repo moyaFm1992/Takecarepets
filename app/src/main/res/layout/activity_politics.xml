@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PoliticsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/lblCodigoPenal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="5dp"
+            android:text="@string/legislacion"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageView
+            android:id="@+id/imgPoliticasAdopcion"
+            android:layout_width="wrap_content"
+            android:layout_height="212dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:contentDescription="@string/desc"
+            android:gravity="center"
+            app:srcCompat="@drawable/empatia" />
+
+        <TextView
+            android:id="@+id/lblCodigo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/codigo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblCodigoParrafo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/codigoParrafo"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo1"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo2"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo3"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblOrdenanza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ordenanza"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblCodigoParrafo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/codigoParrafo1"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblCodigoParrafo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/codigoParrafo2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo4"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo5"
+            android:textSize="15sp" />
+
+
+        <TextView
+
+            android:id="@+id/lblCodigoParrafo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/codigoParrafo3"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo6"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo8"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lblCodigoParrafo4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/codigoParrafo4"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblItemParrafo9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:text="@string/itemParrafo9"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+
+                android:id="@+id/btnContinuar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/flecha"
+                android:drawablePadding="8dp"
+                android:onClick="onClick"
+                android:paddingLeft="5dp"
+                android:text="@string/continuar"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/btnSalirPolitica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/salida"
+                android:drawablePadding="8dp"
+                android:onClick="onClick"
+                android:paddingLeft="5dp"
+                android:text="@string/salir"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
