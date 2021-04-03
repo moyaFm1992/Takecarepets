@@ -138,6 +138,19 @@
     <string name="cancelar">Cancelar</string>
     <string name="_2020_2021">2020-2021</string>
     <string name="fernando_moya_chiluiza">Fernando Moya Chiluiza</string>
+    <string name="ya_tienes_una_cuenta_ingresar">¿Ya tienes una cuenta? Ingresar</string>
+    <string name="registro_de_usuarios">Registro de usuarios</string>
+    <string name="reg_strate">Regístrate</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="recuperar_contrase_a">Recuperar Contraseña</string>
+    <string name="no_registrado_registrate_aqu">¿No registrado? Registrate aquí</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="guardar">Guardar</string>
+    <string name="edad_aproximada">Edad aproximada</string>
 
 
 </resources>

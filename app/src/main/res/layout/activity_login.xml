@@ -28,14 +28,17 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="15dp"
-            android:hint="Correo electrónico"
+            android:hint="@string/correo_electr_nico"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:textColor="#fff"
-            android:textColorHint="#ccc" />
+            android:textColorHint="#ccc"
+            android:paddingEnd="10dp"
+            android:paddingStart="20dp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/editText2"
@@ -44,14 +47,17 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
-            android:hint="Contraseña"
+            android:hint="@string/contrase_a"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:textColor="#fff"
-            android:textColorHint="#ccc" />
+            android:textColorHint="#ccc"
+            android:autofillHints=""
+            android:paddingEnd="10dp"
+            android:paddingStart="20dp" />
 
         <Button
             android:id="@+id/button2"
@@ -61,7 +67,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="30dp"
 
-            android:text="Iniciar sesión"
+            android:text="@string/iniciar_sesi_n"
             android:textColor="#fff"
             android:textSize="16sp" />
 
@@ -69,7 +75,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿No registrado? Registrate aquí"
+            android:text="@string/no_registrado_registrate_aqu"
             android:textColor="#fff"
             android:textSize="16sp" />
 
@@ -78,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="Recuperar Contraseña"
+            android:text="@string/recuperar_contrase_a"
             android:textColor="#fff"
             android:textSize="16sp" />
 

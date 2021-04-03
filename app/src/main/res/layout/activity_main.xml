@@ -28,14 +28,17 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="15dp"
-            android:hint="Correo electrónico"
+            android:hint="@string/correo_electr_nico"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:textColor="#fff"
-            android:textColorHint="#ccc" />
+            android:textColorHint="#ccc"
+            android:paddingEnd="10dp"
+            android:autofillHints=""
+            android:paddingStart="20dp" />
 
         <EditText
 
@@ -45,14 +48,17 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:hint="Contraseña"
+            android:hint="@string/contrase_a"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:textColor="#fff"
-            android:textColorHint="#d3d3d3" />
+            android:textColorHint="#d3d3d3"
+            android:autofillHints=""
+            android:paddingEnd="10dp"
+            android:paddingStart="20dp" />
 
         <Button
             android:id="@+id/button2"
@@ -62,7 +68,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="30dp"
 
-            android:text="Regístrate"
+            android:text="@string/reg_strate"
             android:textColor="#2c2c2c"
             android:textSize="16sp" />
 
@@ -70,7 +76,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Ya tienes una cuenta? Ingresar"
+            android:text="@string/ya_tienes_una_cuenta_ingresar"
             android:textColor="#d3d3d3"
             android:textSize="16sp" />
 
@@ -79,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Registro de usuarios"
+            android:text="@string/registro_de_usuarios"
             android:textColor="#d3d3d3"
             android:textSize="16sp" />
     </LinearLayout>

@@ -44,7 +44,8 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="10dp"
                 android:paddingRight="16dp"
-                android:paddingStart="10dp">
+                android:paddingStart="10dp"
+                android:paddingEnd="16dp">
 
                 <ImageView
                     android:id="@+id/imgPerroEvaluacion"
@@ -66,7 +67,8 @@
                     android:layout_toRightOf="@+id/imgPerroEvaluacion"
                     android:background="@drawable/input"
                     android:contentDescription="@string/desc"
-                    app:srcCompat="@drawable/camara" />
+                    app:srcCompat="@drawable/camara"
+                    android:layout_toEndOf="@+id/imgPerroEvaluacion" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -79,7 +81,8 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,7 +90,9 @@
             android:orientation="vertical"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="5dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -102,7 +107,8 @@
                     android:inputType="textMultiLine"
                     android:paddingLeft="5dp"
                     android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
+                    tools:ignore="RtlSymmetry"
+                    android:paddingStart="5dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,10 +121,11 @@
                     android:id="@+id/txtEdadEvaluacion"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Edad aproximada"
+                    android:hint="@string/edad_aproximada"
                     android:paddingLeft="5dp"
                     android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
+                    tools:ignore="RtlSymmetry"
+                    android:paddingStart="5dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +142,8 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -144,7 +152,9 @@
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp">
 
             <RadioGroup
                 android:layout_width="68dp"
@@ -185,7 +195,8 @@
                     android:paddingTop="10dp"
                     android:paddingEnd="10dp"
                     android:paddingRight="10dp"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:paddingStart="5dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -199,7 +210,8 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -208,7 +220,9 @@
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp">
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -288,7 +302,8 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -296,7 +311,9 @@
             android:orientation="vertical"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
-            android:paddingRight="20dp">
+            android:paddingRight="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="20dp">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -310,8 +327,6 @@
                         android:id="@+id/cbxDrontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:text="@string/drontal"
                         android:textSize="12sp" />
 
@@ -319,7 +334,6 @@
                         android:id="@+id/cbxRimadyltal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:text="@string/rimadyltal"
                         android:textSize="12sp" />
                 </TableRow>
@@ -332,8 +346,6 @@
                         android:id="@+id/cbxPipeta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:text="@string/pipeta"
                         android:textSize="12sp" />
 
@@ -341,7 +353,6 @@
                         android:id="@+id/cbxEmulgel"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:text="@string/emulgel"
                         android:textSize="12sp" />
 
@@ -355,8 +366,6 @@
                         android:id="@+id/cbxMeloxic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:text="@string/meloxic"
                         android:textSize="12sp" />
 
@@ -364,8 +373,6 @@
                         android:id="@+id/cbxBrillo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:text="@string/brillo"
                         android:textSize="12sp" />
 
@@ -379,8 +386,6 @@
                         android:id="@+id/cbxCoccigan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:text="@string/coccigan"
                         android:textSize="12sp" />
 
@@ -413,7 +418,9 @@
                     android:paddingLeft="5dp"
                     android:paddingTop="10dp"
                     android:paddingRight="10dp"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="10dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -426,7 +433,8 @@
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:paddingRight="10dp"
-            android:paddingEnd="10dp">
+            android:paddingEnd="10dp"
+            android:paddingStart="5dp">
 
             <TextView
                 android:id="@+id/lblObservacionGeneral"
@@ -478,8 +486,6 @@
                     android:id="@+id/cbxAdoptable"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="false"
                     android:text="@string/adoptable"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -508,7 +514,8 @@
                         android:paddingTop="10dp"
                         android:paddingRight="10dp"
                         android:textSize="12sp"
-                        android:paddingStart="5dp" />
+                        android:paddingStart="5dp"
+                        android:paddingEnd="10dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -526,7 +533,6 @@
                 android:id="@+id/simpleProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:visibility="gone" />
 
             <TextView
@@ -541,7 +547,7 @@
                 android:layout_height="match_parent"
                 android:drawablePadding="8dp"
                 android:paddingLeft="5dp"
-                android:text="Guardar"
+                android:text="@string/guardar"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry"
                 android:paddingStart="5dp" />
