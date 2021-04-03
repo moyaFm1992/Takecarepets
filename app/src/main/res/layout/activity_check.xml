@@ -43,7 +43,8 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="5dp" />
 
             <CheckBox
                 android:id="@+id/cbkParteI"
@@ -59,7 +60,8 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="5dp">
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -213,7 +215,8 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="5dp">
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -257,13 +260,13 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="5dp" />
 
             <CheckBox
                 android:id="@+id/cbkParteIV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/lstEstadoAdoptar"
                 android:text="@string/cumple"
                 android:textSize="13sp" />
 
@@ -274,7 +277,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="5dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="5dp">
 
             <TextView
                 android:id="@+id/lblCheckPregunta1"
@@ -408,15 +413,12 @@
                 android:id="@+id/simpleProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/progress_bar"
-                android:layout_alignLeft="@+id/progress_bar"
                 tools:visibility="gone" />
 
             <LinearLayout
@@ -426,12 +428,23 @@
 
                 <Button
                     android:id="@+id/btnCheckGuardar"
+                    android:layout_width="198dp"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="@string/guardar"
+                    android:textSize="16sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <Button
+                    android:id="@+id/btnCancelar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableLeft="@drawable/disquete"
                     android:drawablePadding="8dp"
                     android:paddingLeft="5dp"
-                    android:text="Guardar"
+                    android:paddingRight="5dp"
+                    android:text="@string/cancelar"
                     android:textSize="16sp"
                     tools:ignore="RtlSymmetry" />
 

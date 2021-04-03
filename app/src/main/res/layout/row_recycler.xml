@@ -56,7 +56,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/lstDescripcion"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="5dp"
                         android:layout_toRightOf="@+id/dog_photo"
                         android:textSize="13sp"
                         android:textStyle="bold" />

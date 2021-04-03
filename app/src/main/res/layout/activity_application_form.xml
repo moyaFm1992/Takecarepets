@@ -61,8 +61,6 @@
                             android:id="@+id/imgListPerroAdopcion"
                             android:layout_width="209dp"
                             android:layout_height="167dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
@@ -85,7 +83,9 @@
                             android:layout_marginTop="20dp"
                             android:layout_toRightOf="@+id/imgListPerroAdopcion"
                             android:textSize="13sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/imgListPerroAdopcion" />
 
                         <TextView
                             android:id="@+id/lstTamanoAdopcion"
@@ -453,7 +453,7 @@
 
             <EditText
                 android:id="@+id/txtm2"
-                android:layout_width="327dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
@@ -533,7 +533,8 @@
                 android:paddingLeft="5dp"
                 android:text="@string/pregunta2"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:paddingStart="5dp" />
 
             <EditText
                 android:id="@+id/txtPregunta2"
@@ -588,7 +589,8 @@
                 android:paddingLeft="5dp"
                 android:text="@string/aGastar"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:paddingStart="5dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -639,7 +641,8 @@
                 android:paddingLeft="5dp"
                 android:text="@string/mascotaEnferma"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:paddingStart="5dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -771,7 +774,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/progress_bar"
             android:layout_alignLeft="@+id/progress_bar"
-            tools:visibility="gone" />
+            tools:visibility="gone"
+            android:layout_alignStart="@+id/progress_bar" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -784,9 +788,10 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
                 android:paddingLeft="5dp"
-                android:text="Guardar"
+                android:text="@string/guardar"
                 android:textSize="16sp"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="5dp" />
 
             <Button
                 android:id="@+id/btnCancelar"

@@ -51,6 +51,7 @@ public class CheckActivity extends AppCompatActivity {
     TextView pregunta6;
     TextView pregunta7;
     Button btnGuardarAdoptado;
+    Button btnCancelar;
     CheckBox cbxParteI;
     CheckBox cbxParteII;
     CheckBox cbxParteIII;
@@ -96,6 +97,7 @@ public class CheckActivity extends AppCompatActivity {
         cbxParteIII = findViewById(R.id.cbkParteIII);
         cbxParteIV = findViewById(R.id.cbkParteIV);
         btnGuardarAdoptado = findViewById(R.id.btnCheckGuardar);
+        btnCancelar = findViewById(R.id.btnCancelar);
         String nombre = infoAdopt.getString("nombres");
         nombresApellidos.setText(nombre);
         String telf = infoAdopt.getString("telefono");
@@ -137,6 +139,12 @@ public class CheckActivity extends AppCompatActivity {
 
         inicializarFirebase();
 
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         btnGuardarAdoptado.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -34,7 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     final ArrayList<Marker> tmpMarker = new ArrayList<>();
     final ArrayList<Marker> realMarker = new ArrayList<>();
     Bundle infoList;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,15 +82,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     marker.remove();
                 }
 
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    markerOptions.position(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)));
-                    markerOptions.title(descripcion);
-                    markerOptions.snippet("Ubicación actual");
-                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                    LatLng latLng = new LatLng(markerOptions.getPosition().latitude, markerOptions.getPosition().longitude);
-                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
-                    mMap.animateCamera(cameraUpdate);
-                    tmpMarker.add(mMap.addMarker(markerOptions));
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)));
+                markerOptions.title(descripcion);
+                markerOptions.snippet("Ubicación actual");
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                LatLng latLng = new LatLng(markerOptions.getPosition().latitude, markerOptions.getPosition().longitude);
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
+                mMap.animateCamera(cameraUpdate);
+                tmpMarker.add(mMap.addMarker(markerOptions));
 
 
             }

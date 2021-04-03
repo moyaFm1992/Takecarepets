@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.model.Adoption;
 import com.fernandomoya.appproyectofinal.model.Message;
@@ -24,6 +26,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -300,9 +303,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 mDatabase.child("adopcion").child(passengerID).child(userId).setValue(adoption);
 
 
-
                 if (!(mail.trim().isEmpty()) || (mail != null)) {
-                    envio.enviar(mail, SALUDO+ apellido + message.email());
+                    envio.enviar(mail, SALUDO + apellido + message.email());
                 }
 
                 new Thread(new Runnable() {

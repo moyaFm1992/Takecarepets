@@ -3,8 +3,12 @@ package com.fernandomoya.appproyectofinal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mFirebaseAuth = FirebaseAuth.getInstance();
+
+        Log.e("netHabilitada", Boolean.toString(isNetDisponible()));
+        Log.e("accInternet", Boolean.toString(isOnlineNet()));
+
+
         emailId = findViewById(R.id.editText);
         password = findViewById(R.id.editText2);
         btnSignIn = findViewById(R.id.button2);
@@ -49,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i = new Intent(LoginActivity.this, ChoiceActivity.class);
                     startActivity(i);
                 } else {
+
                     Toast.makeText(LoginActivity.this, "!Por favor Iniciar sesión!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -81,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                     });
                 } else {
                     Toast.makeText(LoginActivity.this, "¡Se produjo un error!", Toast.LENGTH_SHORT).show();
-
                 }
 
             }
@@ -110,4 +119,32 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
+
+    public Boolean isOnlineNet() {
+
+        try {
+            Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.es");
+
+            int val = p.waitFor();
+            boolean reachable = (val == 0);
+            return reachable;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    private boolean isNetDisponible() {
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo actNetInfo = connectivityManager.getActiveNetworkInfo();
+
+        return (actNetInfo != null && actNetInfo.isConnected());
+    }
+
 }

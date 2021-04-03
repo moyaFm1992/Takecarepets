@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.fernandomoya.appproyectofinal.list.ToAdoptListActivity;
 import com.fernandomoya.appproyectofinal.list.ToAdoptedListActivity;
 import com.google.firebase.auth.FirebaseAuth;
+
 import static com.fernandomoya.appproyectofinal.model.Constant.ADMIN;
 import static com.fernandomoya.appproyectofinal.model.Constant.VETER;
 

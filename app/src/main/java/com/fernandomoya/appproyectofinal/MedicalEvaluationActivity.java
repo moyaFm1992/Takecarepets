@@ -317,7 +317,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                     listaMedicamentos.add("");
                                 }
 
-                                StringBuilder  medicamentosSuministrados = new StringBuilder ();
+                                StringBuilder medicamentosSuministrados = new StringBuilder();
                                 for (String med : listaMedicamentos) {
                                     medicamentosSuministrados.append(med);
                                 }
@@ -436,8 +436,6 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
             default:
         }
     }
-
-
 
 
 }
