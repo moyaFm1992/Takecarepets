@@ -52,7 +52,7 @@ public class AdoptionListActivity extends AppCompatActivity implements ItemClick
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                listaValoracion.removeAll(listaValoracion);
                 for (DataSnapshot dp : dataSnapshot.getChildren()) {
                     for (DataSnapshot dch : dp.getChildren()) {
                         if (dch.child("adoptable").getValue(Boolean.class).equals(Boolean.TRUE)) {

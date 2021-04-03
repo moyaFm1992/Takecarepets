@@ -52,6 +52,7 @@ public class ListActivity extends AppCompatActivity implements ItemClickListener
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                listaPerros.removeAll(listaPerros);
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Perros perros = ds.getValue(Perros.class);
                     listaPerros.add(perros);

@@ -53,14 +53,14 @@ public class ToAdoptListActivity extends AppCompatActivity implements ItemClickL
                 listaAdoptado.removeAll(listaAdoptado);
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     for (DataSnapshot dch : ds.getChildren()) {
-                        Adoption adoption = dch.getValue(Adoption.class);
-                        listaAdoptado.add(adoption);
+                        if (dch.child("estado").getValue(Boolean.class).equals(Boolean.FALSE)) {
+                            Adoption adoption = dch.getValue(Adoption.class);
+                            listaAdoptado.add(adoption);
+                        }
 
                     }
-
                 }
                 adapterAdoptado.notifyDataSetChanged();
-
             }
 
             @Override

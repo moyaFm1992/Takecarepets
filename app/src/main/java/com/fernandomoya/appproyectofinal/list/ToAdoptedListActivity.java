@@ -40,7 +40,6 @@ public class ToAdoptedListActivity extends AppCompatActivity implements ItemClic
         rwAdoptado = findViewById(R.id.rvToAdoptedList);
         rwAdoptado.setLayoutManager(new LinearLayoutManager(this));
         rwAdoptado.setItemAnimator(new DefaultItemAnimator());
-        //passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         adapterAdoptado = new ToAdoptedAdapter(listaAdoptado, R.layout.row_recycler_to_adopted_list, this);
         rwAdoptado.setAdapter(adapterAdoptado);
         adapterAdoptado.setClickListener(this);

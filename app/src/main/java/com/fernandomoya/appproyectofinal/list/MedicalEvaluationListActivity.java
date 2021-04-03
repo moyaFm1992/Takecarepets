@@ -53,7 +53,7 @@ public class MedicalEvaluationListActivity extends AppCompatActivity implements 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                listaValoracion.removeAll(listaValoracion);
                 for (DataSnapshot dp : dataSnapshot.getChildren()) {
                     for (DataSnapshot dch : dp.getChildren()) {
                         MedicalEvaluation valoracion = dch.getValue(MedicalEvaluation.class);
