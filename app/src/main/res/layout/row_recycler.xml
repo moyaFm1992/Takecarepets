@@ -22,7 +22,8 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/dog_photo"
                     android:layout_width="96dp"
                     android:layout_height="96dp"

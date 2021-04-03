@@ -50,16 +50,4 @@ public class Send {
     }
 
 
-    //Envio de SMS
-    public void enviarMensaje(String numero, String mensaje) {
-        try {
-            SmsManager sms = SmsManager.getDefault();
-            sms.sendTextMessage(numero, null, mensaje, null, null);
-            Log.i("Accion: ", "Mensaje Enviado.");
-        } catch (Exception e) {
-            Log.i("Accion: ", "Mensaje no enviado, datos incorrectos.");
-
-        }
-    }
-
 }

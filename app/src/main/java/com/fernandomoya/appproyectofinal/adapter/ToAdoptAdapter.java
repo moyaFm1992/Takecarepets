@@ -1,4 +1,4 @@
-package com.fernandomoya.appproyectofinal.model;
+package com.fernandomoya.appproyectofinal.adapter;
 
 
 import android.content.Context;
@@ -7,13 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.ItemClickListener;
 import com.fernandomoya.appproyectofinal.R;
+import com.fernandomoya.appproyectofinal.model.Adoption;
 
 import java.util.List;
 

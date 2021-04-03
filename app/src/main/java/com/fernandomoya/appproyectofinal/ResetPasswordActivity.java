@@ -37,7 +37,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 String email = edtEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "¡Introduce tu correo electrónico!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "¡Ingrese su correo electrónico!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -46,9 +46,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ResetPasswordActivity.this, "¡Consulta el correo electrónico para restablecer tu contraseña!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, "¡Consulta su correo electrónico para restablecer tu contraseña!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(ResetPasswordActivity.this, "¡Error al enviar el correo electrónico para restablecer la contraseña!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, "¡Error al enviar correo electrónico para restablecer la contraseña!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

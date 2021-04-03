@@ -7,15 +7,17 @@ public class Perros {
     private String descripcion;
     private Double latitud;
     private Double longitud;
+    private String uId;
 
     public Perros() {
     }
 
-    public Perros(String url, String descripcion, Double latitud, Double longitud) {
+    public Perros(String url, String descripcion, Double latitud, Double longitud,String uId) {
         this.url = url;
         this.descripcion = descripcion;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.uId = uId;
     }
 
     public String getDescripcion() {
@@ -56,4 +58,11 @@ public class Perros {
     }
 
 
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
 }

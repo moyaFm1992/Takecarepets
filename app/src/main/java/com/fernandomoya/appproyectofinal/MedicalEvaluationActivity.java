@@ -84,6 +84,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
     CheckBox cbxSuero;
     CheckBox cbxAdoptable;
     Button btnGuardar;
+    Button btnCancelar;
     FirebaseDatabase firebaseDatabase;
     ImageView imgPerroEvaluacion;
     ImageButton imgBtnCameraEvaluacion;
@@ -129,7 +130,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         cbxSuero = findViewById(R.id.cbxSuero);
         cbxAdoptable = findViewById(R.id.cbxAdoptable);
         btnGuardar = findViewById(R.id.btnGuardarEvaluacion);
-        tipo = findViewById(R.id.txtTipo);
+        btnCancelar = findViewById(R.id.btnCancelar);
         tiempoMensaje = findViewById(R.id.tv);
         mProgressBar = findViewById(R.id.simpleProgressBar);
         imgBtnCameraEvaluacion.setOnClickListener(this);
@@ -190,6 +191,10 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
 
         switch (view.getId()) {
 
+            case R.id.btnCancelar:
+                finish();
+                break;
+
             case R.id.imgBtnCameraEvaluacion:
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -234,11 +239,11 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                MedicalEvaluation v = new MedicalEvaluation();
+                                MedicalEvaluation medicalEvaluation = new MedicalEvaluation();
                                 Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                                 while (!uri.isComplete()) ;
                                 Uri url = uri.getResult();
-
+                                final String userId = mDatabase.push().getKey();
                                 final String estado = estadoInicial.getText().toString();
                                 final String tieneObservaciones = observaciones.getText().toString();
                                 final String medicamentosSum = medicamentos.getText().toString();
@@ -248,34 +253,34 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 final String tieneFracturas = fracturas.getText().toString();
 
                                 if (rdbMacho.isChecked()) {
-                                    v.setSexo(rdbMacho.getText().toString());
+                                    medicalEvaluation.setSexo(rdbMacho.getText().toString());
                                 }
                                 if (rdbHembra.isChecked()) {
-                                    v.setSexo(rdbHembra.getText().toString());
+                                    medicalEvaluation.setSexo(rdbHembra.getText().toString());
                                 }
 
                                 if (rdbAdulto.isChecked()) {
-                                    v.setTipo(rdbAdulto.getText().toString());
+                                    medicalEvaluation.setTipo(rdbAdulto.getText().toString());
                                 }
                                 if (rdbCachorro.isChecked()) {
-                                    v.setTipo(rdbCachorro.getText().toString());
+                                    medicalEvaluation.setTipo(rdbCachorro.getText().toString());
                                 }
 
                                 if (rdbGrande.isChecked()) {
-                                    v.setTamano(rdbGrande.getText().toString());
+                                    medicalEvaluation.setTamano(rdbGrande.getText().toString());
                                 }
 
                                 if (rdbMediano.isChecked()) {
-                                    v.setTamano(rdbMediano.getText().toString());
+                                    medicalEvaluation.setTamano(rdbMediano.getText().toString());
                                 }
 
                                 if (rdbPequeno.isChecked()) {
-                                    v.setTamano(rdbPequeno.getText().toString());
+                                    medicalEvaluation.setTamano(rdbPequeno.getText().toString());
                                 }
 
                                 if (rdbNo.isChecked()) {
-                                    v.setFracturasSiNo(rdbNo.getText().toString());
-                                    v.setFracturas("Sin fracturas");
+                                    medicalEvaluation.setFracturasSiNo(rdbNo.getText().toString());
+                                    medicalEvaluation.setFracturas("Sin fracturas");
                                 }
 
                                 if (cbxDrontal.isChecked()) {
@@ -319,26 +324,82 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 String med = medicamentosSuministrados.toString();
 
                                 if (cbxAdoptable.isChecked()) {
-                                    v.setAdoptable(Boolean.TRUE);
+                                    medicalEvaluation.setAdoptable(Boolean.TRUE);
                                 } else {
-                                    v.setAdoptable(Boolean.FALSE);
+                                    medicalEvaluation.setAdoptable(Boolean.FALSE);
                                 }
 
-                                v.setMedicamentos(med);
-                                v.setTiempoRecuperacion(tiempoRecu);
-                                v.setFracturasSiNo(rdbSi.getText().toString());
-                                v.setFracturas(tieneFracturas);
-                                v.setEstadoInicial(estado);
-                                v.setEdad(tieneEdad);
-                                v.setObservaciones(tieneObservaciones);
-                                v.setTiempoRecuperacion(tiempoRecu);
-                                v.setUrl(url.toString());
-                                v.setFechaValoracion(dt.format(new Date()));
+                                medicalEvaluation.setMedicamentos(med);
+                                medicalEvaluation.setTiempoRecuperacion(tiempoRecu);
+                                medicalEvaluation.setFracturasSiNo(rdbSi.getText().toString());
+                                medicalEvaluation.setFracturas(tieneFracturas);
+                                medicalEvaluation.setEstadoInicial(estado);
+                                medicalEvaluation.setEdad(tieneEdad);
+                                medicalEvaluation.setObservaciones(tieneObservaciones);
+                                medicalEvaluation.setTiempoRecuperacion(tiempoRecu);
+                                medicalEvaluation.setUrl(url.toString());
+                                medicalEvaluation.setFechaValoracion(dt.format(new Date()));
 
-                                if (validarEvaluacion()) {
+
+                                Validation validador = new Validation();
+                                if (validador.vacio(estadoInicial)) {
+                                    estadoInicial.setError("Valoración inicial es obligatoria.");
+                                    estadoInicial.requestFocus();
                                     return;
                                 }
-                                mDatabase.child("valoracion").child(passengerID).push().setValue(v);
+
+
+                                if (validador.vacio(edad)) {
+                                    edad.setError("Edad es obligatoria.");
+                                    edad.requestFocus();
+                                    return;
+                                }
+
+
+                                if (rdbSi.isChecked() && validador.vacio(fracturas)) {
+
+                                    fracturas.setError("Describa la fractura existente.");
+                                    fracturas.requestFocus();
+                                    return;
+
+                                }
+
+
+                                if (!(rdbMacho.isChecked() ||
+                                        rdbHembra.isChecked())) {
+                                    tipo.setError("Seleccione un tipo.");
+                                    tipo.requestFocus();
+                                    return;
+                                }
+
+                                if (!(rdbAdulto.isChecked() ||
+                                        rdbCachorro.isChecked())) {
+                                    tipo.setError("Seleccione la edad.");
+                                    tipo.requestFocus();
+                                    return;
+                                }
+
+                                if (!(rdbGrande.isChecked() ||
+                                        rdbMediano.isChecked() ||
+                                        rdbPequeno.isChecked())) {
+                                    tipo.setError("Seleccione el tamaño.");
+                                    tipo.requestFocus();
+                                    return;
+                                }
+
+
+                                if (validador.vacio(tiempo)) {
+                                    tiempo.setError("Tiempo de recuperación obligatorio.");
+                                    tiempo.requestFocus();
+                                    return;
+                                }
+                                if (validador.vacio(observaciones)) {
+                                    observaciones.setError("Observaciones obligatorias.");
+                                    observaciones.requestFocus();
+                                    return;
+                                }
+                                medicalEvaluation.setuId(userId);
+                                mDatabase.child("valoracion").child(passengerID).child(userId).setValue(medicalEvaluation);
                             }
 
 
@@ -376,70 +437,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         }
     }
 
-    public boolean validarEvaluacion() {
-        Validation validador = new Validation();
-        if (validador.vacio(estadoInicial)) {
-            estadoInicial.setError("La valoración inicial es obligatoria.");
-            estadoInicial.requestFocus();
-            return true;
-        }
 
-
-        if (validador.vacio(edad)) {
-            edad.setError("La edad es obligatoria.");
-            edad.requestFocus();
-            return true;
-        }
-
-
-        if (rdbSi.isChecked() && validador.vacio(fracturas)) {
-
-            fracturas.setError("Describa la fractura existente.");
-            fracturas.requestFocus();
-            return true;
-
-        }
-
-
-        if (!(rdbMacho.isChecked() ||
-                rdbHembra.isChecked())) {
-            tipo.setError("Seleccione el tipo.");
-            tipo.requestFocus();
-            return true;
-        }
-
-        if (!(rdbAdulto.isChecked() ||
-                rdbCachorro.isChecked())) {
-            tipo.setError("Seleccione la edad.");
-            tipo.requestFocus();
-            return true;
-        }
-
-        if (!(rdbGrande.isChecked() ||
-                rdbMediano.isChecked() ||
-                rdbPequeno.isChecked())) {
-            tipo.setError("Seleccione el tamaño.");
-            tipo.requestFocus();
-            return true;
-        }
-
-
-        if (validador.vacio(tiempo)) {
-            tiempo.setError("Tiempo de recuperación es obligatorio.");
-            tiempo.requestFocus();
-            return true;
-        }
-        if (validador.vacio(observaciones)) {
-            observaciones.setError("Las observaciones son obligatorias.");
-            observaciones.requestFocus();
-            return true;
-        }
-
-        return false;
-    }
 
 
 }
-
-
-

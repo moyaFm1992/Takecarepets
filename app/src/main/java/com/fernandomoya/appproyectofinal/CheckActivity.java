@@ -2,6 +2,8 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.fernandomoya.appproyectofinal.model.Adoption;
 import com.fernandomoya.appproyectofinal.model.Message;
 import com.fernandomoya.appproyectofinal.model.Send;
@@ -21,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -128,8 +132,10 @@ public class CheckActivity extends AppCompatActivity {
         pregunta6.setText(preg6);
         String preg7 = infoAdopt.getString("pregunta7");
         pregunta7.setText(preg7);
-        inicializarFirebase();
+        final String userId = infoAdopt.getString("userId");
 
+
+        inicializarFirebase();
 
 
         btnGuardarAdoptado.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +145,7 @@ public class CheckActivity extends AppCompatActivity {
                 DatabaseReference myRef;
                 final Adoption adoption = new Adoption();
                 Date date = new Date();
-                Message message = new Message();
+                final Message message = new Message();
                 Date fechaAdopcion = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
                 String fechaRegistro = dt.format(fechaAdopcion);
                 final Send envio = new Send();
@@ -174,24 +180,28 @@ public class CheckActivity extends AppCompatActivity {
                                 // Sleep for 100 milliseconds to show the progress slowly.
                                 Thread.sleep(100);
                             } catch (Exception e) {
-                                Log.i("InterruptedException: ",e.getMessage());
+                                Log.i("InterruptedException: ", e.getMessage());
                             }
                         }
                     }
                 }).start();
 
                 if (cbxParteI.isChecked() && cbxParteII.isChecked() && cbxParteIII.isChecked() && cbxParteIV.isChecked()) {
+
+
                     adoption.setEstado(Boolean.TRUE);
                     adoption.setFechaAdopcion(fechaRegistro);
 
-                    myRef = FirebaseDatabase.getInstance().getReference().child("adopcion").child(currentUser.getUid());
+                    myRef = FirebaseDatabase.getInstance().getReference("adopcion");
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot tasksSnapshot) {
                             for (DataSnapshot snapshot : tasksSnapshot.getChildren()) {
-                                snapshot.getRef().child("fechaAdopcion").setValue(adoption.getFechaAdopcion());
-                                snapshot.getRef().child("estado").setValue(adoption.getEstado());
+                                Log.i("Message 1: ", snapshot.getRef().child(userId).toString());
+                                snapshot.getRef().child(userId).child("fechaAdopcion").setValue(adoption.getFechaAdopcion());
+                                snapshot.getRef().child(userId).child("estado").setValue(adoption.getEstado());
                             }
+                            envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailAceptado());
                         }
 
                         @Override
@@ -201,38 +211,32 @@ public class CheckActivity extends AppCompatActivity {
 
                     });
 
-                    envio.enviarMensaje(telefono.getText().toString(), SALUDO + nombresApellidos.getText() + message.smsAceptado());
-                    envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailAceptado());
-
+                    finish();
 
                 } else {
                     adoption.setEstado(Boolean.FALSE);
                     adoption.setFechaAdopcion(fechaRegistro);
-                    myRef = FirebaseDatabase.getInstance().getReference().child("adopcion").child(currentUser.getUid());
+                    myRef = FirebaseDatabase.getInstance().getReference("adopcion");
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot tasksSnapshot) {
                             for (DataSnapshot snapshot : tasksSnapshot.getChildren()) {
-                                snapshot.getRef().child("fechaAdopcion").setValue(adoption.getFechaAdopcion());
-                                snapshot.getRef().child("estado").setValue(adoption.getEstado());
+                                Log.i("Message 1: ", snapshot.getRef().child(userId).toString());
+                                snapshot.getRef().child(userId).child("fechaAdopcion").setValue(adoption.getFechaAdopcion());
+                                snapshot.getRef().child(userId).child("estado").setValue(adoption.getEstado());
                             }
+                            envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailNegado());
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Log.i("databaseError", error.getMessage());
-                            Thread.currentThread().interrupt();
+                            Log.d("databaseError", error.getMessage());
                         }
 
                     });
 
-                    envio.enviarMensaje(telefono.getText().toString(), SALUDO + nombresApellidos.getText() + message.smsNegado());
-                    envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailNegado());
-
-
+                    finish();
                 }
-
-
             }
         });
     }

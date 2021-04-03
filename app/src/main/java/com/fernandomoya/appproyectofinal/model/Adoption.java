@@ -29,13 +29,14 @@ public class Adoption {
     private String url;
     private String fechaRegistro;
     private String fechaAdopcion;
+    private String uId;
 
 
     public Adoption() {
 
     }
 
-    public Adoption(String nombresApellidos, String cedula, String telefono, String edad, String email, String direccion, String ocupacion) {
+    public Adoption(String nombresApellidos, String cedula, String telefono, String edad, String email, String direccion, String ocupacion,String uId) {
         this.nombresApellidos = nombresApellidos;
         this.cedula = cedula;
         this.telefono = telefono;
@@ -43,6 +44,7 @@ public class Adoption {
         this.email = email;
         this.direccion = direccion;
         this.ocupacion = ocupacion;
+        this.uId = uId;
     }
 
     public String getFechaRegistro() {
@@ -252,5 +254,13 @@ public class Adoption {
 
     public void setPropio(String propio) {
         this.propio = propio;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 }

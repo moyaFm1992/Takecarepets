@@ -1,4 +1,4 @@
-package com.fernandomoya.appproyectofinal;
+package com.fernandomoya.appproyectofinal.list;
 
 
 import android.content.Intent;
@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fernandomoya.appproyectofinal.model.MedicalAdapter;
+import com.fernandomoya.appproyectofinal.ItemClickListener;
+import com.fernandomoya.appproyectofinal.R;
+import com.fernandomoya.appproyectofinal.UpdateDeleteEvaluationListActivity;
+import com.fernandomoya.appproyectofinal.adapter.MedicalAdapter;
+import com.fernandomoya.appproyectofinal.adapter.MedicalListAdapter;
 import com.fernandomoya.appproyectofinal.model.MedicalEvaluation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,38 +27,38 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdoptionListActivity extends AppCompatActivity implements ItemClickListener {
+public class MedicalEvaluationListActivity extends AppCompatActivity implements ItemClickListener {
 
     RecyclerView rw;
     List<MedicalEvaluation> listaValoracion;
-    MedicalAdapter medicalAdapter;
+    MedicalListAdapter medicalAdapter;
     String passengerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_medical_evaluation);
+        setContentView(R.layout.view_medical_evaluation_list);
         listaValoracion = new ArrayList<>();
-        rw = findViewById(R.id.rvMedicalEvaluation);
+        rw = findViewById(R.id.rvMedicalEvaluationList);
         rw.setLayoutManager(new LinearLayoutManager(this));
         rw.setItemAnimator(new DefaultItemAnimator());
         DatabaseReference myRef;
         passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        medicalAdapter = new MedicalAdapter(listaValoracion, R.layout.row_recycler_medical_evaluation, this);
+        medicalAdapter = new MedicalListAdapter(listaValoracion, R.layout.row_recycler_medical_evaluation_list, this);
         rw.setAdapter(medicalAdapter);
         medicalAdapter.setClickListener(this);
-        myRef = FirebaseDatabase.getInstance().getReference().child("valoracion").child(passengerID);
+
+        myRef = FirebaseDatabase.getInstance().getReference().child("valoracion");
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (ds.child("adoptable").getValue(Boolean.class).equals(Boolean.TRUE)) {
-                        MedicalEvaluation valoracion = ds.getValue(MedicalEvaluation.class);
+                for (DataSnapshot dp : dataSnapshot.getChildren()) {
+                    for (DataSnapshot dch : dp.getChildren()) {
+                        MedicalEvaluation valoracion = dch.getValue(MedicalEvaluation.class);
                         listaValoracion.add(valoracion);
                     }
-
-
                 }
                 medicalAdapter.notifyDataSetChanged();
             }
@@ -71,12 +75,16 @@ public class AdoptionListActivity extends AppCompatActivity implements ItemClick
     public void onClick(View view, int position) {
 
         MedicalEvaluation valoracion = listaValoracion.get(position);
-        Intent i = new Intent(this, AdoptionFormActivity.class);
-        i.putExtra("edad", "Edad: " + valoracion.getEdad());
-        i.putExtra("tipo", "Tipo: " + valoracion.getTipo());
-        i.putExtra("sexo", "Sexo: " + valoracion.getSexo());
-        i.putExtra("tamano", "Tamaño: " + valoracion.getTamano());
+        Intent i = new Intent(this, UpdateDeleteEvaluationListActivity.class);
+        i.putExtra("estado", valoracion.getAdoptable().toString());
+        i.putExtra("inicial", valoracion.getEstadoInicial());
+        i.putExtra("edad", "Edad: " + valoracion.getEdad()+" años");
+        i.putExtra("sexo", "Tipo: " + valoracion.getSexo());
+        i.putExtra("observaciones", valoracion.getObservaciones());
+        i.putExtra("fracturas", valoracion.getFracturas());
+        i.putExtra("tiempo", "Recuperación: " + valoracion.getTiempoRecuperacion()+" días");
         i.putExtra("url", valoracion.getUrl());
+        i.putExtra("userId", valoracion.getuId());
         startActivity(i);
     }
 }

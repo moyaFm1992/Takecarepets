@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.fernandomoya.appproyectofinal.list.ListActivity;
 import com.fernandomoya.appproyectofinal.model.Perros;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -64,7 +65,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     StorageReference mStorageReference;
     DatabaseReference mDatabase;
     StorageTask mUploadImg;
-    TextView lblSalir;
     TextView descripcionP;
     TextView tiempoMensaje;
     String mCurrentPhotoPath;
@@ -80,22 +80,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         mProgressBar = findViewById(R.id.simpleProgressBar);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        imgFoto = findViewById(R.id.imageView3);
+        imgFoto = findViewById(R.id.imgPerroRescatar);
         imgBtnCamera = findViewById(R.id.imgBtnCamera);
         btnGuardar = findViewById(R.id.imgBtnGuardar);
         btnListar = findViewById(R.id.imgBtnListar);
-        lblSalir = findViewById(R.id.lblSalir);
         btnGrupo = findViewById(R.id.imgBtnGrupoD);
         descripcionP = findViewById(R.id.txtDescripcion);
         tiempoMensaje = findViewById(R.id.tv);
-        lblSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intToMain = new Intent(HomeActivity.this, RegistryActivity.class);
-                startActivity(intToMain);
-            }
-        });
 
         btnGuardar.setOnClickListener(this);
         btnGrupo.setOnClickListener(this);
@@ -200,7 +191,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                 newLocation = location;
 
                                 final String descripcion = descripcionP.getText().toString();
-
+                                final String userId = mDatabase.push().getKey();
                                 if (mImageURI != null) {
 
                                     StorageReference fileReference = mStorageReference.child(System.currentTimeMillis()
@@ -218,7 +209,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                         perros.setLatitud(newLocation.getLatitude());
                                                         perros.setLongitud(newLocation.getLongitude());
                                                         perros.setUrl(url.toString());
-                                                        mDatabase.child("perros").child(passengerID).push().setValue(perros);
+                                                        perros.setuId(userId);
+                                                        mDatabase.child("perros").child(passengerID).child(userId).setValue(perros);
                                                     }
 
                                                 }

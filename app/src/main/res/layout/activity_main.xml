@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/desc"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/registry" />
+        app:srcCompat="@drawable/reset" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/input"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
@@ -46,7 +45,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/input"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
@@ -63,7 +61,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="30dp"
-            
+
             android:text="Regístrate"
             android:textColor="#2c2c2c"
             android:textSize="16sp" />

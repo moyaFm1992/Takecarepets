@@ -21,8 +21,15 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-
         android:theme="@style/AppTheme">
+        <activity android:name=".UpdateDeleteEvaluationListActivity">
+
+            android:screenOrientation="portrait"
+        </activity>
+        <activity android:name=".UpdateDeleteAdoptedActivity">
+            android:screenOrientation="portrait"
+
+        </activity>
         <activity
             android:name=".ResetPasswordActivity"
             android:screenOrientation="portrait" />
@@ -33,10 +40,13 @@
             android:name=".PoliticsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ToAdoptListActivity"
+            android:name=".list.ToAdoptListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".list.MedicalEvaluationListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MedicalEvaluationActivity"
@@ -44,18 +54,6 @@
         <activity
             android:name=".AdoptionFormActivity"
             android:screenOrientation="portrait" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -66,16 +64,28 @@
             android:name=".HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ListActivity"
+            android:name=".list.ListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AdoptionListActivity"
+            android:name=".list.AdoptionListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegistryActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChoiceToAdoptActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChoiceMedicalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".list.EvaluationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".list.ToAdoptedListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
@@ -87,6 +97,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

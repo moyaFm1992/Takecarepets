@@ -15,12 +15,13 @@ public class MedicalEvaluation {
     private String tiempoRecuperacion;
     private Boolean adoptable;
     private String fechaValoracion;
+    private String uId;
 
     public MedicalEvaluation() {
 
     }
 
-    public MedicalEvaluation(String edad, String tipo, String sexo, String tamano, String fracturas, String fracturasSiNo, String medicamentos) {
+    public MedicalEvaluation(String edad, String tipo, String sexo, String tamano, String fracturas, String fracturasSiNo, String medicamentos,String uId) {
         this.edad = edad;
         this.tipo = tipo;
         this.sexo = sexo;
@@ -28,6 +29,7 @@ public class MedicalEvaluation {
         this.fracturas = fracturas;
         this.fracturasSiNo = fracturasSiNo;
         this.medicamentos = medicamentos;
+        this.uId = uId;
     }
 
     public String getUrl() {
@@ -136,4 +138,11 @@ public class MedicalEvaluation {
     }
 
 
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
 }

@@ -42,16 +42,16 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                android:paddingRight="16dp">
+                android:paddingEnd="16dp"
+                android:paddingStart="10dp">
 
                 <ImageView
                     android:id="@+id/imgPerroEvaluacion"
                     android:layout_width="400dp"
                     android:layout_height="190dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/input"
                     android:contentDescription="@string/desc"
+
                     android:padding="1dp" />
 
                 <ImageButton
@@ -60,7 +60,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill_horizontal|end"
                     android:layout_marginStart="-80dp"
-                    android:layout_marginLeft="-90dp"
                     android:layout_marginTop="100dp"
                     android:layout_toRightOf="@+id/imgPerroEvaluacion"
                     android:background="@drawable/input"
@@ -68,22 +67,6 @@
                     app:srcCompat="@drawable/camara" />
             </RelativeLayout>
         </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/simpleProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/progress_bar"
-            android:layout_alignLeft="@+id/progress_bar"
-            tools:visibility="gone" />
-
 
         <TextView
             android:id="@+id/lblMascotaEvaluacion"
@@ -99,30 +82,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/input"
             android:orientation="vertical"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp">
 
-            <EditText
-                android:id="@+id/eTMLEstadoInicial"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/describa"
-                android:inputType="textMultiLine"
-                android:paddingLeft="5dp"
-                android:textSize="12sp"
-                tools:ignore="RtlSymmetry" />
+                android:layout_height="wrap_content"
+                >
 
-            <EditText
-                android:id="@+id/txtEdadEvaluacion"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eTMLEstadoInicial"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/describa"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="5dp"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Edad aproximada"
-                android:paddingLeft="5dp"
-                android:textSize="12sp"
-                tools:ignore="RtlSymmetry" />
+                android:layout_height="wrap_content"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEdadEvaluacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Edad aproximada"
+                    android:paddingLeft="5dp"
+                    android:textSize="12sp"
+                    tools:ignore="RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -131,7 +128,7 @@
             android:id="@+id/lblFracturas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:text="@string/fracturas"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
@@ -141,11 +138,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/input"
+
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
-            android:paddingRight="10dp">
+            android:paddingEnd="10dp">
 
             <RadioGroup
                 android:layout_width="68dp"
@@ -167,53 +164,45 @@
                     android:textSize="12sp" />
             </RadioGroup>
 
-            <EditText
-                android:id="@+id/eTMTFracturas"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:background="@drawable/input"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/describa"
-                android:inputType="textMultiLine"
-                android:paddingLeft="5dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
 
-                android:textSize="12sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eTMTFracturas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/describa"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingRight="10dp"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/lblTipo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/lblTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:text="@string/tipo"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
-
-            <EditText
-                android:id="@+id/txtTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="13sp"
-                tools:visibility="invisible" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="@string/tipo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/input"
+
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
@@ -278,31 +267,21 @@
                     android:text="@string/mediano"
                     android:textSize="12sp" />
 
-                <RadioButton
-                    android:id="@+id/rbPequenoEvaluacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pequeno"
-                    android:textSize="12sp" />
-
             </RadioGroup>
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-
+            <RadioButton
+                android:id="@+id/rbPequenoEvaluacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pequeno"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/lblMedicamentos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:text="@string/medicamentos"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
@@ -312,100 +291,129 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/input"
             android:orientation="vertical"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp">
 
-            <CheckBox
-                android:id="@+id/cbxDrontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/drontal"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbxRimadyltal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/rimadyltal"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbxPipeta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/pipeta"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbxEmulgel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/emulgel"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbxMeloxic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/meloxic"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbxBrillo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/brillo"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbxCoccigan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/coccigan"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbxSuero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/suero"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/txtOtrosMedicamentos"
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:background="@drawable/input"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/otrosMedicamentos"
-                android:inputType="textMultiLine"
-                android:paddingLeft="5dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
+                android:layout_height="match_parent">
 
-                android:textSize="12sp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:id="@+id/cbxDrontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/drontal"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:id="@+id/cbxRimadyltal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/rimadyltal"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:id="@+id/cbxPipeta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pipeta"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:id="@+id/cbxEmulgel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/emulgel"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:id="@+id/cbxMeloxic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/meloxic"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:id="@+id/cbxBrillo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/brillo"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:id="@+id/cbxCoccigan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/coccigan"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:id="@+id/cbxSuero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/suero"
+                        android:textSize="12sp" />
+
+                </TableRow>
+            </TableLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtOtrosMedicamentos"
+                    android:layout_width="401dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/otrosMedicamentos"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -414,49 +422,53 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp">
 
             <TextView
                 android:id="@+id/lblObservacionGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
                 android:text="@string/observacionGeneral"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="5dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/input"
             android:orientation="vertical"
-            android:paddingLeft="5dp"
-            tools:ignore="RtlSymmetry">
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/txtTiempo"
-                    android:layout_width="226dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="219dp"
                     android:layout_height="50dp"
-                    android:autofillHints=""
-                    android:hint="@string/tiempo"
-                    android:inputType="textMultiLine"
-                    android:paddingLeft="5dp"
-                    android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
+                    >
 
-                <TextView
-                    android:id="@+id/lblDias"
-                    android:layout_width="160dp"
-                    android:layout_height="36dp"
-                    android:layout_weight="1"
-                    android:text="@string/dias" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtTiempo"
+                        android:layout_width="219dp"
+                        android:layout_height="50dp"
+                        android:autofillHints=""
+                        android:hint="@string/tiempo"
+                        android:inputType="textMultiLine"
+                        android:paddingLeft="5dp"
+                        android:textSize="12sp"
+                        tools:ignore="RtlSymmetry"
+                        android:paddingStart="5dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <CheckBox
                     android:id="@+id/cbxAdoptable"
@@ -464,36 +476,38 @@
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="false"
-                    android:paddingRight="5dp"
                     android:text="@string/adoptable"
-                    android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/eTMLTObservaciones"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/observacionGeneral"
-                    android:inputType="textMultiLine"
-                    android:orientation="horizontal"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
+                    android:layout_height="wrap_content"
+                    >
 
-                    android:textSize="12sp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/eTMLTObservaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:hint="@string/observacionGeneral"
+                        android:inputType="textMultiLine"
+                        android:orientation="horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:textSize="12sp"
+                        android:paddingStart="5dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
 
@@ -504,17 +518,39 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <ProgressBar
+                android:id="@+id/simpleProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:visibility="gone" />
+
             <Button
                 android:id="@+id/btnGuardarEvaluacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/disquete"
+                android:layout_width="196dp"
+                android:layout_height="match_parent"
                 android:drawablePadding="8dp"
-                android:onClick="onClick"
-                android:elevation="5dp"
                 android:paddingLeft="5dp"
                 android:text="Guardar"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="5dp" />
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:onClick="onClick"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/cancelar"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>

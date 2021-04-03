@@ -5,16 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fernandomoya.appproyectofinal.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class RegistryActivity extends AppCompatActivity {
     EditText emailId;
@@ -26,6 +32,7 @@ public class RegistryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         mFirebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.editText);
@@ -38,7 +45,7 @@ public class RegistryActivity extends AppCompatActivity {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()) {
-                    emailId.setError("Por favor, introduzca la identificación del correo electrónico");
+                    emailId.setError("Por favor, ingrese un correo electrónico");
                     emailId.requestFocus();
                 } else if (pwd.isEmpty()) {
                     password.setError("Por favor, introduzca su contraseña");
@@ -47,16 +54,26 @@ public class RegistryActivity extends AppCompatActivity {
                     Toast.makeText(RegistryActivity.this, "¡Los campos están vacíos!", Toast.LENGTH_SHORT).show();
                 } else if (!(email.isEmpty() && pwd.isEmpty())) {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(RegistryActivity.this, new OnCompleteListener<AuthResult>() {
+
+
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+
                             if (!task.isSuccessful()) {
                                 Toast.makeText(RegistryActivity.this, "Registro sin éxito, por favor intente nuevamente", Toast.LENGTH_SHORT).show();
+
                             } else {
-                                startActivity(new Intent(RegistryActivity.this, HomeActivity.class));
+                                startActivity(new Intent(RegistryActivity.this, ChoiceActivity.class));
                             }
+
                         }
+
+
                     });
+
+
                 } else {
+
                     Toast.makeText(RegistryActivity.this, "¡Se produjo un error!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -71,4 +88,6 @@ public class RegistryActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

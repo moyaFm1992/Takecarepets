@@ -27,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/solicitud"
-                android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -41,6 +40,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/border"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:textAlignment="center">
@@ -138,15 +140,21 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp">
 
-            <EditText
-                android:id="@+id/txtNombresApellidos"
-                android:layout_width="379dp"
-                android:layout_height="wrap_content"
-                android:hint="Nombres y Apellidos"
-                android:textSize="13sp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <requestFocus />
-            </EditText>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNombresApellidos"
+                    android:layout_width="379dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombres y Apellidos"
+                    android:textSize="13sp">
+
+                    <requestFocus />
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <LinearLayout
@@ -154,66 +162,89 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/txtCedula"
-                    android:layout_width="147dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:digits="0123456789"
-                    android:hint="Cédula "
-                    android:textSize="13sp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCedula"
+                        android:layout_width="147dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:digits="0123456789"
+                        android:hint="Cédula "
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </EditText>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtTelefono"
+                        android:layout_width="147dp"
+                        android:layout_height="match_parent"
+                        android:digits="0123456789"
+                        android:hint="Teléfono"
+                        android:inputType="phone"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/txtTelefono"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    android:layout_width="147dp"
-                    android:layout_height="match_parent"
-                    android:digits="0123456789"
-                    android:hint="Teléfono"
-                    android:inputType="phone"
-                    android:textSize="13sp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtEdad"
+                        android:layout_width="88dp"
+                        android:layout_height="match_parent"
+                        android:hint="Edad"
+                        android:textSize="13sp" />
 
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </EditText>
-
-                <EditText
-                    android:id="@+id/txtEdad"
-                    android:layout_width="88dp"
-                    android:layout_height="match_parent"
-                    android:hint="Edad"
-                    android:textSize="13sp">
-
-                </EditText>
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/txtEmailAdoptante"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:textSize="13sp">
+                android:layout_height="wrap_content">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEmailAdoptante"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textSize="13sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </EditText>
-
-            <EditText
-                android:id="@+id/txtOcupacion"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ocupacción"
-                android:textSize="13sp"></EditText>
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/txtDireccion"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtOcupacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ocupacción"
+                    android:textSize="13sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Dirección completa"
-                android:textSize="13sp"></EditText>
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dirección completa"
+                    android:textSize="13sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
         </LinearLayout>
 
         <TextView
@@ -225,7 +256,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="RtlSymmetry"></TextView>
+            tools:ignore="RtlSymmetry" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -236,42 +267,54 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp">
 
-            <EditText
-                android:id="@+id/txtNombresReferencia"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombres y Apellidos"
-                android:textSize="13sp">
+                android:layout_height="wrap_content">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNombresReferencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombres y Apellidos"
+                    android:textSize="13sp" />
 
-            </EditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/txtParentesco"
-                    android:layout_width="178dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:hint="@string/parentesco"
-                    android:textSize="13sp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                </EditText>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtParentesco"
+                        android:layout_width="178dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="@string/parentesco"
+                        android:textSize="13sp" />
 
-                <EditText
-                    android:id="@+id/txtTelefonoReferencia"
-                    android:layout_width="205dp"
-                    android:layout_height="match_parent"
-                    android:digits="0123456789"
-                    android:hint="Teléfono"
-                    android:inputType="phone"
-                    android:textSize="13sp">
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                </EditText>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtTelefonoReferencia"
+                        android:layout_width="205dp"
+                        android:layout_height="match_parent"
+                        android:digits="0123456789"
+                        android:hint="Teléfono"
+                        android:inputType="phone"
+                        android:textSize="13sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -279,6 +322,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
 
             <TextView
                 android:id="@+id/lblInstruccion"
@@ -297,6 +341,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:visibility="invisible" />
+
 
         </LinearLayout>
 
@@ -361,11 +406,12 @@
                 tools:ignore="RtlSymmetry" />
 
             <EditText
-                android:id="@+id/txtTipoInm"
+                android:id="@+id/txtTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                tools:visibility="invisible" />
+                android:visibility="invisible" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -404,13 +450,14 @@
                     android:textSize="13sp" />
             </RadioGroup>
 
+
             <EditText
                 android:id="@+id/txtm2"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:hint="m^2"
+                android:hint="m²"
                 android:textAlignment="center"
                 android:textSize="13sp">
 
@@ -684,23 +731,29 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/eTMTVisitas"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:autofillHints=""
+                        android:layout_height="wrap_content">
 
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="@string/describa"
-                        android:inputType="textMultiLine"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="13sp" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/eTMTVisitas"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:autofillHints=""
+                            android:ems="10"
+                            android:gravity="start|top"
+                            android:hint="@string/describa"
+                            android:inputType="textMultiLine"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="13sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
 
                 </LinearLayout>
             </LinearLayout>
@@ -710,7 +763,6 @@
             android:id="@+id/simpleProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:visibility="gone" />
 
         <TextView
@@ -728,12 +780,22 @@
 
             <Button
                 android:id="@+id/btnGuardar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/disquete"
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
                 android:paddingLeft="5dp"
                 android:text="Guardar"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/cancelar"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>

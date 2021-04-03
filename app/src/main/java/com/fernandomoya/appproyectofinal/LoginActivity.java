@@ -2,6 +2,7 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -47,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i = new Intent(LoginActivity.this, ChoiceActivity.class);
                     startActivity(i);
                 } else {
-                    Toast.makeText(LoginActivity.this, "Por favor Iniciar sesión", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "!Por favor Iniciar sesión!", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -58,10 +60,10 @@ public class LoginActivity extends AppCompatActivity {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()) {
-                    emailId.setError("Por favor, introduzca un correo electrónico");
+                    emailId.setError("!Por favor, introduzca un correo electrónico!");
                     emailId.requestFocus();
                 } else if (pwd.isEmpty()) {
-                    password.setError("Por favor, introduzca su contraseña");
+                    password.setError("!Por favor, introduzca su contraseña!");
                     password.requestFocus();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "¡Los campos están vacíos!", Toast.LENGTH_SHORT).show();

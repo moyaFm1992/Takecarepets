@@ -1,4 +1,4 @@
-package com.fernandomoya.appproyectofinal.model;
+package com.fernandomoya.appproyectofinal.adapter;
 
 
 import android.content.Context;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.ItemClickListener;
 import com.fernandomoya.appproyectofinal.R;
+import com.fernandomoya.appproyectofinal.model.MedicalEvaluation;
 
 import java.util.List;
 
@@ -45,8 +46,6 @@ public class MedicalAdapter extends RecyclerView.Adapter<MedicalAdapter.MedicalV
         holder.lstRvTamano.setText("Tamaño: " + valoracion.getTamano());
         holder.lstRvTipo.setText("Tipo: " + valoracion.getTipo());
         holder.lstRvFracturas.setText("Fracturas: " + valoracion.getFracturas());
-
-
     }
 
     @Override

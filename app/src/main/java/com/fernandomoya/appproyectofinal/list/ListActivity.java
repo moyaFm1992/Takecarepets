@@ -1,4 +1,4 @@
-package com.fernandomoya.appproyectofinal;
+package com.fernandomoya.appproyectofinal.list;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.fernandomoya.appproyectofinal.model.AdapterApp;
+import com.fernandomoya.appproyectofinal.ItemClickListener;
+import com.fernandomoya.appproyectofinal.MapsActivity;
+import com.fernandomoya.appproyectofinal.R;
+import com.fernandomoya.appproyectofinal.adapter.AdapterApp;
 import com.fernandomoya.appproyectofinal.model.Perros;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

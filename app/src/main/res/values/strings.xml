@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Takecarepets</string>
+    <string name="version">Versión 1.2</string>
     <string name="acercade">Acerca de</string>
     <string name="nav_header_title">Takecarepets</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
@@ -16,7 +17,7 @@
     <string name="viudo">Viudo/a</string>
     <string name="primaria">Primaria</string>
     <string name="secundaria">Secundaria</string>
-    <string name="grado">Universidad</string>
+    <string name="grado">Univ.</string>
     <string name="postgrado">Maestría</string>
     <string name="telefono">Teléfono</string>
     <string name="instruccion">Instrucción</string>
@@ -24,8 +25,10 @@
     <string name="Inmueble">Tipo de Inmueble</string>
     <string name="casa">Casa</string>
     <string name="departamento">Departamento</string>
+    <string name="campo">Casa de campo</string>
     <string name="propio">Propio</string>
     <string name="arrendado">Arrendado</string>
+    <string name="servicio">Por servicios</string>
     <string name="adecuada">Mascota más adecuada para ud</string>
     <string name="macho">Macho</string>
     <string name="hembra">Hembra</string>
@@ -49,6 +52,7 @@
     <string name="no">No</string>
     <string name="solicitud">Solicitud de adopción</string>
     <string name="evaluacion">Formulario de evaluación médica</string>
+    <string name="medica">Evaluación médica</string>
     <string name="edadEvaluacion">Edad</string>
     <string name="observacionGeneral">Observaciones</string>
     <string name="fracturas">Fracturas</string>
@@ -60,6 +64,8 @@
     <string name="describa">Describa</string>
     <string name="medicamentos">Medicamentos suministrados</string>
     <string name="poradoptar">En proceso de adopción</string>
+    <string name="proceso">Proceso de adopción</string>
+    <string name="porAoptado">Adoptados/Por adoptar</string>
     <string name="drontal">Drontal Desparasitante</string>
     <string name="rimadyltal">Rimadyl</string>
     <string name="pipeta">Pipeta Pul-Ga Kill</string>
@@ -69,7 +75,7 @@
     <string name="coccigan">Coccigan® D</string>
     <string name="suero">Suero</string>
     <string name="otrosMedicamentos">Otros medicamentos</string>
-    <string name="tiempo">Tiempo de recuperación</string>
+    <string name="tiempo">Tiempo de recuperación en días</string>
     <string name="adoptable">Adoptable </string>
     <string name="adicional">Observaciones adicionales</string>
     <string name="personales">Datos personales</string>
@@ -80,27 +86,27 @@
     <string name="otros">Otro</string>
     <string name="pregunta1">¿Por qué desea adoptar una mascota?</string>
     <string name="pregunta2">¿Responsable de cubrir los gastos de la mascota?</string>
-    <string name="pregunta3">Si por algún motivo tuviera que cambiar de domicilio, ¿qué pasaría con su mascota?</string>
-    <string name="pregunta4">Con relación a la anterior pregunta ¿qué pasaría si los dueños de la nueva casa no aceptacen mascotas?</string>
+    <string name="pregunta3">Si cambia de domicilio, ¿qué pasaría con su mascota?</string>
+    <string name="pregunta4">¿Y si los dueños de la nueva casa no aceptan mascotas?</string>
     <string name="porque">¿Por qué?</string>
     <string name="cerrar">Cerrar sesión</string>
-    <string name="legislacion">LEGISLACIÓN VIGENTE</string>
-    <string name="codigo">CÓDIGOS PENAL Y CIVIL:</string>
+    <string name="legislacion">Legislación vigente</string>
+    <string name="codigo">Códigos Penal y Civil:</string>
     <string name="codigoParrafo">El Código Penal Ecuatoriano, en aquellas partes que se refieren a animales, habla lo siguiente:</string>
     <string name="itemParrafo">1.Muerte de un animal doméstico en el lugar que el dueño del animal es propietario, usufructuario, locatario o inquilino.</string>
     <string name="itemParrafo1">2.Prohibición de tenencia de animales domésticos o domesticados en bienes declarados en propiedad horizontal.</string>
     <string name="itemParrafo2">3.La zoofilia</string>
     <string name="itemParrafo3">4.Contravenciones penales</string>
-    <string name="ordenanza">ORDENANZA 128 DEL DM DE QUITO:</string>
+    <string name="ordenanza">Ordenanza 128 del DM de Quito:</string>
     <string name="codigoParrafo1">El objetivo que esta ordenanza metropolitana persigue es el de ”… establecer las condiciones en las que los habitantes y visitantes del Distrito Metropolitano de Quito deben mantener los perros y otros animales domésticos a su cargo, sean o no propietarios de éstos…”</string>
-    <string name="codigoParrafo2">OBLIGACIONES:</string>
+    <string name="codigoParrafo2">Obligaciones:</string>
     <string name="itemParrafo4">1.Cubrir gastos médicos y psicológicos si su animal ataca a otra persona u otro animal.</string>
     <string name="itemParrafo5">2.Mantener al animal en condiciones que no ocasionen molestias a los vecinos.</string>
-    <string name="codigoParrafo3">PROHIBICIONES:</string>
+    <string name="codigoParrafo3">Prohibiciones:</string>
     <string name="itemParrafo6">1.La venta de perros en espacios públicos sin el debido permiso.</string>
     <string name="itemParrafo7">2.Amarrar o encadenar dejando a los animales en situaciones de riesgo.</string>
     <string name="itemParrafo8">3.Organizar y promover peleas de perros.</string>
-    <string name="codigoParrafo4">SANCIONES:</string>
+    <string name="codigoParrafo4">Sanciones:</string>
     <string name="itemParrafo9">Multas que van entre los 50 y 200 dólares.</string>
     <string name="continuar">Continuar</string>
     <string name="salir">Salir</string>
@@ -113,10 +119,25 @@
     <string name="instrucciones">Para restablecer la contraseña, ingrese su correo electrónico, presione el botón y revise el correo para seguir las instrucciones.</string>
     <string name="restablecer">Restablecer contraseña</string>
     <string name="atras">Regresar</string>
-    <string name="desc"></string>
-    <string name="hint"></string>
+    <string name="desc"/>
+    <string name="hint"/>
     <string name="superior">Superior</string>
     <string name="mensaje">Un momento, por favor</string>
+    <string name="cedula">Cédula</string>
+    <string name="ocupacion">Ocupación</string>
+    <string name="completa">Dirección completa</string>
+    <string name="nombApell">Nombre y apellidos</string>
+    <string name="razon">Razón de la visita</string>
+    <string name="valorados">Valorados</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="borrar">Borrar</string>
+    <string name="registro">Registros</string>
+    <string name="guardar">Guardar</string>
+    <string name="avistamiento">Avistamientos</string>
+    <string name="equipo">Equipo</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="_2020_2021">2020-2021</string>
+    <string name="fernando_moya_chiluiza">Fernando Moya Chiluiza</string>
 
 
 </resources>

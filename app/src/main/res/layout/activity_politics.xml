@@ -12,7 +12,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="5dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp">
 
@@ -188,9 +188,8 @@
             <Button
 
                 android:id="@+id/btnContinuar"
-                android:layout_width="wrap_content"
+                android:layout_width="190dp"
                 android:layout_height="match_parent"
-                android:drawableLeft="@drawable/flecha"
                 android:drawablePadding="8dp"
                 android:onClick="onClick"
                 android:paddingLeft="5dp"
@@ -202,11 +201,10 @@
                 android:id="@+id/btnSalirPolitica"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/salida"
                 android:drawablePadding="8dp"
                 android:onClick="onClick"
                 android:paddingLeft="5dp"
-                android:text="@string/salir"
+                android:text="@string/cancelar"
                 android:textSize="16sp"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>

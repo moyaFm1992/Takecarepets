@@ -77,6 +77,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
     RadioButton rdbSi;
     RadioButton rdbNo;
     Button btnGuardar;
+    Button btnCancelar;
     ImageView imagenPerroAdopcion;
     String urlPerroAdopcion;
     URL url;
@@ -134,7 +135,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
         telefonoReferencia = findViewById(R.id.txtTelefonoReferencia);
         parentesco = findViewById(R.id.txtParentesco);
         instruccion = findViewById(R.id.txtInstruccion);
-        otros = findViewById(R.id.txtTipoInm);
+        otros = findViewById(R.id.txtTipo);
         visita = findViewById(R.id.eTMTVisitas);
         rdbPrimaria = findViewById(R.id.rbPrimaria);
         rdbSecundario = findViewById(R.id.rbSecundaria);
@@ -161,8 +162,17 @@ public class AdoptionFormActivity extends AppCompatActivity {
         pregunta3 = findViewById(R.id.txtPregunta3);
         pregunta4 = findViewById(R.id.txtPregunta4);
         btnGuardar = findViewById(R.id.btnGuardar);
+        btnCancelar = findViewById(R.id.btnCancelar);
         btnGuardar.setVisibility(View.VISIBLE);
         inicializarFirebase();
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,7 +185,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 Date date = new Date();
                 final Send envio = new Send();
                 Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
-
+                final String userId = mDatabase.push().getKey();
                 final String apellido = nombresApellidos.getText().toString();
                 final String tieneEdad = edad.getText().toString();
                 final String pin = cedula.getText().toString();
@@ -283,15 +293,13 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 adoption.setEstado(Boolean.FALSE);
                 adoption.setFechaRegistro(fechaRegistro);
                 adoption.setFechaAdopcion(dt.format(newDate));
-
+                adoption.setuId(userId);
                 if (validarAdopcion()) {
                     return;
                 }
-                mDatabase.child("adopcion").child(passengerID).push().setValue(adoption);
+                mDatabase.child("adopcion").child(passengerID).child(userId).setValue(adoption);
 
-                if (!(telef.trim().isEmpty()) || (telef != null)) {
-                    envio.enviarMensaje(telef, SALUDO + apellido + message.sms());
-                }
+
 
                 if (!(mail.trim().isEmpty()) || (mail != null)) {
                     envio.enviar(mail, SALUDO+ apellido + message.email());
@@ -357,7 +365,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
             return true;
         }
         if (cedula != null && !(validador.isValid(cedula.getText().toString()))) {
-            cedula.setError(" El número  de cédula ingresado es incorrecto.");
+            cedula.setError("Número de cédula ingresado incorrecto.");
             cedula.requestFocus();
             return true;
         }
@@ -369,7 +377,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
         }
 
         if (validador.vacio(edad)) {
-            edad.setError("Edad es obligatoria.");
+            edad.setError("Edad obligatoria.");
             edad.requestFocus();
             return true;
         }
@@ -381,7 +389,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
         }
 
         if (!validador.isValidEmailId(email.getText().toString())) {
-            email.setError("El Email ingresado es incorrecto.");
+            email.setError("Email ingresado incorrecto.");
             email.requestFocus();
             return true;
         }
@@ -428,7 +436,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
         }
 
         if (validador.vacio(m2)) {
-            m2.setError("Tamaño del inmueble en m^2 es obligatorio.");
+            m2.setError("Tamaño del inmueble en m² es obligatorio.");
             m2.requestFocus();
             return true;
         }
