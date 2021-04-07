@@ -23,11 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 
 public class RegistryActivity extends AppCompatActivity {
-    EditText emailId;
-    EditText password;
-    Button btnSignUp;
-    TextView tvSignIn;
-    FirebaseAuth mFirebaseAuth;
+    private EditText emailId;
+    private EditText password;
+    private TextView tvSignIn;
+    private Button btnSignUp;
+    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

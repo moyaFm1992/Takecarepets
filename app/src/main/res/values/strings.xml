@@ -119,8 +119,8 @@
     <string name="instrucciones">Para restablecer la contraseña, ingrese su correo electrónico, presione el botón y revise el correo para seguir las instrucciones.</string>
     <string name="restablecer">Restablecer contraseña</string>
     <string name="atras">Regresar</string>
-    <string name="desc"/>
-    <string name="hint"/>
+    <string name="desc" />
+    <string name="hint" />
     <string name="superior">Superior</string>
     <string name="mensaje">Un momento, por favor</string>
     <string name="cedula">Cédula</string>
@@ -149,6 +149,16 @@
     <string name="iniciar_sesi_n">Iniciar sesión</string>
     <string name="edad_aproximada">Edad aproximada</string>
     <string name="email">Email</string>
+    <string name="vacunas">Vacunas</string>
+    <string name="moquillo">Moquillo</string>
+    <string name="hepatitis">Hepatitis</string>
+    <string name="parvovirosis">Parvovirosis</string>
+    <string name="leptospirosis">Leptospirosis</string>
+    <string name="rabia">Rabia</string>
+    <string name="tos">Tos de las perreras</string>
+    <string name="lyme">Enfermedad de Lyme</string>
+    <string name="babesiosis">Babesiosis canina</string>
+    <string name="leishmaniasis">Leishmaniasis</string>
 
 
 </resources>

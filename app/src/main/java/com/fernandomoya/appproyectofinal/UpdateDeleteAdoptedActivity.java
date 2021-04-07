@@ -26,21 +26,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
-    TextView cedulaAdoptante;
-    TextView nombreAdoptante;
-    TextView edadAdoptante;
-    TextView direccionAdoptante;
-    TextView estadoAdoptado;
-    ImageView imagenPerroAdoptado;
-    CheckBox cbxEstado;
-    Bundle infoAdopted;
-    String urlAdoptado;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference mDatabase;
-    FirebaseAuth mFirebaseAuth;
-    Button btnGuardar;
-    Button btnBorrar;
-    FirebaseUser currentUser;
+    private TextView cedulaAdoptante;
+    private TextView nombreAdoptante;
+    private TextView edadAdoptante;
+    private TextView direccionAdoptante;
+    private TextView estadoAdoptado;
+    private ImageView imagenPerroAdoptado;
+    private Button btnGuardar;
+    private Button btnBorrar;
+    private CheckBox cbxEstado;
+    private Bundle infoAdopted;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser currentUser;
+    private String urlAdoptado;
+
 
 
     @Override

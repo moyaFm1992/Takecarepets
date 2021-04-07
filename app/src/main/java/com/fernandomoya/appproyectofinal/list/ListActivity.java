@@ -28,10 +28,10 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements ItemClickListener {
 
-    RecyclerView rw;
-    List<Perros> listaPerros;
-    AdapterApp adapterApp;
-    String passengerID;
+    private RecyclerView rw;
+    private List<Perros> listaPerros;
+    private AdapterApp adapterApp;
+    private String passengerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

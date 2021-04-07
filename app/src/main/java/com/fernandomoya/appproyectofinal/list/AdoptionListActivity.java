@@ -28,10 +28,10 @@ import java.util.List;
 
 public class AdoptionListActivity extends AppCompatActivity implements ItemClickListener {
 
-    RecyclerView rw;
-    List<MedicalEvaluation> listaValoracion;
-    MedicalAdapter medicalAdapter;
-    String passengerID;
+    private RecyclerView rw;
+    private List<MedicalEvaluation> listaValoracion;
+    private MedicalAdapter medicalAdapter;
+    private String passengerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

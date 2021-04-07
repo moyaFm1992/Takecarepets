@@ -28,11 +28,11 @@ import java.util.List;
 
 public class EvaluationListActivity extends AppCompatActivity  implements ItemClickListener {
 
-    RecyclerView rwEvaluationList;
-    List<MedicalEvaluation> listaEvaluationList;
-    MedicalListAdapter medicalEvaluationListAdapter;
-    String passengerID;
-    DatabaseReference myRef;
+    private RecyclerView rwEvaluationList;
+    private List<MedicalEvaluation> listaEvaluationList;
+    private MedicalListAdapter medicalEvaluationListAdapter;
+    private DatabaseReference myRef;
+    private String passengerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

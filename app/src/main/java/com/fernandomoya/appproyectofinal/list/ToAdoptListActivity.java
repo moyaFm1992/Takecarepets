@@ -26,11 +26,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToAdoptListActivity extends AppCompatActivity implements ItemClickListener {
-    private RecyclerView rwAdoptar;
-    List<Adoption> listaAdoptado;
-    private ToAdoptAdapter adapterAdoptado;
 
-    String passengerID;
+    private RecyclerView rwAdoptar;
+    private List<Adoption> listaAdoptado;
+    private ToAdoptAdapter adapterAdoptado;
+    private String passengerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

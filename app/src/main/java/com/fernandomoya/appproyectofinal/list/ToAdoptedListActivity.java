@@ -26,12 +26,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToAdoptedListActivity extends AppCompatActivity implements ItemClickListener {
-    RecyclerView rwAdoptado;
-    List<Adoption> listaAdoptado;
-    ToAdoptedAdapter adapterAdoptado;
-    String passengerID;
-    DatabaseReference myRef;
-
+    private RecyclerView rwAdoptado;
+    private List<Adoption> listaAdoptado;
+    private ToAdoptedAdapter adapterAdoptado;
+    private DatabaseReference myRef;
+    private String passengerID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -15,16 +15,16 @@ import static com.fernandomoya.appproyectofinal.model.Constant.VETER;
 
 
 public class ChoiceActivity extends AppCompatActivity implements View.OnClickListener {
-    String passengerID;
-    ImageButton imgBtnFrmLocation;
-    ImageButton imgBtnFrmChoiceEvaluation;
-    ImageButton imgBtnFrmAdoption;
-    ImageButton imgBtnListAdoption;
-    ImageButton imgBtnListEvaluation;
-    TextView lblLocation;
-    TextView lblEvaluation;
-    TextView lblFrmAdoption;
-    TextView lblAdoption;
+    private String passengerID;
+    private ImageButton imgBtnFrmLocation;
+    private ImageButton imgBtnFrmChoiceEvaluation;
+    private ImageButton imgBtnFrmAdoption;
+    private ImageButton imgBtnListAdoption;
+    private ImageButton imgBtnListEvaluation;
+    private TextView lblLocation;
+    private TextView lblEvaluation;
+    private TextView lblFrmAdoption;
+    private TextView lblAdoption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,9 +104,11 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intentListAdoption);
                 break;
             case R.id.imgBtnSalir:
-                FirebaseAuth.getInstance().signOut();
                 Intent intentSalir = new Intent(ChoiceActivity.this, LoginActivity.class);
                 startActivity(intentSalir);
+                FirebaseAuth fAuth = FirebaseAuth.getInstance();
+                fAuth.signOut();
+                finish();
                 break;
             default:
         }

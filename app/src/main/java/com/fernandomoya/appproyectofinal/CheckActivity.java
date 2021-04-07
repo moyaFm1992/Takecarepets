@@ -32,40 +32,40 @@ import java.util.Locale;
 import static com.fernandomoya.appproyectofinal.model.Constant.SALUDO;
 
 public class CheckActivity extends AppCompatActivity {
-    TextView nombresApellidos;
-    TextView cedula;
-    TextView edad;
-    TextView telefono;
-    TextView email;
-    TextView direccion;
-    TextView ocupacion;
-    TextView instruccion;
-    TextView casa;
-    TextView propio;
-    TextView m2;
-    TextView pregunta1;
-    TextView pregunta2;
-    TextView pregunta3;
-    TextView pregunta4;
-    TextView pregunta5;
-    TextView pregunta6;
-    TextView pregunta7;
-    Button btnGuardarAdoptado;
-    Button btnCancelar;
-    CheckBox cbxParteI;
-    CheckBox cbxParteII;
-    CheckBox cbxParteIII;
-    CheckBox cbxParteIV;
-    DatabaseReference mDatabase;
-    FirebaseDatabase firebaseDatabase;
-    FirebaseAuth mFirebaseAuth;
-    FirebaseUser currentUser;
-    Bundle infoAdopt;
-    ProgressBar mProgressBar;
-    TextView tiempoMensaje;
-    int i = 0;
-    Handler hdlr = new Handler();
-    SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private TextView nombresApellidos;
+    private TextView cedula;
+    private TextView edad;
+    private TextView telefono;
+    private TextView email;
+    private TextView direccion;
+    private TextView ocupacion;
+    private TextView instruccion;
+    private TextView casa;
+    private TextView propio;
+    private TextView m2;
+    private TextView pregunta1;
+    private TextView pregunta2;
+    private TextView pregunta3;
+    private TextView pregunta4;
+    private TextView pregunta5;
+    private TextView pregunta6;
+    private TextView pregunta7;
+    private TextView tiempoMensaje;
+    private Button btnGuardarAdoptado;
+    private Button btnCancelar;
+    private CheckBox cbxParteI;
+    private CheckBox cbxParteII;
+    private CheckBox cbxParteIII;
+    private CheckBox cbxParteIV;
+    private DatabaseReference mDatabase;
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser currentUser;
+    private Bundle infoAdopt;
+    private ProgressBar mProgressBar;
+    private Handler hdlr = new Handler();
+    private int i = 0;
+    private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,7 +158,6 @@ public class CheckActivity extends AppCompatActivity {
                 String fechaRegistro = dt.format(fechaAdopcion);
                 final Send envio = new Send();
 
-
                 adoption.setFechaAdopcion(fechaRegistro);
 
                 new Thread(new Runnable() {
@@ -205,7 +204,7 @@ public class CheckActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot tasksSnapshot) {
                             for (DataSnapshot snapshot : tasksSnapshot.getChildren()) {
-                                Log.i("Message 1: ", snapshot.getRef().child(userId).toString());
+                                Log.i("Message: ", snapshot.getRef().child(userId).toString());
                                 snapshot.getRef().child(userId).child("fechaAdopcion").setValue(adoption.getFechaAdopcion());
                                 snapshot.getRef().child(userId).child("estado").setValue(adoption.getEstado());
                             }
@@ -218,8 +217,6 @@ public class CheckActivity extends AppCompatActivity {
                         }
 
                     });
-
-                    finish();
 
                 } else {
                     adoption.setEstado(Boolean.FALSE);
@@ -243,8 +240,8 @@ public class CheckActivity extends AppCompatActivity {
 
                     });
 
-                    finish();
                 }
+                finish();
             }
         });
     }

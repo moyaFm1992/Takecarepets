@@ -16,11 +16,12 @@ import static com.fernandomoya.appproyectofinal.model.Constant.ADMIN;
 import static com.fernandomoya.appproyectofinal.model.Constant.VETER;
 
 public class ChoiceToAdoptActivity extends AppCompatActivity implements View.OnClickListener {
-    String passengerID;
-    ImageButton imgBtnFrmAdoption;
-    ImageButton imgBtnFrmListToAdopt;
-    TextView lblFrmAdoption;
-    TextView lblListToAdopt;
+
+    private ImageButton imgBtnFrmAdoption;
+    private ImageButton imgBtnFrmListToAdopt;
+    private TextView lblFrmAdoption;
+    private TextView lblListToAdopt;
+    private String passengerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +75,11 @@ public class ChoiceToAdoptActivity extends AppCompatActivity implements View.OnC
                 startActivity(intentListToAdopt);
                 break;
             case R.id.imgBtnSalir:
-                FirebaseAuth.getInstance().signOut();
-                Intent intentSalir = new Intent(ChoiceToAdoptActivity.this, LoginActivity.class);
-                startActivity(intentSalir);
+                //Intent intentSalir = new Intent(ChoiceToAdoptActivity.this, LoginActivity.class);
+                //startActivity(intentSalir);
+                FirebaseAuth fAuth = FirebaseAuth.getInstance();
+                fAuth.signOut();
+                finish();
                 break;
             default:
         }

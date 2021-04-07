@@ -15,11 +15,11 @@ import static com.fernandomoya.appproyectofinal.model.Constant.ADMIN;
 import static com.fernandomoya.appproyectofinal.model.Constant.VETER;
 
 public class ChoiceMedicalActivity extends AppCompatActivity implements View.OnClickListener {
-    String passengerID;
-    ImageButton imgBtnFrmEvaluation;
-    ImageButton imgBtnListEvaluation;
-    TextView lblEvaluation;
-    TextView lblListEvaluation;
+    private String passengerID;
+    private ImageButton imgBtnFrmEvaluation;
+    private ImageButton imgBtnListEvaluation;
+    private TextView lblEvaluation;
+    private TextView lblListEvaluation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +73,11 @@ public class ChoiceMedicalActivity extends AppCompatActivity implements View.OnC
                 startActivity(intentListEvaluation);
                 break;
             case R.id.imgBtnSalir:
-                FirebaseAuth.getInstance().signOut();
                 Intent intentSalir = new Intent(ChoiceMedicalActivity.this, LoginActivity.class);
                 startActivity(intentSalir);
+                FirebaseAuth fAuth = FirebaseAuth.getInstance();
+                fAuth.signOut();
+                finish();
                 break;
             default:
         }

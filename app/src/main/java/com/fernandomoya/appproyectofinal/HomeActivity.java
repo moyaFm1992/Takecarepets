@@ -52,25 +52,24 @@ import static com.fernandomoya.appproyectofinal.model.Constant.MY_PERMISSIONS_RE
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    FusedLocationProviderClient fusedLocationClient;
     static final int REQUEST_TAKE_PHOTO = 1;
-    ImageView imgFoto;
-    ImageButton imgBtnCamera;
-    ImageButton btnGuardar;
-    ImageButton btnListar;
-    ImageButton btnGrupo;
-    Uri mImageURI;
-    FirebaseDatabase firebaseDatabase;
-    StorageReference mStorageReference;
-    DatabaseReference mDatabase;
-    StorageTask mUploadImg;
-    TextView descripcionP;
-    TextView tiempoMensaje;
-    String mCurrentPhotoPath;
-    Location newLocation;
-    String passengerID;
-    ProgressBar mProgressBar;
+    private FusedLocationProviderClient fusedLocationClient;
+    private ImageView imgFoto;
+    private ImageButton imgBtnCamera;
+    private ImageButton btnGuardar;
+    private ImageButton btnListar;
+    private ImageButton btnGrupo;
+    private TextView descripcionP;
+    private TextView tiempoMensaje;
+    private Location newLocation;
+    private ProgressBar mProgressBar;
+    private FirebaseDatabase firebaseDatabase;
+    private StorageReference mStorageReference;
+    private DatabaseReference mDatabase;
+    private StorageTask mUploadImg;
+    private Uri mImageURI;
+    private String mCurrentPhotoPath;
+    private String passengerID;
 
 
     @Override

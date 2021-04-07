@@ -23,12 +23,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText emailId;
-    EditText password;
-    Button btnSignIn;
-    TextView tvSignUp;
-    TextView resetPassword;
-    FirebaseAuth mFirebaseAuth;
+    private EditText emailId;
+    private EditText password;
+    private TextView tvSignUp;
+    private TextView resetPassword;
+    private Button btnSignIn;
+    private FirebaseAuth mFirebaseAuth;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 

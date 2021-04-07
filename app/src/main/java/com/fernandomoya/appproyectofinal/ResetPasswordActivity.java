@@ -15,10 +15,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity {
-    EditText edtEmail;
-    Button btnResetPassword;
-    Button btnBack;
-    FirebaseAuth mAuth;
+    private EditText edtEmail;
+    private Button btnResetPassword;
+    private Button btnBack;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,6 +11,7 @@ public class MedicalEvaluation {
     private String fracturasSiNo;
     private String observaciones;
     private String medicamentos;
+    private String vacunas;
     private String url;
     private String tiempoRecuperacion;
     private Boolean adoptable;
@@ -144,5 +145,13 @@ public class MedicalEvaluation {
 
     public void setuId(String uId) {
         this.uId = uId;
+    }
+
+    public String getVacunas() {
+        return vacunas;
+    }
+
+    public void setVacunas(String vacunas) {
+        this.vacunas = vacunas;
     }
 }

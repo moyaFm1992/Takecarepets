@@ -26,23 +26,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
-    TextView estadoEvaluado;
-    TextView edadEvaluado;
-    TextView sexoEvaluado;
-    EditText estadoInicial;
-    EditText observacionesEvaluado;
-    EditText fracturasEvaluado;
-    TextView tiempoEvaluado;
-    ImageView imgPerroEvaluado;
-    CheckBox cbxEstado;
-    Bundle infoEvaluado;
-    String urlEvaluado;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference mDatabase;
-    FirebaseAuth mFirebaseAuth;
-    Button btnGuardar;
-    Button btnBorrar;
-    FirebaseUser currentUser;
+    private TextView estadoEvaluado;
+    private TextView edadEvaluado;
+    private TextView sexoEvaluado;
+    private EditText estadoInicial;
+    private EditText observacionesEvaluado;
+    private EditText fracturasEvaluado;
+    private TextView tiempoEvaluado;
+    private ImageView imgPerroEvaluado;
+    private Button btnGuardar;
+    private Button btnBorrar;
+    private CheckBox cbxEstado;
+    private Bundle infoEvaluado;
+    private FirebaseUser currentUser;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mFirebaseAuth;
+    private String urlEvaluado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

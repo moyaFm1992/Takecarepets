@@ -27,14 +27,15 @@ import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    GoogleMap mMap;
-    String descripcion;
-    String latitud;
-    String longitud;
-    DatabaseReference mDatabase;
+
+    private String descripcion;
+    private String latitud;
+    private String longitud;
     final ArrayList<Marker> tmpMarker = new ArrayList<>();
     final ArrayList<Marker> realMarker = new ArrayList<>();
-    Bundle infoList;
+    private DatabaseReference mDatabase;
+    private GoogleMap mMap;
+    private Bundle infoList;
 
 
     @Override
