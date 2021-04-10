@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.fernandomoya.appproyectofinal.model.Adoption;
 import com.fernandomoya.appproyectofinal.model.MedicalEvaluation;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import static com.fernandomoya.appproyectofinal.model.Constant.EVALUATION;
 
 public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
     private TextView estadoEvaluado;
@@ -56,7 +57,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
         fracturasEvaluado = findViewById(R.id.lstFracturasEvaluado);
         edadEvaluado = findViewById(R.id.lstEdadEvaluado);
         sexoEvaluado = findViewById(R.id.lstSexoEvaluado);
-        tiempoEvaluado = findViewById(R.id.lstTiempoEvaluado);
+        //tiempoEvaluado = findViewById(R.id.lstTiempoEvaluado);
         cbxEstado = findViewById(R.id.cbxEstadoAdoptable);
         btnGuardar = findViewById(R.id.btnActualizarList);
         btnBorrar = findViewById(R.id.btnEliminarList);
@@ -82,8 +83,8 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
         observacionesEvaluado.setText(observaciones);
         String fracturas = infoEvaluado.getString("fracturas");
         fracturasEvaluado.setText(fracturas);
-        String tiempo = infoEvaluado.getString("tiempo");
-        tiempoEvaluado.setText(tiempo);
+        //String tiempo = infoEvaluado.getString("tiempo");
+        //tiempoEvaluado.setText(tiempo);
         String url = infoEvaluado.getString("url");
         urlEvaluado = url;
 
@@ -98,7 +99,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseReference myRef;
-                myRef = FirebaseDatabase.getInstance().getReference().child("valoracion");
+                myRef = FirebaseDatabase.getInstance().getReference().child(EVALUATION);
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
@@ -134,7 +135,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
                     medicalEvaluation.setObservaciones(observacionesEvaluado.getText().toString());
                     medicalEvaluation.setFracturas(fracturasEvaluado.getText().toString());
 
-                    myRef = FirebaseDatabase.getInstance().getReference().child("valoracion");
+                    myRef = FirebaseDatabase.getInstance().getReference().child(EVALUATION);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                         @Override
@@ -166,7 +167,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
                     medicalEvaluation.setEstadoInicial(estadoInicial.getText().toString());
                     medicalEvaluation.setObservaciones(observacionesEvaluado.getText().toString());
                     medicalEvaluation.setFracturas(fracturasEvaluado.getText().toString());
-                    myRef = FirebaseDatabase.getInstance().getReference().child("valoracion");
+                    myRef = FirebaseDatabase.getInstance().getReference().child(EVALUATION);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                         @Override

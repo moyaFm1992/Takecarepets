@@ -101,25 +101,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/eTMLEstadoInicial"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="90dp"
                     android:hint="@string/describa"
                     android:inputType="textMultiLine"
-                    android:paddingStart="5dp"
-                    android:paddingLeft="5dp"
-                    android:textSize="12sp"
-                    tools:ignore="RtlSymmetry" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtEdadEvaluacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/edad_aproximada"
                     android:paddingStart="5dp"
                     android:paddingLeft="5dp"
                     android:textSize="12sp"
@@ -146,7 +130,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="horizontal"
             android:paddingStart="5dp"
             android:paddingLeft="5dp"
@@ -181,7 +164,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/eTMTFracturas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
                     android:autofillHints=""
                     android:ems="10"
@@ -210,84 +193,122 @@
             android:textStyle="bold"
             tools:ignore="RtlSymmetry" />
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:layout_width="173dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtEdadEvaluacion"
+                        android:layout_width="108dp"
+                        android:layout_height="match_parent"
+                        android:hint="@string/edad_aproximada"
+                        android:paddingStart="5dp"
+                        android:paddingLeft="5dp"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbAdultoEvaluacion"
+                        android:layout_width="123dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/adulto"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbCachorroEvaluacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/cachorro"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbGrandeEvaluacion"
+                        android:layout_width="108dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/grande"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbMedianoEvaluacion"
+                        android:layout_width="123dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/mediano"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbPequenoEvaluacion"
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/pequeno"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/rbMachoEvaluacion"
+                        android:layout_width="108dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/macho"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbHembraEvaluacion"
+                        android:layout_width="123dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/hembra"
+                        android:textSize="12sp" />
+
+
+                </RadioGroup>
+
+
+            </TableRow>
+
+
+        </TableLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:paddingStart="5dp"
             android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="10dp"
             android:paddingRight="10dp">
 
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-                <RadioButton
-                    android:id="@+id/rbMachoEvaluacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/macho"
-                    android:textSize="12sp" />
-
-                <RadioButton
-                    android:id="@+id/rbHembraEvaluacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hembra"
-                    android:textSize="12sp" />
-            </RadioGroup>
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/rbAdultoEvaluacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/adulto"
-                    android:textSize="12sp" />
-
-                <RadioButton
-                    android:id="@+id/rbCachorroEvaluacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cachorro"
-                    android:textSize="12sp" />
-            </RadioGroup>
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rbGrandeEvaluacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/grande"
-                    android:textSize="12sp" />
-
-                <RadioButton
-                    android:id="@+id/rbMedianoEvaluacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mediano"
-                    android:textSize="12sp" />
-
-            </RadioGroup>
-
-            <RadioButton
-                android:id="@+id/rbPequenoEvaluacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pequeno"
-                android:textSize="12sp" />
         </LinearLayout>
 
         <TextView
@@ -405,7 +426,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:paddingLeft="5dp"
-            android:text="@string/medicamentos"
+            android:text="@string/vacunas"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -451,7 +472,6 @@
                         android:textSize="12sp" />
 
 
-
                 </TableRow>
 
                 <TableRow
@@ -472,6 +492,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/tos"
                         android:textSize="12sp" />
+
                     <CheckBox
                         android:id="@+id/cbxRabia"
                         android:layout_width="wrap_content"
@@ -566,36 +587,50 @@
             android:paddingLeft="5dp"
             tools:ignore="RtlSymmetry">
 
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="133dp"
+                        android:layout_height="50dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtTiempo"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:autofillHints=""
+                            android:hint="@string/tiempo"
+                            android:inputType="textMultiLine"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:textSize="12sp"
+                            tools:ignore="RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <CheckBox
+                        android:id="@+id/cbxAdoptable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/adoptable"
+                        android:textSize="12sp" />
+                </TableRow>
+
+
+            </TableLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="219dp"
-                    android:layout_height="50dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtTiempo"
-                        android:layout_width="219dp"
-                        android:layout_height="50dp"
-                        android:autofillHints=""
-                        android:hint="@string/tiempo"
-                        android:inputType="textMultiLine"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:textSize="12sp"
-                        tools:ignore="RtlSymmetry" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <CheckBox
-                    android:id="@+id/cbxAdoptable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/adoptable"
-                    android:textSize="12sp" />
             </LinearLayout>
 
 
@@ -611,7 +646,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/eTMLTObservaciones"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="55dp"
                         android:ems="10"
                         android:gravity="start|top"
                         android:hint="@string/observacionGeneral"

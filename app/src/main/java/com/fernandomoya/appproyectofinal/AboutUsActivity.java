@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 public class AboutUsActivity extends AppCompatActivity {
 
-    //Controlador de la ventana de información
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

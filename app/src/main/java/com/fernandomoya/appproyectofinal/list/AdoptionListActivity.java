@@ -26,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.fernandomoya.appproyectofinal.model.Constant.EVALUATION;
+
 public class AdoptionListActivity extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView rw;
@@ -47,7 +49,7 @@ public class AdoptionListActivity extends AppCompatActivity implements ItemClick
         rw.setAdapter(medicalAdapter);
         medicalAdapter.setClickListener(this);
 
-        myRef = FirebaseDatabase.getInstance().getReference().child("valoracion");
+        myRef = FirebaseDatabase.getInstance().getReference().child(EVALUATION);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override

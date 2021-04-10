@@ -49,7 +49,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="218dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -61,7 +61,6 @@
                             android:id="@+id/imgListPerroEvaluado"
                             android:layout_width="155dp"
                             android:layout_height="144dp"
-                            android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="5dp"
@@ -71,6 +70,59 @@
                             android:contentDescription="@string/desc"
                             android:gravity="center"
                             app:srcCompat="@drawable/animal" />
+
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/lstSexoEvaluado"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_toRightOf="@+id/imgListPerroEvaluado"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/imgListPerroEvaluado" />
+
+                                <TextView
+                                    android:id="@+id/lstEdadEvaluado"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_toRightOf="@+id/imgListPerroEvaluado"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/imgListPerroEvaluado" />
+
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/lstEstadoEvaluado"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_toRightOf="@+id/imgListPerroEvaluado"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/imgListPerroEvaluado" />
+                            </TableRow>
+                        </TableLayout>
+
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -78,75 +130,46 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+
                         <CheckBox
                             android:id="@+id/cbxEstadoAdoptable"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Estado" />
+                            android:text="Estado"
+                            android:textSize="12sp" />
+
 
                         <EditText
                             android:id="@+id/lstEstadoInicial"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
                             android:layout_toRightOf="@+id/imgListPerroEvaluado"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/lstObservacionesEvaluado"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
                             android:layout_toRightOf="@+id/imgListPerroEvaluado"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_toEndOf="@+id/imgListPerroEvaluado"
+                            android:layout_marginStart="5dp" />
 
                         <EditText
                             android:id="@+id/lstFracturasEvaluado"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
                             android:layout_toRightOf="@+id/imgListPerroEvaluado"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/lstEstadoEvaluado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@+id/imgListPerroEvaluado"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/lstEdadEvaluado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@+id/imgListPerroEvaluado"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/lstSexoEvaluado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@+id/imgListPerroEvaluado"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/lstTiempoEvaluado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@+id/imgListPerroEvaluado"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/imgListPerroEvaluado" />
 
 
                     </LinearLayout>

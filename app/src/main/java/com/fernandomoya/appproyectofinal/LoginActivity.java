@@ -114,12 +114,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
-
     public Boolean isOnlineNet() {
 
         try {
@@ -145,6 +139,13 @@ public class LoginActivity extends AppCompatActivity {
         NetworkInfo actNetInfo = connectivityManager.getActiveNetworkInfo();
 
         return (actNetInfo != null && actNetInfo.isConnected());
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
 }

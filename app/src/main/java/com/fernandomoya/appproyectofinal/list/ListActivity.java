@@ -26,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.fernandomoya.appproyectofinal.model.Constant.DOGS;
+
 public class ListActivity extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView rw;
@@ -48,7 +50,7 @@ public class ListActivity extends AppCompatActivity implements ItemClickListener
         rw.setAdapter(adapterApp);
         adapterApp.setClickListener(this);
 
-        myRef = FirebaseDatabase.getInstance().getReference().child("perros").child(passengerID);
+        myRef = FirebaseDatabase.getInstance().getReference().child(DOGS).child(passengerID);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

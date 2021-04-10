@@ -17,7 +17,7 @@
     <string name="viudo">Viudo/a</string>
     <string name="primaria">Primaria</string>
     <string name="secundaria">Secundaria</string>
-    <string name="grado">Univ.</string>
+    <string name="grado">Universidad</string>
     <string name="postgrado">Maestría</string>
     <string name="telefono">Teléfono</string>
     <string name="instruccion">Instrucción</string>
@@ -25,7 +25,7 @@
     <string name="Inmueble">Tipo de Inmueble</string>
     <string name="casa">Casa</string>
     <string name="departamento">Departamento</string>
-    <string name="campo">Casa de campo</string>
+    <string name="campo">De campo</string>
     <string name="propio">Propio</string>
     <string name="arrendado">Arrendado</string>
     <string name="servicio">Por servicios</string>
@@ -34,20 +34,20 @@
     <string name="hembra">Hembra</string>
     <string name="adulto">Adulto</string>
     <string name="cachorro">Cachorro</string>
-    <string name="grande">Grand</string>
-    <string name="mediano">Med</string>
-    <string name="pequeno">Peq</string>
+    <string name="grande">Grande</string>
+    <string name="mediano">Mediano</string>
+    <string name="pequeno">Pequeño</string>
     <string name="cincoAVeinte">$5 a $20</string>
     <string name="VeinteUnoCincuenta">$21 a $50</string>
     <string name="cincoUnoOchenta">$51 a $80</string>
     <string name="masOchenta">+ $80</string>
-    <string name="aGastar">Cuánto dinero estaría dispuesto a gastar en su mascota mensualmente</string>
+    <string name="aGastar">¿Cuánto dinero estaría dispuesto a gastar en su mascota mensualmente?</string>
     <string name="mascotaEnferma">Si la mascota se enferma usted:</string>
     <string name="veterinario">Veterinario</string>
     <string name="mismo">Lo medica</string>
     <string name="centro">Centro veterinario</string>
     <string name="solo">Esperar que se sane</string>
-    <string name="periodica">Está de acuerdo en que se haga una visita periódica </string>
+    <string name="periodica">Está de acuerdo en que se haga una visita periódica</string>
     <string name="si">Si</string>
     <string name="no">No</string>
     <string name="solicitud">Solicitud de adopción</string>
@@ -60,7 +60,7 @@
     <string name="genero">Genero</string>
     <string name="descripcionGeneral">Descripción general</string>
     <string name="estadoInicial">Estado inicial</string>
-    <string name="tipo">Tipo</string>
+    <string name="tipo">Tipo/Edad</string>
     <string name="describa">Describa</string>
     <string name="medicamentos">Medicamentos suministrados</string>
     <string name="poradoptar">En proceso de adopción</string>
@@ -75,7 +75,7 @@
     <string name="coccigan">Coccigan® D</string>
     <string name="suero">Suero</string>
     <string name="otrosMedicamentos">Otros medicamentos</string>
-    <string name="tiempo">Tiempo de recuperación en días</string>
+    <string name="tiempo">Tiempo en días</string>
     <string name="adoptable">Adoptable </string>
     <string name="adicional">Observaciones adicionales</string>
     <string name="personales">Datos personales</string>
@@ -95,8 +95,8 @@
     <string name="codigoParrafo">El Código Penal Ecuatoriano, en aquellas partes que se refieren a animales, habla lo siguiente:</string>
     <string name="itemParrafo">1.Muerte de un animal doméstico en el lugar que el dueño del animal es propietario, usufructuario, locatario o inquilino.</string>
     <string name="itemParrafo1">2.Prohibición de tenencia de animales domésticos o domesticados en bienes declarados en propiedad horizontal.</string>
-    <string name="itemParrafo2">3.La zoofilia</string>
-    <string name="itemParrafo3">4.Contravenciones penales</string>
+    <string name="itemParrafo2">3.La zoofilia.</string>
+    <string name="itemParrafo3">4.Contravenciones penales.</string>
     <string name="ordenanza">Ordenanza 128 del DM de Quito:</string>
     <string name="codigoParrafo1">El objetivo que esta ordenanza metropolitana persigue es el de ”… establecer las condiciones en las que los habitantes y visitantes del Distrito Metropolitano de Quito deben mantener los perros y otros animales domésticos a su cargo, sean o no propietarios de éstos…”</string>
     <string name="codigoParrafo2">Obligaciones:</string>
@@ -147,7 +147,7 @@
     <string name="recuperar_contrase_a">Recuperar Contraseña</string>
     <string name="no_registrado_registrate_aqu">¿No registrado? Registrate aquí</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
-    <string name="edad_aproximada">Edad aproximada</string>
+    <string name="edad_aproximada">Edad</string>
     <string name="email">Email</string>
     <string name="vacunas">Vacunas</string>
     <string name="moquillo">Moquillo</string>
@@ -155,10 +155,15 @@
     <string name="parvovirosis">Parvovirosis</string>
     <string name="leptospirosis">Leptospirosis</string>
     <string name="rabia">Rabia</string>
-    <string name="tos">Tos de las perreras</string>
-    <string name="lyme">Enfermedad de Lyme</string>
-    <string name="babesiosis">Babesiosis canina</string>
+    <string name="tos">Tos</string>
+    <string name="lyme">Enf de Lyme</string>
+    <string name="babesiosis">Babesiosis</string>
     <string name="leishmaniasis">Leishmaniasis</string>
-
+    <string name="titulo">Tipo</string>
+    <string name="cuadrados">m²</string>
+    <string-array name="spTipo">
+        <item>Años</item>
+        <item>Meses</item>
+    </string-array>
 
 </resources>

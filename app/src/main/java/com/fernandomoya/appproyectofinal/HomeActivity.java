@@ -47,7 +47,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.fernandomoya.appproyectofinal.model.Constant.DOGS;
 import static com.fernandomoya.appproyectofinal.model.Constant.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
+import static com.fernandomoya.appproyectofinal.model.Constant.PHOTO;
 
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -92,57 +94,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnListar.setOnClickListener(this);
         imgBtnCamera.setOnClickListener(this);
 
-        if (ContextCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
-        }
-
-
         inicializarFirebase();
+        validarPermisos();
 
     }
 
-    //base de datos
-    private void inicializarFirebase() {
-        FirebaseApp.initializeApp(this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabase = firebaseDatabase.getReference();
-        passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mStorageReference = FirebaseStorage.getInstance().getReference("perros");
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            File imgPhto = new File(mCurrentPhotoPath);
-            if (imgPhto.exists()) {
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgPhto.getAbsolutePath());
-                imgFoto.setImageBitmap(myBitmap);
-            }
-        }
-    }
-
-    private File createImageFile() throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,
-                ".jpg",
-                storageDir
-        );
-
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
-    private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
 
     @Override
     public void onClick(final View view) {
@@ -167,7 +123,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     if (photoFile != null) {
                         Uri photoURI = FileProvider.getUriForFile(this,
-                                "com.fernandomoya.appproyectofinal.fileprovider",
+                                PHOTO,
                                 photoFile);
                         mImageURI = photoURI;
 
@@ -209,7 +165,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                         perros.setLongitud(newLocation.getLongitude());
                                                         perros.setUrl(url.toString());
                                                         perros.setuId(userId);
-                                                        mDatabase.child("perros").child(passengerID).child(userId).setValue(perros);
+                                                        mDatabase.child(DOGS).child(passengerID).child(userId).setValue(perros);
                                                     }
 
                                                 }
@@ -219,7 +175,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                                                     double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
 
-                                                    Log.i("Message: ", "La carga esta al" + progress + "%");
+                                                    Log.i("Message: ", "La carga esta al " + progress + "%");
 
                                                     int currentprogress = (int) progress;
                                                     descripcionP.setFocusable(Boolean.FALSE);
@@ -251,6 +207,54 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             default:
         }
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            File imgPhto = new File(mCurrentPhotoPath);
+            if (imgPhto.exists()) {
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgPhto.getAbsolutePath());
+                imgFoto.setImageBitmap(myBitmap);
+            }
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,
+                ".jpg",
+                storageDir
+        );
+
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    public void validarPermisos() {
+        if (ContextCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
+        }
+    }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabase = firebaseDatabase.getReference();
+        passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mStorageReference = FirebaseStorage.getInstance().getReference(DOGS);
     }
 
 

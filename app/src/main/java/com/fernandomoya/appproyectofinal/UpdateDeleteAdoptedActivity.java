@@ -3,7 +3,6 @@ package com.fernandomoya.appproyectofinal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,16 +13,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.model.Adoption;
-import com.fernandomoya.appproyectofinal.model.Perros;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
 
 public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
     private TextView cedulaAdoptante;
@@ -88,7 +86,7 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
 
 
                 DatabaseReference myRef;
-                myRef = FirebaseDatabase.getInstance().getReference().child("adopcion");
+                myRef = FirebaseDatabase.getInstance().getReference().child(ADOPTION);
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
@@ -121,7 +119,7 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
                     adoption.setEstado(Boolean.TRUE);
 
                     DatabaseReference myRef;
-                    myRef = FirebaseDatabase.getInstance().getReference().child("adopcion");
+                    myRef = FirebaseDatabase.getInstance().getReference().child(ADOPTION);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                         @Override
@@ -148,7 +146,7 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
                 if (!cbxEstado.isChecked()) {
                     adoption.setEstado(Boolean.FALSE);
                     DatabaseReference myRef;
-                    myRef = FirebaseDatabase.getInstance().getReference().child("adopcion");
+                    myRef = FirebaseDatabase.getInstance().getReference().child(ADOPTION);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                         @Override

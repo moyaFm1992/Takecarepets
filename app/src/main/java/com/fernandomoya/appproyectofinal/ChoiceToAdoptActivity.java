@@ -75,8 +75,6 @@ public class ChoiceToAdoptActivity extends AppCompatActivity implements View.OnC
                 startActivity(intentListToAdopt);
                 break;
             case R.id.imgBtnSalir:
-                //Intent intentSalir = new Intent(ChoiceToAdoptActivity.this, LoginActivity.class);
-                //startActivity(intentSalir);
                 FirebaseAuth fAuth = FirebaseAuth.getInstance();
                 fAuth.signOut();
                 finish();

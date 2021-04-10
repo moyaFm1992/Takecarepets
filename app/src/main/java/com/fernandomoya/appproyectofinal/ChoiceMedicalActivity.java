@@ -62,13 +62,10 @@ public class ChoiceMedicalActivity extends AppCompatActivity implements View.OnC
 
 
             case R.id.imgBtnFrmEvaluation:
-
                 Intent intentEvaluation = new Intent(ChoiceMedicalActivity.this, MedicalEvaluationActivity.class);
                 startActivity(intentEvaluation);
                 break;
-
             case R.id.imgBtnFrmListEvaluation:
-
                 Intent intentListEvaluation = new Intent(ChoiceMedicalActivity.this, MedicalEvaluationListActivity.class);
                 startActivity(intentListEvaluation);
                 break;

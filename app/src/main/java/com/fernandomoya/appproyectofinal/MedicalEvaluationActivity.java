@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.fernandomoya.appproyectofinal.HomeActivity.REQUEST_TAKE_PHOTO;
+import static com.fernandomoya.appproyectofinal.model.Constant.EVALUATION;
 import static com.fernandomoya.appproyectofinal.model.Constant.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 
 public class MedicalEvaluationActivity extends AppCompatActivity implements View.OnClickListener {
@@ -84,10 +86,20 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
     private CheckBox cbxCoccigan;
     private CheckBox cbxSuero;
     private CheckBox cbxAdoptable;
+    private CheckBox cbxMoquillo;
+    private CheckBox cbxHepatitis;
+    private CheckBox cbxParvovirosis;
+    private CheckBox cbxLeptospirosis;
+    private CheckBox cbxTos;
+    private CheckBox cbxRabia;
+    private CheckBox cbxBabesiosis;
+    private CheckBox cbxLeishmaniasis;
+    private CheckBox cbxLyme;
     private Button btnGuardar;
     private Button btnCancelar;
     private ImageView imgPerroEvaluacion;
     private ImageButton imgBtnCameraEvaluacion;
+    private Spinner spn;
     private Uri imageURIEvaluacion;
     private DatabaseReference mDatabase;
     private FirebaseDatabase firebaseDatabase;
@@ -106,7 +118,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         imgBtnCameraEvaluacion = findViewById(R.id.imgBtnCameraEvaluacion);
         estadoInicial = findViewById(R.id.eTMLEstadoInicial);
         edad = findViewById(R.id.txtEdadEvaluacion);
-        edad.setInputType(InputType.TYPE_CLASS_NUMBER);
+        //edad.setInputType(InputType.TYPE_CLASS_NUMBER);
         medicamentos = findViewById(R.id.txtOtrosMedicamentos);
         tiempo = findViewById(R.id.txtTiempo);
         tiempo.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -130,103 +142,28 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         cbxCoccigan = findViewById(R.id.cbxCoccigan);
         cbxSuero = findViewById(R.id.cbxSuero);
         cbxAdoptable = findViewById(R.id.cbxAdoptable);
+        cbxMoquillo = findViewById(R.id.cbxMoquillo);
+        cbxHepatitis = findViewById(R.id.cbxHepatitis);
+        cbxParvovirosis = findViewById(R.id.cbxParvovirosis);
+        cbxLeptospirosis = findViewById(R.id.cbxLeptospirosis);
+        cbxTos = findViewById(R.id.cbxTos);
+        cbxRabia = findViewById(R.id.cbxRabia);
+        cbxBabesiosis = findViewById(R.id.cbxBabesiosis);
+        cbxLyme = findViewById(R.id.cbxLyme);
+        cbxLeishmaniasis = findViewById(R.id.cbxLeishmaniasis);
         btnGuardar = findViewById(R.id.btnGuardarEvaluacion);
         btnCancelar = findViewById(R.id.btnCancelar);
         tiempoMensaje = findViewById(R.id.tv);
         mProgressBar = findViewById(R.id.simpleProgressBar);
         imgBtnCameraEvaluacion.setOnClickListener(this);
 
-        if (ContextCompat.checkSelfPermission(MedicalEvaluationActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(MedicalEvaluationActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MedicalEvaluationActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
-        }
-
+        validarPermisos();
         inicializarFirebase();
 
-    }
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    private void inicializarFirebase() {
-        FirebaseApp.initializeApp(this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabase = firebaseDatabase.getReference();
-        passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mStorageReference = FirebaseStorage.getInstance().getReference("valoracion");
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            File imgPhto = new File(mCurrentPhotoPath);
-            if (imgPhto.exists()) {
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgPhto.getAbsolutePath());
-                imgPerroEvaluacion.setImageBitmap(myBitmap);
-            }
-        }
-    }
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,
-                ".jpg",
-                storageDir
-        );
-
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
-    private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
-
-
-    @Override
-    public void onClick(final View view) {
-
-        switch (view.getId()) {
-
-            case R.id.btnCancelar:
-                finish();
-                break;
-
-            case R.id.imgBtnCameraEvaluacion:
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    File photoFile = null;
-                    try {
-                        photoFile = createImageFile();
-                    } catch (IOException ex) {
-                        Log.i("IOException", ex.getMessage());
-                    }
-                    if (photoFile != null) {
-                        Uri photoURI = FileProvider.getUriForFile(this,
-                                "com.fernandomoya.appproyectofinal.fileprovider",
-                                photoFile);
-                        imageURIEvaluacion = photoURI;
-
-                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                        startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-                    }
-                }
-                break;
-
-            case R.id.btnGuardarEvaluacion:
-
-
-                if (ActivityCompat.checkSelfPermission(this,
-                        Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MedicalEvaluationActivity.this,
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-                }
 
                 if (imageURIEvaluacion == null) {
                     Toast.makeText(MedicalEvaluationActivity.this, "La fotografía es necesaria", Toast.LENGTH_SHORT).show();
@@ -252,6 +189,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 final String tieneEdad = edad.getText().toString();
                                 final String tiempoRecu = tiempo.getText().toString();
                                 final String tieneFracturas = fracturas.getText().toString();
+
 
                                 if (rdbMacho.isChecked()) {
                                     medicalEvaluation.setSexo(rdbMacho.getText().toString());
@@ -311,6 +249,45 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 if (cbxSuero.isChecked()) {
                                     listaMedicamentos.add(cbxSuero.getText().toString() + "/");
                                 }
+
+                                //Vacunas
+
+                                if (cbxMoquillo.isChecked()) {
+                                    listaMedicamentos.add(cbxMoquillo.getText().toString() + "/");
+                                }
+
+                                if (cbxHepatitis.isChecked()) {
+                                    listaMedicamentos.add(cbxHepatitis.getText().toString() + "/");
+                                }
+
+                                if (cbxParvovirosis.isChecked()) {
+                                    listaMedicamentos.add(cbxParvovirosis.getText().toString() + "/");
+                                }
+
+                                if (cbxLeptospirosis.isChecked()) {
+                                    listaMedicamentos.add(cbxLeptospirosis.getText().toString() + "/");
+                                }
+
+                                if (cbxTos.isChecked()) {
+                                    listaMedicamentos.add(cbxTos.getText().toString() + "/");
+                                }
+
+                                if (cbxRabia.isChecked()) {
+                                    listaMedicamentos.add(cbxRabia.getText().toString() + "/");
+                                }
+
+                                if (cbxBabesiosis.isChecked()) {
+                                    listaMedicamentos.add(cbxBabesiosis.getText().toString() + "/");
+                                }
+
+                                if (cbxLyme.isChecked()) {
+                                    listaMedicamentos.add(cbxLyme.getText().toString() + "/");
+                                }
+
+                                if (cbxLeishmaniasis.isChecked()) {
+                                    listaMedicamentos.add(cbxLeishmaniasis.getText().toString() + "/");
+                                }
+
 
                                 if (medicamentosSum != null) {
                                     listaMedicamentos.add(medicamentosSum);
@@ -414,6 +391,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
 
                                 int currentprogress = (int) progress;
                                 btnGuardar.setVisibility(View.GONE);
+                                btnCancelar.setVisibility(View.GONE);
                                 mProgressBar.setVisibility(View.VISIBLE);
                                 tiempoMensaje.setVisibility(View.VISIBLE);
                                 tiempoMensaje.setText("Un momento, por favor");
@@ -421,6 +399,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
 
                                 if (currentprogress == 100) {
                                     btnGuardar.setVisibility(View.VISIBLE);
+                                    btnCancelar.setVisibility(View.VISIBLE);
                                     mProgressBar.setVisibility(View.GONE);
                                     tiempoMensaje.setVisibility(View.GONE);
                                     finish();
@@ -433,9 +412,102 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 Log.i("Message: ", "La carga está pausada");
                             }
                         });
+            }
+        });
+
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            File imgPhto = new File(mCurrentPhotoPath);
+            if (imgPhto.exists()) {
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgPhto.getAbsolutePath());
+                imgPerroEvaluacion.setImageBitmap(myBitmap);
+            }
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,
+                ".jpg",
+                storageDir
+        );
+
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+
+    @Override
+    public void onClick(final View view) {
+
+        switch (view.getId()) {
+
+            case R.id.btnCancelar:
+                finish();
+                break;
+
+            case R.id.imgBtnCameraEvaluacion:
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    File photoFile = null;
+                    try {
+                        photoFile = createImageFile();
+                    } catch (IOException ex) {
+                        Log.i("IOException", ex.getMessage());
+                    }
+                    if (photoFile != null) {
+                        Uri photoURI = FileProvider.getUriForFile(this,
+                                "com.fernandomoya.appproyectofinal.fileprovider",
+                                photoFile);
+                        imageURIEvaluacion = photoURI;
+
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                        startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+                    }
+                }
                 break;
             default:
         }
+    }
+
+    public void validarPermisos() {
+        if (ContextCompat.checkSelfPermission(MedicalEvaluationActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(MedicalEvaluationActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MedicalEvaluationActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
+        }
+
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MedicalEvaluationActivity.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+        }
+    }
+
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabase = firebaseDatabase.getReference();
+        passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mStorageReference = FirebaseStorage.getInstance().getReference(EVALUATION);
     }
 
 

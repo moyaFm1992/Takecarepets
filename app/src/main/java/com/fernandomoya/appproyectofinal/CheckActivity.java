@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
 import static com.fernandomoya.appproyectofinal.model.Constant.SALUDO;
 
 public class CheckActivity extends AppCompatActivity {
@@ -117,7 +118,7 @@ public class CheckActivity extends AppCompatActivity {
         String tip = infoAdopt.getString("tipoinmueble");
         casa.setText(tip);
         String metros2 = infoAdopt.getString("m2");
-        m2.setText(metros2 + " metros cuadrados");
+        m2.setText(metros2 + " m²");
         String prop = infoAdopt.getString("propio");
         propio.setText(prop);
         String preg1 = infoAdopt.getString("pregunta1");
@@ -199,7 +200,7 @@ public class CheckActivity extends AppCompatActivity {
                     adoption.setEstado(Boolean.TRUE);
                     adoption.setFechaAdopcion(fechaRegistro);
 
-                    myRef = FirebaseDatabase.getInstance().getReference("adopcion");
+                    myRef = FirebaseDatabase.getInstance().getReference(ADOPTION);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot tasksSnapshot) {
@@ -221,7 +222,7 @@ public class CheckActivity extends AppCompatActivity {
                 } else {
                     adoption.setEstado(Boolean.FALSE);
                     adoption.setFechaAdopcion(fechaRegistro);
-                    myRef = FirebaseDatabase.getInstance().getReference("adopcion");
+                    myRef = FirebaseDatabase.getInstance().getReference(ADOPTION);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot tasksSnapshot) {

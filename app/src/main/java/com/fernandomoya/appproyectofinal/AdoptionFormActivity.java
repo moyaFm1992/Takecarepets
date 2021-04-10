@@ -33,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
 import static com.fernandomoya.appproyectofinal.model.Constant.SALUDO;
 
 
@@ -279,7 +280,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                     adoption.setVisitaMensual(rdbNo.getText().toString());
                 }
                 adoption.setNombresApellidos(apellido);
-                adoption.setEdad(tieneEdad);
+                adoption.setEdad(Integer.parseInt(tieneEdad));
                 adoption.setCedula(pin);
                 adoption.setTelefono(telef);
                 adoption.setDireccion(dirc);
@@ -301,7 +302,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 if (validarAdopcion()) {
                     return;
                 }
-                mDatabase.child("adopcion").child(passengerID).child(userId).setValue(adoption);
+                mDatabase.child(ADOPTION).child(passengerID).child(userId).setValue(adoption);
 
 
                 if (!(mail.trim().isEmpty()) || (mail != null)) {
@@ -320,12 +321,14 @@ public class AdoptionFormActivity extends AppCompatActivity {
                                     mProgressBar.setProgress(i);
                                     visita.setFocusable(Boolean.FALSE);
                                     btnGuardar.setVisibility(View.GONE);
+                                    btnCancelar.setVisibility(View.GONE);
                                     mProgressBar.setVisibility(View.VISIBLE);
                                     tiempoMensaje.setVisibility(View.VISIBLE);
                                     tiempoMensaje.setText("Un momento, por favor");
                                     Log.i("Message: ", i + "/" + mProgressBar.getMax());
                                     if (i == 100) {
                                         btnGuardar.setVisibility(View.VISIBLE);
+                                        btnCancelar.setVisibility(View.VISIBLE);
                                         mProgressBar.setVisibility(View.GONE);
                                         tiempoMensaje.setVisibility(View.GONE);
                                         finish();
@@ -344,14 +347,6 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 }).start();
             }
         });
-    }
-
-
-    private void inicializarFirebase() {
-        FirebaseApp.initializeApp(this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabase = firebaseDatabase.getReference();
-        passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
 
@@ -384,6 +379,13 @@ public class AdoptionFormActivity extends AppCompatActivity {
             edad.requestFocus();
             return true;
         }
+
+        if (Integer.parseInt(edad.getText().toString()) < 18) {
+            edad.setError("Para adoptar debe ser mayor de edad");
+            edad.requestFocus();
+            return true;
+        }
+
 
         if (validador.vacio(email)) {
             email.setError("Email obligatorio.");
@@ -494,6 +496,13 @@ public class AdoptionFormActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(AdoptionFormActivity.this, new String[]
                     {Manifest.permission.SEND_SMS,}, 1000);
         }
+    }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabase = firebaseDatabase.getReference();
+        passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
 }

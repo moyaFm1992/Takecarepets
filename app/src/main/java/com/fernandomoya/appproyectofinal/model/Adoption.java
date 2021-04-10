@@ -6,7 +6,7 @@ public class Adoption {
     private String nombresApellidos;
     private String cedula;
     private String telefono;
-    private String edad;
+    private Integer edad;
     private String email;
     private String direccion;
     private String ocupacion;
@@ -36,11 +36,11 @@ public class Adoption {
 
     }
 
-    public Adoption(String nombresApellidos, String cedula, String telefono, String edad, String email, String direccion, String ocupacion,String uId) {
+    public Adoption(String nombresApellidos, String cedula, String telefono, Integer edad, String email, String direccion, String ocupacion,String uId) {
         this.nombresApellidos = nombresApellidos;
         this.cedula = cedula;
         this.telefono = telefono;
-        this.edad = edad;
+        this.setEdad(edad);
         this.email = email;
         this.direccion = direccion;
         this.ocupacion = ocupacion;
@@ -79,13 +79,7 @@ public class Adoption {
         this.telefono = telefono;
     }
 
-    public String getEdad() {
-        return edad;
-    }
 
-    public void setEdad(String edad) {
-        this.edad = edad;
-    }
 
     public String getEmail() {
         return email;
@@ -262,5 +256,13 @@ public class Adoption {
 
     public void setuId(String uId) {
         this.uId = uId;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 }

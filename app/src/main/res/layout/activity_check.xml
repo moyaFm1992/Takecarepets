@@ -50,7 +50,6 @@
                 android:id="@+id/cbkParteI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/lstEstadoAdoptar"
                 android:text="@string/cumple"
                 android:textSize="13sp" />
 
@@ -99,7 +98,7 @@
                     android:id="@+id/lblCheckEdad"
                     android:layout_width="75dp"
                     android:layout_height="match_parent"
-                    android:hint="Edad"
+                    android:hint="@string/edad"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -152,7 +151,8 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="5dp" />
 
             <CheckBox
                 android:id="@+id/cbkParteII"
@@ -160,14 +160,16 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/lstEstadoAdoptar"
                 android:text="@string/cumple"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:layout_toEndOf="@+id/lstEstadoAdoptar" />
 
         </LinearLayout>
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="5dp">
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -200,13 +202,13 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:paddingStart="5dp" />
 
             <CheckBox
                 android:id="@+id/cbkParteIII"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/lstEstadoAdoptar"
                 android:text="@string/cumple"
                 android:textSize="13sp" />
 

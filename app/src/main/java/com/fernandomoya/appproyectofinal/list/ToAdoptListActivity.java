@@ -25,6 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
+
 public class ToAdoptListActivity extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView rwAdoptar;
@@ -46,7 +48,7 @@ public class ToAdoptListActivity extends AppCompatActivity implements ItemClickL
         rwAdoptar.setAdapter(adapterAdoptado);
         adapterAdoptado.setClickListener(this);
 
-        myRef = FirebaseDatabase.getInstance().getReference().child("adopcion");
+        myRef = FirebaseDatabase.getInstance().getReference().child(ADOPTION);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
