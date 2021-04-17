@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 if (mFirebaseUser != null) {
-                    Toast.makeText(LoginActivity.this, "Has iniciado sesión", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Ha iniciado sesión", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, ChoiceActivity.class);
                     startActivity(i);
                 } else {

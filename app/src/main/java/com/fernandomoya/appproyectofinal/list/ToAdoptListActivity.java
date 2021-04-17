@@ -77,7 +77,7 @@ public class ToAdoptListActivity extends AppCompatActivity implements ItemClickL
     public void onClick(View view, int position) {
         Adoption adoption = listaAdoptado.get(position);
         Intent i = new Intent(this, CheckActivity.class);
-        i.putExtra("nombres", adoption.getNombresApellidos());
+        i.putExtra("nombres", adoption.getNombres());
         i.putExtra("telefono", adoption.getTelefono());
         i.putExtra("cedula", adoption.getCedula());
         i.putExtra("edad", adoption.getEdad());

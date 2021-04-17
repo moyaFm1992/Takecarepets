@@ -72,7 +72,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Uri mImageURI;
     private String mCurrentPhotoPath;
     private String passengerID;
-
+    private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +81,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         mProgressBar = findViewById(R.id.simpleProgressBar);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
         imgFoto = findViewById(R.id.imgPerroRescatar);
         imgBtnCamera = findViewById(R.id.imgBtnCamera);
         btnGuardar = findViewById(R.id.imgBtnGuardar);
@@ -160,6 +161,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                     final Uri url = uri.getResult();
                                                     if (newLocation != null) {
                                                         Perros perros = new Perros();
+                                                        Date date = new Date();
+                                                        Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
+                                                        perros.setFechaRegistro(dt.format(newDate));
                                                         perros.setDescripcion(descripcion);
                                                         perros.setLatitud(newLocation.getLatitude());
                                                         perros.setLongitud(newLocation.getLongitude());

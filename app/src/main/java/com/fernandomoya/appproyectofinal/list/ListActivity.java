@@ -76,6 +76,7 @@ public class ListActivity extends AppCompatActivity implements ItemClickListener
     public void onClick(View view, int position) {
         Perros perros = listaPerros.get(position);
         Intent i = new Intent(this, MapsActivity.class);
+        i.putExtra("fecha", perros.getFechaRegistro()!=null?perros.getFechaRegistro():"");
         i.putExtra("descripcion", perros.getDescripcion());
         i.putExtra("latitud", perros.getLatitud().toString());
         i.putExtra("longitud", perros.getLongitud().toString());

@@ -38,7 +38,7 @@ public class ToAdoptedAdapter extends RecyclerView.Adapter<ToAdoptedAdapter.ToAd
     public void onBindViewHolder(ToAdoptedViewHolder holder, int position) {
         Adoption adoption = listAdoption.get(position);
         Glide.with(mContext).load(adoption.getUrl()).into(holder.imgPerro);
-        holder.lstRvAdoptante.setText("Adoptante: " + adoption.getNombresApellidos());
+        holder.lstRvAdoptante.setText("Adoptante: " + adoption.getNombres());
         holder.lstRvCedula.setText("Cedula : " + adoption.getCedula());
         holder.lstRvEdad.setText("Edad : " + adoption.getEdad());
         holder.lstRvDireccion.setText("Dirección : " + adoption.getDireccion());

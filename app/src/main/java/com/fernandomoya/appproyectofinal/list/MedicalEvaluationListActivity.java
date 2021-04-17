@@ -80,7 +80,7 @@ public class MedicalEvaluationListActivity extends AppCompatActivity implements 
         Intent i = new Intent(this, UpdateDeleteEvaluationListActivity.class);
         i.putExtra("estado", valoracion.getAdoptable().toString());
         i.putExtra("inicial", valoracion.getEstadoInicial());
-        i.putExtra("edad", "Edad: " + valoracion.getEdad()+" años");
+        i.putExtra("edad", "Edad: " + valoracion.getEdad());
         i.putExtra("sexo", "Tipo: " + valoracion.getSexo());
         i.putExtra("observaciones", valoracion.getObservaciones());
         i.putExtra("fracturas", valoracion.getFracturas());

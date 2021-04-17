@@ -73,7 +73,7 @@ public class ToAdoptedListActivity extends AppCompatActivity implements ItemClic
         Adoption adoption = listaAdoptado.get(position);
         Intent i = new Intent(this, UpdateDeleteAdoptedActivity.class);
         i.putExtra("direccion", "Direccion: "+adoption.getDireccion());
-        i.putExtra("nombres", "Adoptante: "+adoption.getNombresApellidos());
+        i.putExtra("nombres", "Adoptante: "+adoption.getNombres());
         i.putExtra("cedula", "Cedula: "+adoption.getCedula());
         i.putExtra("edad", "Edad: "+adoption.getEdad());
         i.putExtra("estado", adoption.getEstado().toString());

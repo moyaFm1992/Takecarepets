@@ -3,14 +3,14 @@ package com.fernandomoya.appproyectofinal.model;
 
 public class Adoption {
 
-    private String nombresApellidos;
+    private String nombres;
     private String cedula;
     private String telefono;
     private Integer edad;
     private String email;
     private String direccion;
     private String ocupacion;
-    private String nombresApellidosReferencia;
+    private String referencia;
     private String telefonoReferencia;
     private String parentesco;
     private String instruccion;
@@ -36,8 +36,8 @@ public class Adoption {
 
     }
 
-    public Adoption(String nombresApellidos, String cedula, String telefono, Integer edad, String email, String direccion, String ocupacion,String uId) {
-        this.nombresApellidos = nombresApellidos;
+    public Adoption(String nombres, String cedula, String telefono, Integer edad, String email, String direccion, String ocupacion, String uId) {
+        this.setNombres(nombres);
         this.cedula = cedula;
         this.telefono = telefono;
         this.setEdad(edad);
@@ -55,13 +55,7 @@ public class Adoption {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public String getNombresApellidos() {
-        return nombresApellidos;
-    }
 
-    public void setNombresApellidos(String nombresApellidos) {
-        this.nombresApellidos = nombresApellidos;
-    }
 
     public String getCedula() {
         return cedula;
@@ -80,7 +74,6 @@ public class Adoption {
     }
 
 
-
     public String getEmail() {
         return email;
     }
@@ -95,14 +88,6 @@ public class Adoption {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public String getNombresApellidosReferencia() {
-        return nombresApellidosReferencia;
-    }
-
-    public void setNombresApellidosReferencia(String nombresApellidosReferencia) {
-        this.nombresApellidosReferencia = nombresApellidosReferencia;
     }
 
     public String getTelefonoReferencia() {
@@ -264,5 +249,21 @@ public class Adoption {
 
     public void setEdad(Integer edad) {
         this.edad = edad;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 }

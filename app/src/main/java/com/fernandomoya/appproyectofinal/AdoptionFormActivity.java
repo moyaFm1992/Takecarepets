@@ -279,7 +279,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 if (rdbNo.isChecked()) {
                     adoption.setVisitaMensual(rdbNo.getText().toString());
                 }
-                adoption.setNombresApellidos(apellido);
+                adoption.setNombres(apellido);
                 adoption.setEdad(Integer.parseInt(tieneEdad));
                 adoption.setCedula(pin);
                 adoption.setTelefono(telef);
@@ -287,7 +287,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 adoption.setOcupacion(ocupacionAdoptante);
                 adoption.setEmail(mail);
                 adoption.setM2(metrosC);
-                adoption.setNombresApellidosReferencia(apellidoRef);
+                adoption.setReferencia(apellidoRef);
                 adoption.setTelefonoReferencia(telefonoRef);
                 adoption.setParentesco(parentescoRef);
                 adoption.setPregunta1(preg1);
@@ -424,10 +424,21 @@ public class AdoptionFormActivity extends AppCompatActivity {
             return true;
         }
 
+        if (!(rdbPrimaria.isChecked()
+                || rdbSecundario.isChecked()
+                || rdbUniversidad.isChecked()
+                || rdbPostgrado.isChecked())) {
+            otros.setVisibility(View.VISIBLE);
+            otros.setError("Tipo inmbueble obligatorio.");
+            otros.requestFocus();
+            return true;
+        }
+
 
         if (!(rdbCasa.isChecked()
                 || rdbDepartamento.isChecked()
                 || rdbOtros.isChecked())) {
+            otros.setVisibility(View.VISIBLE);
             otros.setError("Tipo inmbueble obligatorio.");
             otros.requestFocus();
             return true;
@@ -435,6 +446,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
 
         if (!(rdbPropio.isChecked()
                 || rdbArrendado.isChecked())) {
+            otros.setVisibility(View.VISIBLE);
             otros.setError("Tipo inmbueble obligatorio.");
             otros.requestFocus();
             return true;

@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
@@ -108,7 +109,10 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
     private ProgressBar mProgressBar;
     private String mCurrentPhotoPath;
     private String passengerID;
+    private Uri urlValoracion;
     private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private Handler hdlr = new Handler();
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +122,6 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         imgBtnCameraEvaluacion = findViewById(R.id.imgBtnCameraEvaluacion);
         estadoInicial = findViewById(R.id.eTMLEstadoInicial);
         edad = findViewById(R.id.txtEdadEvaluacion);
-        //edad.setInputType(InputType.TYPE_CLASS_NUMBER);
         medicamentos = findViewById(R.id.txtOtrosMedicamentos);
         tiempo = findViewById(R.id.txtTiempo);
         tiempo.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -154,6 +157,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         btnGuardar = findViewById(R.id.btnGuardarEvaluacion);
         btnCancelar = findViewById(R.id.btnCancelar);
         tiempoMensaje = findViewById(R.id.tv);
+        tipo = findViewById(R.id.txtTipoEdad);
         mProgressBar = findViewById(R.id.simpleProgressBar);
         imgBtnCameraEvaluacion.setOnClickListener(this);
 
@@ -170,240 +174,172 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                     return;
                 }
 
+                final MedicalEvaluation medicalEvaluation = new MedicalEvaluation();
+
+
+                final String userId = mDatabase.push().getKey();
+                final String estado = estadoInicial.getText().toString();
+                final String tieneObservaciones = observaciones.getText().toString();
+                final String medicamentosSum = medicamentos.getText().toString();
+                final List<String> listaMedicamentos = new LinkedList<>();
+                final String tieneEdad = edad.getText().toString();
+                final String tiempoRecu = tiempo.getText().toString();
+                final String tieneFracturas = fracturas.getText().toString();
+
+
+                if (rdbMacho.isChecked()) {
+                    medicalEvaluation.setSexo(rdbMacho.getText().toString());
+                }
+                if (rdbHembra.isChecked()) {
+                    medicalEvaluation.setSexo(rdbHembra.getText().toString());
+                }
+
+                if (rdbAdulto.isChecked()) {
+                    medicalEvaluation.setTipo(rdbAdulto.getText().toString());
+                }
+                if (rdbCachorro.isChecked()) {
+                    medicalEvaluation.setTipo(rdbCachorro.getText().toString());
+                }
+
+                if (rdbGrande.isChecked()) {
+                    medicalEvaluation.setTamano(rdbGrande.getText().toString());
+                }
+
+                if (rdbMediano.isChecked()) {
+                    medicalEvaluation.setTamano(rdbMediano.getText().toString());
+                }
+
+                if (rdbPequeno.isChecked()) {
+                    medicalEvaluation.setTamano(rdbPequeno.getText().toString());
+                }
+
+                if (rdbNo.isChecked()) {
+                    medicalEvaluation.setFracturasSiNo(rdbNo.getText().toString());
+                    medicalEvaluation.setFracturas("Sin fracturas");
+                }
+
+                if (cbxDrontal.isChecked()) {
+                    listaMedicamentos.add(cbxDrontal.getText().toString() + "/");
+                }
+
+                if (cbxRimadyltal.isChecked()) {
+                    listaMedicamentos.add(cbxRimadyltal.getText().toString() + "/");
+                }
+
+                if (cbxEmulgel.isChecked()) {
+                    listaMedicamentos.add(cbxEmulgel.getText().toString() + "/");
+                }
+
+                if (cbxMeloxic.isChecked()) {
+                    listaMedicamentos.add(cbxMeloxic.getText().toString() + "/");
+                }
+
+                if (cbxBrillo.isChecked()) {
+                    listaMedicamentos.add(cbxBrillo.getText().toString() + "/");
+                }
+
+                if (cbxCoccigan.isChecked()) {
+                    listaMedicamentos.add(cbxCoccigan.getText().toString() + "/");
+                }
+
+                if (cbxSuero.isChecked()) {
+                    listaMedicamentos.add(cbxSuero.getText().toString() + "/");
+                }
+
+                //Vacunas
+
+                if (cbxMoquillo.isChecked()) {
+                    listaMedicamentos.add(cbxMoquillo.getText().toString() + "/");
+                }
+
+                if (cbxHepatitis.isChecked()) {
+                    listaMedicamentos.add(cbxHepatitis.getText().toString() + "/");
+                }
+
+                if (cbxParvovirosis.isChecked()) {
+                    listaMedicamentos.add(cbxParvovirosis.getText().toString() + "/");
+                }
+
+                if (cbxLeptospirosis.isChecked()) {
+                    listaMedicamentos.add(cbxLeptospirosis.getText().toString() + "/");
+                }
+
+                if (cbxTos.isChecked()) {
+                    listaMedicamentos.add(cbxTos.getText().toString() + "/");
+                }
+
+                if (cbxRabia.isChecked()) {
+                    listaMedicamentos.add(cbxRabia.getText().toString() + "/");
+                }
+
+                if (cbxBabesiosis.isChecked()) {
+                    listaMedicamentos.add(cbxBabesiosis.getText().toString() + "/");
+                }
+
+                if (cbxLyme.isChecked()) {
+                    listaMedicamentos.add(cbxLyme.getText().toString() + "/");
+                }
+
+                if (cbxLeishmaniasis.isChecked()) {
+                    listaMedicamentos.add(cbxLeishmaniasis.getText().toString() + "/");
+                }
+
+
+                if (medicamentosSum != null) {
+                    listaMedicamentos.add(medicamentosSum);
+                } else {
+                    listaMedicamentos.add("");
+                }
+
+                StringBuilder medicamentosSuministrados = new StringBuilder();
+                for (String med : listaMedicamentos) {
+                    medicamentosSuministrados.append(med);
+                }
+                String med = medicamentosSuministrados.toString();
+
+                if (cbxAdoptable.isChecked()) {
+                    medicalEvaluation.setAdoptable(Boolean.TRUE);
+                } else {
+                    medicalEvaluation.setAdoptable(Boolean.FALSE);
+                }
+
+                medicalEvaluation.setMedicamentos(med);
+                medicalEvaluation.setTiempoRecuperacion(tiempoRecu);
+                medicalEvaluation.setFracturasSiNo(rdbSi.getText().toString());
+                medicalEvaluation.setFracturas(tieneFracturas);
+                medicalEvaluation.setEstadoInicial(estado);
+                medicalEvaluation.setEdad(tieneEdad);
+                medicalEvaluation.setObservaciones(tieneObservaciones);
+                medicalEvaluation.setTiempoRecuperacion(tiempoRecu);
+
+                medicalEvaluation.setFechaValoracion(dt.format(new Date()));
+                medicalEvaluation.setuId(userId);
+
+                if (validarEvaluacion()) {
+                    return;
+                }
 
                 StorageReference fileReference = mStorageReference.child(System.currentTimeMillis()
-                        + "." + getFileExtension(imageURIEvaluacion));
+                        + "." + fileExtension(imageURIEvaluacion));
                 mUploadImg = fileReference.putFile(imageURIEvaluacion)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                MedicalEvaluation medicalEvaluation = new MedicalEvaluation();
+
                                 Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                                 while (!uri.isComplete()) ;
                                 Uri url = uri.getResult();
-                                final String userId = mDatabase.push().getKey();
-                                final String estado = estadoInicial.getText().toString();
-                                final String tieneObservaciones = observaciones.getText().toString();
-                                final String medicamentosSum = medicamentos.getText().toString();
-                                final List<String> listaMedicamentos = new LinkedList<>();
-                                final String tieneEdad = edad.getText().toString();
-                                final String tiempoRecu = tiempo.getText().toString();
-                                final String tieneFracturas = fracturas.getText().toString();
+                                urlValoracion=url;
 
 
-                                if (rdbMacho.isChecked()) {
-                                    medicalEvaluation.setSexo(rdbMacho.getText().toString());
-                                }
-                                if (rdbHembra.isChecked()) {
-                                    medicalEvaluation.setSexo(rdbHembra.getText().toString());
-                                }
-
-                                if (rdbAdulto.isChecked()) {
-                                    medicalEvaluation.setTipo(rdbAdulto.getText().toString());
-                                }
-                                if (rdbCachorro.isChecked()) {
-                                    medicalEvaluation.setTipo(rdbCachorro.getText().toString());
-                                }
-
-                                if (rdbGrande.isChecked()) {
-                                    medicalEvaluation.setTamano(rdbGrande.getText().toString());
-                                }
-
-                                if (rdbMediano.isChecked()) {
-                                    medicalEvaluation.setTamano(rdbMediano.getText().toString());
-                                }
-
-                                if (rdbPequeno.isChecked()) {
-                                    medicalEvaluation.setTamano(rdbPequeno.getText().toString());
-                                }
-
-                                if (rdbNo.isChecked()) {
-                                    medicalEvaluation.setFracturasSiNo(rdbNo.getText().toString());
-                                    medicalEvaluation.setFracturas("Sin fracturas");
-                                }
-
-                                if (cbxDrontal.isChecked()) {
-                                    listaMedicamentos.add(cbxDrontal.getText().toString() + "/");
-                                }
-
-                                if (cbxRimadyltal.isChecked()) {
-                                    listaMedicamentos.add(cbxRimadyltal.getText().toString() + "/");
-                                }
-
-                                if (cbxEmulgel.isChecked()) {
-                                    listaMedicamentos.add(cbxEmulgel.getText().toString() + "/");
-                                }
-
-                                if (cbxMeloxic.isChecked()) {
-                                    listaMedicamentos.add(cbxMeloxic.getText().toString() + "/");
-                                }
-
-                                if (cbxBrillo.isChecked()) {
-                                    listaMedicamentos.add(cbxBrillo.getText().toString() + "/");
-                                }
-
-                                if (cbxCoccigan.isChecked()) {
-                                    listaMedicamentos.add(cbxCoccigan.getText().toString() + "/");
-                                }
-
-                                if (cbxSuero.isChecked()) {
-                                    listaMedicamentos.add(cbxSuero.getText().toString() + "/");
-                                }
-
-                                //Vacunas
-
-                                if (cbxMoquillo.isChecked()) {
-                                    listaMedicamentos.add(cbxMoquillo.getText().toString() + "/");
-                                }
-
-                                if (cbxHepatitis.isChecked()) {
-                                    listaMedicamentos.add(cbxHepatitis.getText().toString() + "/");
-                                }
-
-                                if (cbxParvovirosis.isChecked()) {
-                                    listaMedicamentos.add(cbxParvovirosis.getText().toString() + "/");
-                                }
-
-                                if (cbxLeptospirosis.isChecked()) {
-                                    listaMedicamentos.add(cbxLeptospirosis.getText().toString() + "/");
-                                }
-
-                                if (cbxTos.isChecked()) {
-                                    listaMedicamentos.add(cbxTos.getText().toString() + "/");
-                                }
-
-                                if (cbxRabia.isChecked()) {
-                                    listaMedicamentos.add(cbxRabia.getText().toString() + "/");
-                                }
-
-                                if (cbxBabesiosis.isChecked()) {
-                                    listaMedicamentos.add(cbxBabesiosis.getText().toString() + "/");
-                                }
-
-                                if (cbxLyme.isChecked()) {
-                                    listaMedicamentos.add(cbxLyme.getText().toString() + "/");
-                                }
-
-                                if (cbxLeishmaniasis.isChecked()) {
-                                    listaMedicamentos.add(cbxLeishmaniasis.getText().toString() + "/");
-                                }
-
-
-                                if (medicamentosSum != null) {
-                                    listaMedicamentos.add(medicamentosSum);
-                                } else {
-                                    listaMedicamentos.add("");
-                                }
-
-                                StringBuilder medicamentosSuministrados = new StringBuilder();
-                                for (String med : listaMedicamentos) {
-                                    medicamentosSuministrados.append(med);
-                                }
-                                String med = medicamentosSuministrados.toString();
-
-                                if (cbxAdoptable.isChecked()) {
-                                    medicalEvaluation.setAdoptable(Boolean.TRUE);
-                                } else {
-                                    medicalEvaluation.setAdoptable(Boolean.FALSE);
-                                }
-
-                                medicalEvaluation.setMedicamentos(med);
-                                medicalEvaluation.setTiempoRecuperacion(tiempoRecu);
-                                medicalEvaluation.setFracturasSiNo(rdbSi.getText().toString());
-                                medicalEvaluation.setFracturas(tieneFracturas);
-                                medicalEvaluation.setEstadoInicial(estado);
-                                medicalEvaluation.setEdad(tieneEdad);
-                                medicalEvaluation.setObservaciones(tieneObservaciones);
-                                medicalEvaluation.setTiempoRecuperacion(tiempoRecu);
-                                medicalEvaluation.setUrl(url.toString());
-                                medicalEvaluation.setFechaValoracion(dt.format(new Date()));
-
-
-                                Validation validador = new Validation();
-                                if (validador.vacio(estadoInicial)) {
-                                    estadoInicial.setError("Valoración inicial es obligatoria.");
-                                    estadoInicial.requestFocus();
-                                    return;
-                                }
-
-
-                                if (validador.vacio(edad)) {
-                                    edad.setError("Edad es obligatoria.");
-                                    edad.requestFocus();
-                                    return;
-                                }
-
-
-                                if (rdbSi.isChecked() && validador.vacio(fracturas)) {
-
-                                    fracturas.setError("Describa la fractura existente.");
-                                    fracturas.requestFocus();
-                                    return;
-
-                                }
-
-
-                                if (!(rdbMacho.isChecked() ||
-                                        rdbHembra.isChecked())) {
-                                    tipo.setError("Seleccione un tipo.");
-                                    tipo.requestFocus();
-                                    return;
-                                }
-
-                                if (!(rdbAdulto.isChecked() ||
-                                        rdbCachorro.isChecked())) {
-                                    tipo.setError("Seleccione la edad.");
-                                    tipo.requestFocus();
-                                    return;
-                                }
-
-                                if (!(rdbGrande.isChecked() ||
-                                        rdbMediano.isChecked() ||
-                                        rdbPequeno.isChecked())) {
-                                    tipo.setError("Seleccione el tamaño.");
-                                    tipo.requestFocus();
-                                    return;
-                                }
-
-
-                                if (validador.vacio(tiempo)) {
-                                    tiempo.setError("Tiempo de recuperación obligatorio.");
-                                    tiempo.requestFocus();
-                                    return;
-                                }
-                                if (validador.vacio(observaciones)) {
-                                    observaciones.setError("Observaciones obligatorias.");
-                                    observaciones.requestFocus();
-                                    return;
-                                }
-                                medicalEvaluation.setuId(userId);
-                                mDatabase.child("valoracion").child(passengerID).child(userId).setValue(medicalEvaluation);
+                                medicalEvaluation.setUrl(urlValoracion.toString());
+                                mDatabase.child(EVALUATION).child(passengerID).child(userId).setValue(medicalEvaluation);
                             }
-
-
                         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
 
                             @Override
                             public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
 
-                                Log.i("Message: ", "La carga esta al" + progress + "%");
-
-                                int currentprogress = (int) progress;
-                                btnGuardar.setVisibility(View.GONE);
-                                btnCancelar.setVisibility(View.GONE);
-                                mProgressBar.setVisibility(View.VISIBLE);
-                                tiempoMensaje.setVisibility(View.VISIBLE);
-                                tiempoMensaje.setText("Un momento, por favor");
-                                mProgressBar.setProgress(currentprogress);
-
-                                if (currentprogress == 100) {
-                                    btnGuardar.setVisibility(View.VISIBLE);
-                                    btnCancelar.setVisibility(View.VISIBLE);
-                                    mProgressBar.setVisibility(View.GONE);
-                                    tiempoMensaje.setVisibility(View.GONE);
-                                    finish();
-                                }
                             }
                         }).addOnPausedListener(new OnPausedListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -412,6 +348,45 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 Log.i("Message: ", "La carga está pausada");
                             }
                         });
+
+                new Thread(new Runnable() {
+                    public void run() {
+                        while (i < 100) {
+                            i += 1;
+                            // Update the progress bar and display the current value in text view
+                            hdlr.post(new Runnable() {
+                                public void run() {
+
+                                    mProgressBar.setProgress(i);
+                                    btnGuardar.setVisibility(View.GONE);
+                                    btnCancelar.setVisibility(View.GONE);
+                                    mProgressBar.setVisibility(View.VISIBLE);
+                                    tiempoMensaje.setVisibility(View.VISIBLE);
+                                    tiempoMensaje.setText("Un momento, por favor");
+
+
+                                    Log.i("Message: ", i + "/" + mProgressBar.getMax());
+                                    if (i == 100) {
+                                        btnGuardar.setVisibility(View.VISIBLE);
+                                        btnCancelar.setVisibility(View.VISIBLE);
+                                        mProgressBar.setVisibility(View.GONE);
+                                        tiempoMensaje.setVisibility(View.GONE);
+                                        finish();
+                                    }
+                                }
+                            });
+                            try {
+                                // Sleep for 100 milliseconds to show the progress slowly.
+                                Thread.sleep(100);
+                            } catch (Exception e) {
+                                Log.i("databaseError", e.getMessage());
+                                Thread.currentThread().interrupt();
+                            }
+                        }
+                    }
+                }).start();
+
+
             }
         });
 
@@ -446,7 +421,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         return image;
     }
 
-    private String getFileExtension(Uri uri) {
+    private String fileExtension(Uri uri) {
         ContentResolver cR = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
@@ -508,6 +483,74 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         mDatabase = firebaseDatabase.getReference();
         passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mStorageReference = FirebaseStorage.getInstance().getReference(EVALUATION);
+    }
+
+    public boolean validarEvaluacion() {
+
+        Validation validador = new Validation();
+        if (validador.vacio(estadoInicial)) {
+            estadoInicial.setError("Valoración inicial es obligatoria.");
+            estadoInicial.requestFocus();
+            return true;
+        }
+
+
+        if (validador.vacio(edad)) {
+            edad.setError("Edad es obligatoria.");
+            edad.requestFocus();
+            return true;
+        }
+
+
+        if (rdbSi.isChecked() && validador.vacio(fracturas)) {
+
+            fracturas.setError("Describa la fractura existente.");
+            fracturas.requestFocus();
+            return true;
+
+        }
+
+
+        if (!(rdbMacho.isChecked() ||
+                rdbHembra.isChecked())) {
+            tipo.setVisibility(View.VISIBLE);
+            tipo.setError("Seleccione un tipo.");
+            tipo.requestFocus();
+            return true;
+        }
+
+        if (!(rdbAdulto.isChecked() ||
+                rdbCachorro.isChecked())) {
+            tipo.setVisibility(View.VISIBLE);
+            tipo.setError("Seleccione el tipo.");
+            tipo.requestFocus();
+            return true;
+        }
+
+        if (!(rdbGrande.isChecked() ||
+                rdbMediano.isChecked() ||
+                rdbPequeno.isChecked())) {
+            tipo.setVisibility(View.VISIBLE);
+            tipo.setError("Seleccione el tamaño.");
+            tipo.requestFocus();
+            return true;
+        }
+
+
+        if (validador.vacio(tiempo)) {
+            tiempo.setError("Tiempo de recuperación obligatorio.");
+            tiempo.requestFocus();
+            return true;
+        }
+        if (validador.vacio(observaciones)) {
+            observaciones.setError("Observaciones obligatorias.");
+            observaciones.requestFocus();
+            return true;
+        }
+
+        return false;
+
+
     }
 
 

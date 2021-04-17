@@ -8,6 +8,7 @@ public class Perros {
     private Double latitud;
     private Double longitud;
     private String uId;
+    private String fechaRegistro;
 
     public Perros() {
     }
@@ -64,5 +65,13 @@ public class Perros {
 
     public void setuId(String uId) {
         this.uId = uId;
+    }
+
+    public String getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 }
