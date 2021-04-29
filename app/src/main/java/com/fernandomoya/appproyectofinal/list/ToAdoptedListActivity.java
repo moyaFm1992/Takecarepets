@@ -75,7 +75,7 @@ public class ToAdoptedListActivity extends AppCompatActivity implements ItemClic
         i.putExtra("direccion", "Direccion: "+adoption.getDireccion());
         i.putExtra("nombres", "Adoptante: "+adoption.getNombres());
         i.putExtra("cedula", "Cedula: "+adoption.getCedula());
-        i.putExtra("edad", "Edad: "+adoption.getEdad());
+        i.putExtra("edad", "Edad: "+adoption.getEdad().toString());
         i.putExtra("estado", adoption.getEstado().toString());
         i.putExtra("url", adoption.getUrl());
         i.putExtra("userId", adoption.getuId());

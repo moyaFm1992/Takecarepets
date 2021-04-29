@@ -19,16 +19,21 @@ public class Send {
     //Envio de correo electronico
     public void enviar(final String correo, final String mensaje) {
         final String correoPruebas = "takecarepetsapp@gmail.com";
-        final String passPruebas = "fernando&Edward7052";
+        final String passPruebas = "****";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Properties properties = new Properties();
+
+
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.port", "465");
         properties.put("mail.smtp.host", "smtp.googlemail.com");
+        properties.put("mail.smtp.timeout", 1000);
         properties.put("mail.smtp.socketFactory.port", "465");
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.ssl.checkserveridentity", true); // Compliant
+        properties.put("mail.smtp.socketFactory.fallback", "false");
+
         try {
             session = Session.getDefaultInstance(properties, new Authenticator() {
                 @Override
@@ -38,8 +43,8 @@ public class Send {
             });
             if (session != null) {
                 Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(correo));
-                message.setSubject("Inicio proceso de Adopción");
+                message.setFrom(new InternetAddress("Takecarepetsapp"));
+                message.setSubject("Proceso de Adopción");
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correo));
                 message.setContent(mensaje, "text/html;  charset=utf-8");
                 Transport.send(message);

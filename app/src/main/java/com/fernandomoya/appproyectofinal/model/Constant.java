@@ -6,9 +6,18 @@ public  class Constant {
         throw new IllegalStateException("Utility class");
     }
 
-    public static final String SMS_EMAIL = ", le informamos que ha iniciado el proceso de adopción, en los próximos días un técnico se comunicará para agendar una visita técnica.";
-    public static final String APROVADO = ", le informamos que su solicitud de adopción ha sido aceptada.";
-    public static final String NEGADO = ", le informamos que su solicitud de adopción ha sido rechazada.";
+    public static final String SMS_EMAIL = "<p>Le informamos que ha iniciado el proceso de adopción, en los próximos días un técnico se comunicará para agendar una visita técnica.</p>\n" +
+            "<p>Si no los solicitaste, ignora este correo electrónico.</p>\n" +
+            "<p>Gracias,</p>\n" +
+            "<p>Takecarepetsapp team</p>";
+    public static final String APROVADO = "<p>Le informamos que su solicitud de adopción ha sido aceptada.</p>\n" +
+            "<p>Si no lo solicitaste, ignora este correo electrónico.</p>\n" +
+            "<p>Gracias,</p>\n" +
+            "<p>Takecarepetsapp team</p>";
+    public static final String NEGADO = "<p>Le informamos que su solicitud de adopción ha sido rechazada.</p>\n" +
+            "<p>Si no lo solicitaste, ignora este correo electrónico.</p>\n" +
+            "<p>Gracias,</p>\n" +
+            "<p>Takecarepetsapp team</p>";
     public static final String SALUDO = "Estimado ";
     public static final String ADMIN = "9WBx76PIkrh6Ww8QLwjGKFKsNXF3";
     public static final String PHOTO = "com.fernandomoya.appproyectofinal.fileprovider";

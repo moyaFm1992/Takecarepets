@@ -80,7 +80,7 @@ public class ToAdoptListActivity extends AppCompatActivity implements ItemClickL
         i.putExtra("nombres", adoption.getNombres());
         i.putExtra("telefono", adoption.getTelefono());
         i.putExtra("cedula", adoption.getCedula());
-        i.putExtra("edad", adoption.getEdad());
+        i.putExtra("edad", adoption.getEdad().toString());
         i.putExtra("email", adoption.getEmail());
         i.putExtra("ocupacion", adoption.getOcupacion());
         i.putExtra("direccion", adoption.getDireccion());
