@@ -15,20 +15,57 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.PERMISSION_GRANTED" />
 
+    <compatible-screens>
+
+        <!-- all small size screens -->
+        <screen
+            android:screenDensity="ldpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="small" />
+        <!-- all normal size screens -->
+        <screen
+            android:screenDensity="ldpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="normal" />
+    </compatible-screens>
+
     <application
         android:name=".Transition"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="false" />
+        <activity android:name=".ViewActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
+        </activity>
         <activity android:name=".UpdateDeleteEvaluationListActivity">
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
         </activity>
-
         <activity android:name=".UpdateDeleteAdoptedActivity">
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
@@ -36,104 +73,104 @@
         </activity>
         <activity
             android:name=".ResetPasswordActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CheckActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PoliticsActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".list.ToAdoptListActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".list.MedicalEvaluationListActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MedicalEvaluationActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AdoptionFormActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MapsActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:launchMode="singleTask" />
         <activity
             android:name=".ChoiceActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".HomeActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".list.ListActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".list.AdoptionListActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegistryActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AboutUsActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ChoiceToAdoptActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ChoiceMedicalActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".list.EvaluationListActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".list.ToAdoptedListActivity"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

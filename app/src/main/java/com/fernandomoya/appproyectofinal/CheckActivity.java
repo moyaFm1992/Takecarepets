@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.fernandomoya.appproyectofinal.model.Adoption;
+import com.fernandomoya.appproyectofinal.model.MedicalEvaluation;
 import com.fernandomoya.appproyectofinal.model.Message;
 import com.fernandomoya.appproyectofinal.model.Send;
 import com.google.firebase.FirebaseApp;
@@ -30,6 +31,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
+import static com.fernandomoya.appproyectofinal.model.Constant.EVALUATION;
 import static com.fernandomoya.appproyectofinal.model.Constant.SALUDO;
 
 public class CheckActivity extends AppCompatActivity {
@@ -66,6 +68,7 @@ public class CheckActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private Handler hdlr = new Handler();
     private int i = 0;
+    private String valoracion;
     private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
     @Override
@@ -136,7 +139,7 @@ public class CheckActivity extends AppCompatActivity {
         String preg7 = infoAdopt.getString("pregunta7");
         pregunta7.setText(preg7);
         final String userId = infoAdopt.getString("userId");
-
+        final String valId = infoAdopt.getString("valoracion");
 
         inicializarFirebase();
 
@@ -165,7 +168,7 @@ public class CheckActivity extends AppCompatActivity {
                     public void run() {
 
                         while (i < 100) {
-                            i += 1;
+                            i += 5;
                             // Update the progress bar and display the current value in text view
                             hdlr.post(new Runnable() {
                                 public void run() {
@@ -219,9 +222,36 @@ public class CheckActivity extends AppCompatActivity {
 
                     });
 
+
+                    DatabaseReference myRefVal;
+
+                    myRefVal = FirebaseDatabase.getInstance().getReference(EVALUATION);
+
+                    final MedicalEvaluation evaluation = new MedicalEvaluation();
+                    evaluation.setAdoptado(Boolean.TRUE);
+
+                    myRefVal.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot tasksSnapshot) {
+                            for (DataSnapshot snapshot : tasksSnapshot.getChildren()) {
+                                Log.i("Message 1: ", snapshot.getRef().child(valId).toString());
+                                snapshot.getRef().child(valId).child("adoptado").setValue(evaluation.getAdoptado());
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.d("databaseError", error.getMessage());
+                        }
+
+                    });
+
+
                 } else {
                     adoption.setEstado(Boolean.FALSE);
-                    adoption.setFechaAdopcion(fechaRegistro);
+                    adoption.setFechaAdopcion("");
                     myRef = FirebaseDatabase.getInstance().getReference(ADOPTION);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -240,6 +270,32 @@ public class CheckActivity extends AppCompatActivity {
                         }
 
                     });
+
+                    DatabaseReference myRefVal;
+
+                    myRefVal = FirebaseDatabase.getInstance().getReference(EVALUATION);
+
+                    final MedicalEvaluation evaluation = new MedicalEvaluation();
+                    evaluation.setAdoptado(Boolean.FALSE);
+
+                    myRefVal.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot tasksSnapshot) {
+                            for (DataSnapshot snapshot : tasksSnapshot.getChildren()) {
+                                Log.i("Message 1: ", snapshot.getRef().child(valId).toString());
+                                snapshot.getRef().child(valId).child("adoptado").setValue(evaluation.getAdoptado());
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.d("databaseError", error.getMessage());
+                        }
+
+                    });
+
 
                 }
                 finish();

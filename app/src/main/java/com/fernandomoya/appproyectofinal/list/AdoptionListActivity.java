@@ -57,7 +57,7 @@ public class AdoptionListActivity extends AppCompatActivity implements ItemClick
                 listaValoracion.removeAll(listaValoracion);
                 for (DataSnapshot dp : dataSnapshot.getChildren()) {
                     for (DataSnapshot dch : dp.getChildren()) {
-                        if (dch.child("adoptable").getValue(Boolean.class).equals(Boolean.TRUE)) {
+                        if (dch.child("adoptable").getValue(Boolean.class).equals(Boolean.TRUE) && (dch.child("adoptado").getValue(Boolean.class).equals(Boolean.FALSE))) {
                             MedicalEvaluation valoracion = dch.getValue(MedicalEvaluation.class);
                             listaValoracion.add(valoracion);
                         }

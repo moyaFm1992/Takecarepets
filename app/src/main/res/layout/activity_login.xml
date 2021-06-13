@@ -28,17 +28,17 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="15dp"
+            android:autofillHints=""
             android:hint="@string/correo_electr_nico"
             android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
+            android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:textColor="#fff"
-            android:textColorHint="#ccc"
-            android:paddingEnd="10dp"
-            android:paddingStart="20dp"
-            android:autofillHints="" />
+            android:textColorHint="#ccc" />
 
         <EditText
             android:id="@+id/editText2"
@@ -47,17 +47,27 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
+            android:autofillHints=""
             android:hint="@string/contrase_a"
             android:inputType="textPassword"
+            android:paddingStart="20dp"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
+            android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:textColor="#fff"
-            android:textColorHint="#ccc"
-            android:autofillHints=""
-            android:paddingEnd="10dp"
-            android:paddingStart="20dp" />
+            android:textColorHint="#ccc" />
+
+        <TextView
+            android:id="@+id/txtMensajes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:text="" />
 
         <Button
             android:id="@+id/button2"

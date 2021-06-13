@@ -25,11 +25,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText emailId;
     private EditText password;
+    private TextView mensaje;
     private TextView tvSignUp;
     private TextView resetPassword;
     private Button btnSignIn;
     private FirebaseAuth mFirebaseAuth;
-
+    private String email;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn = findViewById(R.id.button2);
         tvSignUp = findViewById(R.id.textView);
         resetPassword = findViewById(R.id.txtResetPassword);
+        mensaje = findViewById(R.id.txtMensajes);
 
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -58,7 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i = new Intent(LoginActivity.this, ChoiceActivity.class);
                     startActivity(i);
                 } else {
-
                     Toast.makeText(LoginActivity.this, "!Por favor Iniciar sesión!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -77,12 +78,20 @@ public class LoginActivity extends AppCompatActivity {
                     password.requestFocus();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "¡Los campos están vacíos!", Toast.LENGTH_SHORT).show();
+                    //mensaje.setVisibility(View.VISIBLE);
+                    //mensaje.setText("¡Los campos están vacíos!");
+                    //mensaje.requestFocus();
+
                 } else if (!(email.isEmpty() && pwd.isEmpty())) {
                     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Error de inicio de sesión, vuelva a iniciar sesión", Toast.LENGTH_SHORT).show();
+                                //mensaje.setVisibility(View.VISIBLE);
+                               //mensaje.setText("Error de inicio de sesión, vuelva a iniciar sesión");
+                                //mensaje.requestFocus();
+
                             } else {
                                 Intent intToHome = new Intent(LoginActivity.this, ChoiceActivity.class);
                                 startActivity(intToHome);
@@ -90,6 +99,9 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 } else {
+                    //mensaje.setVisibility(View.VISIBLE);
+                    //mensaje.setText("¡Se produjo un error!");
+                    //mensaje.requestFocus();
                     Toast.makeText(LoginActivity.this, "¡Se produjo un error!", Toast.LENGTH_SHORT).show();
                 }
 

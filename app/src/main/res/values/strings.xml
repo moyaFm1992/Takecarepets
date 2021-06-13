@@ -145,7 +145,7 @@
     <string name="contrase_a">Contraseña</string>
     <string name="descripci_n">Descripción</string>
     <string name="recuperar_contrase_a">Recuperar Contraseña</string>
-    <string name="no_registrado_registrate_aqu">¿No registrado? Registrate aquí</string>
+    <string name="no_registrado_registrate_aqu">¿No registrado? Regístrate aquí</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
     <string name="edad_aproximada">Edad</string>
     <string name="email">Email</string>
@@ -161,6 +161,9 @@
     <string name="leishmaniasis">Leishmaniasis</string>
     <string name="titulo">Tipo</string>
     <string name="cuadrados">m²</string>
+    <string name="mas_informacion"><![CDATA[<u>Más información</u>]]></string>
+
+
     <string-array name="spTipo">
         <item>Años</item>
         <item>Meses</item>

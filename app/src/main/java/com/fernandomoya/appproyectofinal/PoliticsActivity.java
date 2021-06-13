@@ -6,15 +6,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
+import android.widget.TextView;
 
 import com.fernandomoya.appproyectofinal.list.AdoptionListActivity;
 
 public class PoliticsActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private TextView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_politics);
+        webView = findViewById(R.id.txtInformacion);
+        webView.setText(Html.fromHtml(getResources().getString(R.string.mas_informacion)));
+        webView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intentPolitics = new Intent(PoliticsActivity.this, ViewActivity.class);
+                startActivity(intentPolitics);
+            }
+
+        });
+
     }
 
     @Override

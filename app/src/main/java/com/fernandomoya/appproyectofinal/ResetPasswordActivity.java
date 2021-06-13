@@ -46,7 +46,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ResetPasswordActivity.this, "¡Consulta su correo electrónico para restablecer tu contraseña!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, "¡Consulta su correo electrónico para restablecer su contraseña!", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(ResetPasswordActivity.this, "¡Error al enviar correo electrónico para restablecer la contraseña!", Toast.LENGTH_SHORT).show();
                                 }

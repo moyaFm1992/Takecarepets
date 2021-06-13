@@ -30,6 +30,7 @@ public class Adoption {
     private String fechaRegistro;
     private String fechaAdopcion;
     private String uId;
+    private String valoracion;
 
 
     public Adoption() {
@@ -265,5 +266,13 @@ public class Adoption {
 
     public void setNombres(String nombres) {
         this.nombres = nombres;
+    }
+
+    public String getValoracion() {
+        return valoracion;
+    }
+
+    public void setValoracion(String valoracion) {
+        this.valoracion = valoracion;
     }
 }

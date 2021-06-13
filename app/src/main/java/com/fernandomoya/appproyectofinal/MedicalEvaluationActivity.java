@@ -170,7 +170,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
 
 
                 if (imageURIEvaluacion == null) {
-                    Toast.makeText(MedicalEvaluationActivity.this, "La fotografía es necesaria", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MedicalEvaluationActivity.this, "Fotografía necesaria", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -311,7 +311,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                 medicalEvaluation.setEdad(tieneEdad);
                 medicalEvaluation.setObservaciones(tieneObservaciones);
                 medicalEvaluation.setTiempoRecuperacion(tiempoRecu);
-
+                medicalEvaluation.setAdoptado(Boolean.FALSE);
                 medicalEvaluation.setFechaValoracion(dt.format(new Date()));
                 medicalEvaluation.setuId(userId);
 
@@ -330,8 +330,6 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 while (!uri.isComplete()) ;
                                 Uri url = uri.getResult();
                                 urlValoracion=url;
-
-
                                 medicalEvaluation.setUrl(urlValoracion.toString());
                                 mDatabase.child(EVALUATION).child(passengerID).child(userId).setValue(medicalEvaluation);
                             }
@@ -352,7 +350,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                 new Thread(new Runnable() {
                     public void run() {
                         while (i < 100) {
-                            i += 1;
+                            i += 5;
                             // Update the progress bar and display the current value in text view
                             hdlr.post(new Runnable() {
                                 public void run() {
@@ -489,14 +487,14 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
 
         Validation validador = new Validation();
         if (validador.vacio(estadoInicial)) {
-            estadoInicial.setError("Valoración inicial es obligatoria.");
+            estadoInicial.setError("Valoración inicial obligatoria.");
             estadoInicial.requestFocus();
             return true;
         }
 
 
         if (validador.vacio(edad)) {
-            edad.setError("Edad es obligatoria.");
+            edad.setError("Edad obligatoria.");
             edad.requestFocus();
             return true;
         }
@@ -522,7 +520,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         if (!(rdbAdulto.isChecked() ||
                 rdbCachorro.isChecked())) {
             tipo.setVisibility(View.VISIBLE);
-            tipo.setError("Seleccione el tipo.");
+            tipo.setError("Seleccione un tipo.");
             tipo.requestFocus();
             return true;
         }
@@ -531,7 +529,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                 rdbMediano.isChecked() ||
                 rdbPequeno.isChecked())) {
             tipo.setVisibility(View.VISIBLE);
-            tipo.setError("Seleccione el tamaño.");
+            tipo.setError("Seleccione un tamaño.");
             tipo.requestFocus();
             return true;
         }

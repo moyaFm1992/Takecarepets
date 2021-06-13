@@ -57,7 +57,6 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
         fracturasEvaluado = findViewById(R.id.lstFracturasEvaluado);
         edadEvaluado = findViewById(R.id.lstEdadEvaluado);
         sexoEvaluado = findViewById(R.id.lstSexoEvaluado);
-        //tiempoEvaluado = findViewById(R.id.lstTiempoEvaluado);
         cbxEstado = findViewById(R.id.cbxEstadoAdoptable);
         btnGuardar = findViewById(R.id.btnActualizarList);
         btnBorrar = findViewById(R.id.btnEliminarList);
@@ -83,8 +82,6 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
         observacionesEvaluado.setText(observaciones);
         String fracturas = infoEvaluado.getString("fracturas");
         fracturasEvaluado.setText(fracturas);
-        //String tiempo = infoEvaluado.getString("tiempo");
-        //tiempoEvaluado.setText(tiempo);
         String url = infoEvaluado.getString("url");
         urlEvaluado = url;
 

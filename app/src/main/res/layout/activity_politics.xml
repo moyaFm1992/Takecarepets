@@ -180,6 +180,17 @@
             android:text="@string/itemParrafo9"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/txtInformacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:linksClickable="true"
+            android:text="@string/mas_informacion"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

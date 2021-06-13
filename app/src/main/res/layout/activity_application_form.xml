@@ -216,7 +216,7 @@
                     android:id="@+id/txtEmailAdoptante"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
+                    android:hint="@string/correo_electr_nico"
                     android:inputType="textEmailAddress"
                     android:textSize="13sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -229,7 +229,7 @@
                     android:id="@+id/txtOcupacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Ocupacción"
+                    android:hint="Ocupación"
                     android:textSize="13sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -351,6 +351,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -360,43 +361,36 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
 
-                        <RadioButton
-                            android:id="@+id/rbPrimaria"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/primaria"
-                            android:textSize="13sp" />
+                    <RadioButton
+                        android:id="@+id/rbPrimaria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/primaria"
+                        android:textSize="13sp" />
 
-                        <RadioButton
-                            android:id="@+id/rbSecundaria"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/secundaria"
-                            android:textSize="13sp" />
+                    <RadioButton
+                        android:id="@+id/rbSecundaria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/secundaria"
+                        android:textSize="13sp" />
 
-                        <RadioButton
-                            android:id="@+id/rbGrado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/grado"
-                            android:textSize="13sp" />
+                    <RadioButton
+                        android:id="@+id/rbGrado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/grado"
+                        android:textSize="13sp" />
 
-                        <RadioButton
-                            android:id="@+id/rbPostgrado"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/postgrado"
-                            android:textSize="13sp" />
-
-                    </TableRow>
-
+                    <RadioButton
+                        android:id="@+id/rbPostgrado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/postgrado"
+                        android:textSize="13sp" />
 
                 </RadioGroup>
-
             </TableRow>
 
 
@@ -819,12 +813,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <ProgressBar
                 android:id="@+id/simpleProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:visibility="gone" />
 
@@ -834,6 +830,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/progress_bar"
                 android:layout_alignLeft="@+id/progress_bar"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 tools:visibility="gone" />
 

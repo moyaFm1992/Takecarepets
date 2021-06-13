@@ -69,6 +69,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
     private RadioButton rdbPostgrado;
     private RadioButton rdbCasa;
     private RadioButton rdbDepartamento;
+    private RadioButton rdbCampo;
     private RadioButton rdbPropio;
     private RadioButton rdbOtros;
     private RadioButton rdbArrendado;
@@ -85,6 +86,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
     private Button btnCancelar;
     private ImageView imagenPerroAdopcion;
     private String urlPerroAdopcion;
+    private String valoracionId;
     private URL url;
     private FirebaseDatabase firebaseDatabase;
     private ProgressBar mProgressBar;
@@ -118,6 +120,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
         imagenPerroAdopcion = findViewById(R.id.imgListPerroAdopcion);
         String urlAdoptante = infoMedicalEvaluation.getString("url");
         urlPerroAdopcion = urlAdoptante;
+        String valoracion = infoMedicalEvaluation.getString("userId");
+        valoracionId = valoracion;
 
 
         try {
@@ -147,6 +151,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
         rdbUniversidad = findViewById(R.id.rbGrado);
         rdbPostgrado = findViewById(R.id.rbPostgrado);
         rdbCasa = findViewById(R.id.rbCasa);
+        rdbCampo = findViewById(R.id.rbCampo);
         rdbDepartamento = findViewById(R.id.rbDepartamento);
         rdbPropio = findViewById(R.id.rbPropio);
         rdbArrendado = findViewById(R.id.rbArrendado);
@@ -272,9 +277,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                     adoption.setVisitaMensual("Sin registro");
                 }
 
-
                 adoption.setVisitaMensual(rdbSi.getText().toString());
-
 
                 if (rdbNo.isChecked()) {
                     adoption.setVisitaMensual(rdbNo.getText().toString());
@@ -299,11 +302,14 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 adoption.setFechaRegistro(fechaRegistro);
                 adoption.setFechaAdopcion(dt.format(newDate));
                 adoption.setuId(userId);
+
+                Log.i("Valoracion", valoracionId);
+                adoption.setValoracion(valoracionId);
                 if (validarAdopcion()) {
                     return;
                 }
-                mDatabase.child(ADOPTION).child(passengerID).child(userId).setValue(adoption);
 
+                mDatabase.child(ADOPTION).child(passengerID).child(userId).setValue(adoption);
 
                 if (!(mail.trim().isEmpty()) || (mail != null)) {
                     envio.enviar(mail, SALUDO + apellido + message.email());
@@ -313,7 +319,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                     public void run() {
 
                         while (i < 100) {
-                            i += 1;
+                            i += 5;
                             // Update the progress bar and display the current value in text view
                             hdlr.post(new Runnable() {
                                 public void run() {
@@ -331,6 +337,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                                         btnCancelar.setVisibility(View.VISIBLE);
                                         mProgressBar.setVisibility(View.GONE);
                                         tiempoMensaje.setVisibility(View.GONE);
+
                                         finish();
                                     }
                                 }
@@ -381,14 +388,14 @@ public class AdoptionFormActivity extends AppCompatActivity {
         }
 
         if (Integer.parseInt(edad.getText().toString()) < 18) {
-            edad.setError("Para adoptar debe ser mayor de edad");
+            edad.setError("Para adoptar debe ser mayor de edad.");
             edad.requestFocus();
             return true;
         }
 
 
         if (validador.vacio(email)) {
-            email.setError("Email obligatorio.");
+            email.setError("Correo electrónico obligatorio.");
             email.requestFocus();
             return true;
         }
@@ -437,7 +444,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
 
         if (!(rdbCasa.isChecked()
                 || rdbDepartamento.isChecked()
-                || rdbOtros.isChecked())) {
+                || rdbOtros.isChecked()
+                || rdbCampo.isChecked())) {
             otros.setVisibility(View.VISIBLE);
             otros.setError("Tipo inmbueble obligatorio.");
             otros.requestFocus();
@@ -484,7 +492,6 @@ public class AdoptionFormActivity extends AppCompatActivity {
         }
 
         if (rdbSi.isChecked() && validador.vacio(visita)) {
-
             visita.setError("Ingrese el motivo para la visita.");
             visita.requestFocus();
             return true;

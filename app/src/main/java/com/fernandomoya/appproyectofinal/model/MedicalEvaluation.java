@@ -15,6 +15,7 @@ public class MedicalEvaluation {
     private String url;
     private String tiempoRecuperacion;
     private Boolean adoptable;
+    private Boolean adoptado;
     private String fechaValoracion;
     private String uId;
 
@@ -153,5 +154,13 @@ public class MedicalEvaluation {
 
     public void setVacunas(String vacunas) {
         this.vacunas = vacunas;
+    }
+
+    public Boolean getAdoptado() {
+        return adoptado;
+    }
+
+    public void setAdoptado(Boolean adoptado) {
+        this.adoptado = adoptado;
     }
 }
