@@ -1,9 +1,15 @@
 package com.fernandomoya.appproyectofinal.model;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.StrictMode;
-import android.telephony.SmsManager;
 import android.util.Log;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import java.util.Properties;
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -19,7 +25,7 @@ public class Send {
     //Envio de correo electronico
     public void enviar(final String correo, final String mensaje) {
         final String correoPruebas = "takecarepetsapp@gmail.com";
-        final String passPruebas = "********";
+        final String passPruebas = "*****";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Properties properties = new Properties();
@@ -50,8 +56,13 @@ public class Send {
                 Transport.send(message);
             }
         } catch (Exception e) {
-            Log.i("Exception ",e.getMessage());
+            Log.i("Exception ", e.getMessage());
         }
+    }
+
+    public void sendSMSMessage(final String correo, final String mensaje) {
+
+
     }
 
 

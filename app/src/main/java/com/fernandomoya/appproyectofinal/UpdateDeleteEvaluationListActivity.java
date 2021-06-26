@@ -1,6 +1,6 @@
 package com.fernandomoya.appproyectofinal;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -49,7 +49,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_delete_evaluartion_list);
-
+        inicializarFirebase();
         infoEvaluado = getIntent().getExtras();
         estadoEvaluado = findViewById(R.id.lstEstadoEvaluado);
         estadoInicial = findViewById(R.id.lstEstadoInicial);
@@ -89,7 +89,6 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
 
         imgPerroEvaluado = findViewById(R.id.imgListPerroEvaluado);
         Glide.with(getApplicationContext()).load(urlEvaluado).into(imgPerroEvaluado);
-        inicializarFirebase();
 
 
         btnBorrar.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +99,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Log.i("Message 1: ", snapshot.getRef().child(userId).toString());
@@ -111,7 +110,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                    public void onCancelled(DatabaseError error) {
                         Log.d("databaseError", error.getMessage());
                     }
                 });
@@ -153,7 +152,7 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
 
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
                     });
@@ -183,9 +182,8 @@ public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {
                             startActivity(intentEvaluation);
                         }
 
-
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
                     });

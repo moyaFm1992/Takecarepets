@@ -5,7 +5,7 @@ Proy. de Desarrollo de Aplica. Móviles
 Docente: Ing. Renato Toasa
 Alumno: Fernando Alexander Moya Chiluiza
 -->
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
+<paths>
     <external-path
         name="my_images"
         path="Android/data/com.fernandomoya.appproyectofinal/files/Pictures" />

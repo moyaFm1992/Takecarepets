@@ -1,6 +1,5 @@
 package com.fernandomoya.appproyectofinal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -21,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
 
 public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
@@ -41,12 +41,11 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
     private String urlAdoptado;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_delete_adopted);
-
+        inicializarFirebase();
         infoAdopted = getIntent().getExtras();
         cedulaAdoptante = findViewById(R.id.lstCedulaAdoptante);
         nombreAdoptante = findViewById(R.id.lstNombreAdoptante);
@@ -78,7 +77,7 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
         String url = infoAdopted.getString("url");
         urlAdoptado = url;
         Glide.with(getApplicationContext()).load(urlAdoptado).into(imagenPerroAdoptado);
-        inicializarFirebase();
+
 
         btnBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +99,7 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
 
 
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                    public void onCancelled(DatabaseError error) {
                         Log.d("databaseError", error.getMessage());
                     }
                 });
@@ -133,15 +132,12 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
 
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
                     });
                     finish();
-
-
                 }
-
 
                 if (!cbxEstado.isChecked()) {
                     adoption.setEstado(Boolean.FALSE);
@@ -160,7 +156,7 @@ public class UpdateDeleteAdoptedActivity extends AppCompatActivity {
 
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
                     });

@@ -76,7 +76,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="30dp"
-
             android:text="@string/iniciar_sesi_n"
             android:textColor="#fff"
             android:textSize="16sp" />

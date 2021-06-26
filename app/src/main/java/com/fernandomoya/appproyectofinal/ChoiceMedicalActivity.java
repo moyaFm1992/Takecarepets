@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -31,8 +30,6 @@ public class ChoiceMedicalActivity extends AppCompatActivity implements View.OnC
         imgBtnListEvaluation = findViewById(R.id.imgBtnFrmListEvaluation);
         lblEvaluation = findViewById(R.id.lblEvaluation);
         lblListEvaluation = findViewById(R.id.lblListEvaluation);
-
-
         imgBtnFrmEvaluation.setVisibility(View.GONE);
         imgBtnListEvaluation.setVisibility(View.GONE);
         lblEvaluation.setVisibility(View.GONE);
@@ -49,25 +46,14 @@ public class ChoiceMedicalActivity extends AppCompatActivity implements View.OnC
                 lblEvaluation.setVisibility(View.VISIBLE);
                 imgBtnListEvaluation.setVisibility(View.VISIBLE);
                 lblListEvaluation.setVisibility(View.VISIBLE);
-
             }
         }
-
-
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-
 
             case R.id.imgBtnFrmEvaluation:
                 Intent intentEvaluation = new Intent(ChoiceMedicalActivity.this, MedicalEvaluationActivity.class);

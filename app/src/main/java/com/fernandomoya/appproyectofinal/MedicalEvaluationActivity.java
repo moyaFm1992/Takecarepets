@@ -28,7 +28,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +43,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnPausedListener;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
@@ -100,24 +98,24 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
     private Button btnCancelar;
     private ImageView imgPerroEvaluacion;
     private ImageButton imgBtnCameraEvaluacion;
-    private Spinner spn;
     private Uri imageURIEvaluacion;
     private DatabaseReference mDatabase;
     private FirebaseDatabase firebaseDatabase;
     private StorageReference mStorageReference;
-    private StorageTask mUploadImg;
     private ProgressBar mProgressBar;
     private String mCurrentPhotoPath;
     private String passengerID;
     private Uri urlValoracion;
-    private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-    private Handler hdlr = new Handler();
+    private final SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private final Handler hdlr = new Handler();
     private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_evaluation);
+        validarPermisos();
+        inicializarFirebase();
         imgPerroEvaluacion = findViewById(R.id.imgPerroEvaluacion);
         imgBtnCameraEvaluacion = findViewById(R.id.imgBtnCameraEvaluacion);
         estadoInicial = findViewById(R.id.eTMLEstadoInicial);
@@ -161,8 +159,6 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
         mProgressBar = findViewById(R.id.simpleProgressBar);
         imgBtnCameraEvaluacion.setOnClickListener(this);
 
-        validarPermisos();
-        inicializarFirebase();
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -321,7 +317,7 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
 
                 StorageReference fileReference = mStorageReference.child(System.currentTimeMillis()
                         + "." + fileExtension(imageURIEvaluacion));
-                mUploadImg = fileReference.putFile(imageURIEvaluacion)
+                fileReference.putFile(imageURIEvaluacion)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -329,23 +325,23 @@ public class MedicalEvaluationActivity extends AppCompatActivity implements View
                                 Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
                                 while (!uri.isComplete()) ;
                                 Uri url = uri.getResult();
-                                urlValoracion=url;
+                                urlValoracion = url;
                                 medicalEvaluation.setUrl(urlValoracion.toString());
                                 mDatabase.child(EVALUATION).child(passengerID).child(userId).setValue(medicalEvaluation);
                             }
                         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
 
-                            @Override
-                            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                    @Override
+                    public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
 
-                            }
-                        }).addOnPausedListener(new OnPausedListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onPaused(UploadTask.TaskSnapshot taskSnapshot) {
+                    }
+                }).addOnPausedListener(new OnPausedListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onPaused(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                Log.i("Message: ", "La carga está pausada");
-                            }
-                        });
+                        Log.i("Message: ", "La carga está pausada");
+                    }
+                });
 
                 new Thread(new Runnable() {
                     public void run() {

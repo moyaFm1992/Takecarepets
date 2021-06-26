@@ -36,7 +36,7 @@ public class Validation {
 
     //Metodo para validar cedula
     public boolean isValid(String cedula) {
-        boolean cedulaCorrecta = false;
+        boolean cedulaCorrecta;
 
         try {
 
@@ -48,7 +48,7 @@ public class Validation {
                     int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
                     int verificador = Integer.parseInt(cedula.substring(9, 10));
                     int suma = 0;
-                    int digito = 0;
+                    int digito;
                     for (int i = 0; i < (cedula.length() - 1); i++) {
                         digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
                         suma += ((digito % 10) + (digito / 10));

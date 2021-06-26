@@ -7,10 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.ItemClickListener;
 import com.fernandomoya.appproyectofinal.R;
@@ -31,7 +28,7 @@ public class MedicalListAdapter extends RecyclerView.Adapter<MedicalListAdapter.
     }
 
     @Override
-    public MedicalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MedicalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         return (new MedicalViewHolder(v));

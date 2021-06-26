@@ -38,7 +38,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnPausedListener;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
@@ -68,20 +67,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseDatabase firebaseDatabase;
     private StorageReference mStorageReference;
     private DatabaseReference mDatabase;
-    private StorageTask mUploadImg;
     private Uri mImageURI;
     private String mCurrentPhotoPath;
     private String passengerID;
-    private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private final SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        inicializarFirebase();
+        validarPermisos();
         mProgressBar = findViewById(R.id.simpleProgressBar);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
         imgFoto = findViewById(R.id.imgPerroRescatar);
         imgBtnCamera = findViewById(R.id.imgBtnCamera);
         btnGuardar = findViewById(R.id.imgBtnGuardar);
@@ -89,14 +87,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnGrupo = findViewById(R.id.imgBtnGrupoD);
         descripcionP = findViewById(R.id.txtDescripcion);
         tiempoMensaje = findViewById(R.id.tv);
-
         btnGuardar.setOnClickListener(this);
         btnGrupo.setOnClickListener(this);
         btnListar.setOnClickListener(this);
         imgBtnCamera.setOnClickListener(this);
 
-        inicializarFirebase();
-        validarPermisos();
 
     }
 
@@ -121,6 +116,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     try {
                         photoFile = createImageFile();
                     } catch (IOException ex) {
+                        Log.d("IOException", ex.getMessage());
                     }
                     if (photoFile != null) {
                         Uri photoURI = FileProvider.getUriForFile(this,
@@ -152,7 +148,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                                     StorageReference fileReference = mStorageReference.child(System.currentTimeMillis()
                                             + "." + getFileExtension(mImageURI));
-                                    mUploadImg = fileReference.putFile(mImageURI)
+                                    fileReference.putFile(mImageURI)
                                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                                 @Override
                                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -161,9 +157,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                     final Uri url = uri.getResult();
                                                     if (newLocation != null) {
                                                         Perros perros = new Perros();
-                                                        Date date = new Date();
-                                                        Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
-                                                        perros.setFechaRegistro(dt.format(newDate));
+                                                        perros.setFechaRegistro(dt.format(new Date()));
                                                         perros.setDescripcion(descripcion);
                                                         perros.setLatitud(newLocation.getLatitude());
                                                         perros.setLongitud(newLocation.getLongitude());
@@ -187,7 +181,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                     tiempoMensaje.setVisibility(View.VISIBLE);
                                                     tiempoMensaje.setText("Un momento, por favor");
                                                     mProgressBar.setProgress(currentprogress);
-
                                                     if (currentprogress == 100) {
                                                         mProgressBar.setVisibility(View.GONE);
                                                         tiempoMensaje.setVisibility(View.GONE);
@@ -195,12 +188,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                     }
                                                 }
                                             }).addOnPausedListener(new OnPausedListener<UploadTask.TaskSnapshot>() {
-                                                @Override
-                                                public void onPaused(UploadTask.TaskSnapshot taskSnapshot) {
+                                        @Override
+                                        public void onPaused(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                                    Log.i("Message: ", "La carga está pausada");
-                                                }
-                                            });
+                                            Log.i("Message: ", "La carga está pausada");
+                                        }
+                                    });
 
                                 }
 

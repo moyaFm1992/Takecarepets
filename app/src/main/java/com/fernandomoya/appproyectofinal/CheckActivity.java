@@ -1,11 +1,14 @@
 package com.fernandomoya.appproyectofinal;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
-import android.content.Intent;
+import android.Manifest;
+import android.app.PendingIntent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -66,15 +69,19 @@ public class CheckActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private Bundle infoAdopt;
     private ProgressBar mProgressBar;
-    private Handler hdlr = new Handler();
+    private final Handler hdlr = new Handler();
     private int i = 0;
     private String valoracion;
-    private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private final SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
+    // Set the service center address if needed, otherwise null.
+    private final String scAddress = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check);
+        validarPermisos();
         mProgressBar = findViewById(R.id.simpleProgressBar);
         tiempoMensaje = findViewById(R.id.tv);
         infoAdopt = getIntent().getExtras();
@@ -104,7 +111,7 @@ public class CheckActivity extends AppCompatActivity {
         btnCancelar = findViewById(R.id.btnCancelar);
         String nombre = infoAdopt.getString("nombres");
         nombresApellidos.setText(nombre);
-        String telf = infoAdopt.getString("telefono");
+        final String telf = infoAdopt.getString("telefono");
         telefono.setText(telf);
         String pin = infoAdopt.getString("cedula");
         cedula.setText(pin);
@@ -156,10 +163,8 @@ public class CheckActivity extends AppCompatActivity {
                 i = mProgressBar.getProgress();
                 DatabaseReference myRef;
                 final Adoption adoption = new Adoption();
-                Date date = new Date();
                 final Message message = new Message();
-                Date fechaAdopcion = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
-                String fechaRegistro = dt.format(fechaAdopcion);
+                String fechaRegistro = dt.format(new Date());
                 final Send envio = new Send();
 
                 adoption.setFechaAdopcion(fechaRegistro);
@@ -213,10 +218,17 @@ public class CheckActivity extends AppCompatActivity {
                                 snapshot.getRef().child(userId).child("estado").setValue(adoption.getEstado());
                             }
                             envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailAceptado());
+                            // Use SmsManager.
+                            PendingIntent sentIntent = null, deliveryIntent = null;
+                            SmsManager smsManager = SmsManager.getDefault();
+                            smsManager.sendTextMessage
+                                    (telf, scAddress, SALUDO + nombresApellidos.getText() + message.smsAceptado(),
+                                            sentIntent, deliveryIntent);
+
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
 
@@ -242,7 +254,7 @@ public class CheckActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
 
@@ -262,10 +274,16 @@ public class CheckActivity extends AppCompatActivity {
                                 snapshot.getRef().child(userId).child("estado").setValue(adoption.getEstado());
                             }
                             envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailNegado());
+                            // Use SmsManager.
+                            PendingIntent sentIntent = null, deliveryIntent = null;
+                            SmsManager smsManager = SmsManager.getDefault();
+                            smsManager.sendTextMessage
+                                    (telf, scAddress, SALUDO + nombresApellidos.getText() + message.smsNegado(),
+                                            sentIntent, deliveryIntent);
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
 
@@ -284,13 +302,12 @@ public class CheckActivity extends AppCompatActivity {
                             for (DataSnapshot snapshot : tasksSnapshot.getChildren()) {
                                 Log.i("Message 1: ", snapshot.getRef().child(valId).toString());
                                 snapshot.getRef().child(valId).child("adoptado").setValue(evaluation.getAdoptado());
-
                             }
 
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(DatabaseError error) {
                             Log.d("databaseError", error.getMessage());
                         }
 
@@ -309,6 +326,22 @@ public class CheckActivity extends AppCompatActivity {
         mDatabase = firebaseDatabase.getReference();
         mFirebaseAuth = FirebaseAuth.getInstance();
         currentUser = mFirebaseAuth.getCurrentUser();
+    }
+
+    public void validarPermisos() {
+
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS) !=
+                PackageManager.PERMISSION_GRANTED) {
+            // Permission not yet granted. Use requestPermissions().
+            // MY_PERMISSIONS_REQUEST_SEND_SMS is an
+            // app-defined int constant. The callback method gets the
+            // result of the request.
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.SEND_SMS},
+                    MY_PERMISSIONS_REQUEST_SEND_SMS);
+        }
+
     }
 
 

@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.ItemClickListener;
 import com.fernandomoya.appproyectofinal.R;
@@ -31,7 +29,7 @@ public class AdapterApp extends RecyclerView.Adapter<AdapterApp.PerroViewHolder>
     }
 
     @Override
-    public PerroViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PerroViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         return (new PerroViewHolder(v));
     }

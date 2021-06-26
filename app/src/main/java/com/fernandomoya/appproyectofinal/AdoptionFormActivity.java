@@ -1,9 +1,11 @@
 package com.fernandomoya.appproyectofinal;
 
 import android.Manifest;
+import android.app.PendingIntent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.SmsManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -91,17 +93,19 @@ public class AdoptionFormActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private ProgressBar mProgressBar;
     private Bundle infoMedicalEvaluation;
-    private Handler hdlr = new Handler();
-    private SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private final Handler hdlr = new Handler();
+    private final SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
     private String passengerID;
     private int i = 0;
-
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
+    private final String scAddress = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_application_form);
-
+        validarPermisos();
+        inicializarFirebase();
         mProgressBar = findViewById(R.id.simpleProgressBar);
         infoMedicalEvaluation = getIntent().getExtras();
         edadAdopcion = findViewById(R.id.lstEdadAdopcion);
@@ -174,7 +178,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardar);
         btnCancelar = findViewById(R.id.btnCancelar);
         btnGuardar.setVisibility(View.VISIBLE);
-        inicializarFirebase();
+
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,13 +192,10 @@ public class AdoptionFormActivity extends AppCompatActivity {
             public void onClick(View v) {
                 i = mProgressBar.getProgress();
 
-                validarPermisos();
 
                 Adoption adoption = new Adoption();
                 Message message = new Message();
-                Date date = new Date();
                 final Send envio = new Send();
-                Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
                 final String userId = mDatabase.push().getKey();
                 final String apellido = nombresApellidos.getText().toString();
                 final String tieneEdad = edad.getText().toString();
@@ -212,8 +213,6 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 final String preg4 = pregunta4.getText().toString();
                 final String visitaMensual = visita.getText().toString();
                 final String ocupacionAdoptante = ocupacion.getText().toString();
-                String fechaRegistro = dt.format(newDate);
-
 
                 if (rdbPrimaria.isChecked()) {
                     adoption.setInstruccion(rdbPrimaria.getText().toString());
@@ -299,8 +298,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 adoption.setPregunta4(preg4);
                 adoption.setUrl(urlPerroAdopcion);
                 adoption.setEstado(Boolean.FALSE);
-                adoption.setFechaRegistro(fechaRegistro);
-                adoption.setFechaAdopcion(dt.format(newDate));
+                adoption.setFechaRegistro(dt.format(new Date()));
+                adoption.setFechaAdopcion(dt.format(new Date()));
                 adoption.setuId(userId);
 
                 Log.i("Valoracion", valoracionId);
@@ -313,6 +312,15 @@ public class AdoptionFormActivity extends AppCompatActivity {
 
                 if (!(mail.trim().isEmpty()) || (mail != null)) {
                     envio.enviar(mail, SALUDO + apellido + message.email());
+                }
+
+                if (!(telef.trim().isEmpty()) || (telef != null)) {
+                    PendingIntent sentIntent = null, deliveryIntent = null;
+                    // Use SmsManager.
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage
+                            (telef, null, SALUDO + apellido + message.sms(),
+                                    sentIntent, deliveryIntent);
                 }
 
                 new Thread(new Runnable() {
@@ -377,6 +385,12 @@ public class AdoptionFormActivity extends AppCompatActivity {
 
         if (validador.vacio(telefono)) {
             telefono.setError("Número de teléfono obligatorio.");
+            telefono.requestFocus();
+            return true;
+        }
+
+        if (telefono.length() != 10) {
+            telefono.setError("El número de teléfono debe contener 10 dígitos");
             telefono.requestFocus();
             return true;
         }
@@ -515,6 +529,19 @@ public class AdoptionFormActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(AdoptionFormActivity.this, new String[]
                     {Manifest.permission.SEND_SMS,}, 1000);
         }
+
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS) !=
+                PackageManager.PERMISSION_GRANTED) {
+            // Permission not yet granted. Use requestPermissions().
+            // MY_PERMISSIONS_REQUEST_SEND_SMS is an
+            // app-defined int constant. The callback method gets the
+            // result of the request.
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.SEND_SMS},
+                    MY_PERMISSIONS_REQUEST_SEND_SMS);
+        }
+
     }
 
     private void inicializarFirebase() {
