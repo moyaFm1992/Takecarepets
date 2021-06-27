@@ -162,8 +162,7 @@
     <string name="titulo">Tipo</string>
     <string name="cuadrados">m²</string>
     <string name="mas_informacion"><![CDATA[<u>Más información</u>]]></string>
-
-
+    <string name="icons_description">animation frames container</string>
     <string-array name="spTipo">
         <item>Años</item>
         <item>Meses</item>
