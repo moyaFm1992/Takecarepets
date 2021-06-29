@@ -39,10 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        Log.e("netHabilitada", Boolean.toString(isNetDisponible()));
-        Log.e("accInternet", Boolean.toString(isOnlineNet()));
-
-
         emailId = findViewById(R.id.editText);
         password = findViewById(R.id.editText2);
         btnSignIn = findViewById(R.id.button2);
