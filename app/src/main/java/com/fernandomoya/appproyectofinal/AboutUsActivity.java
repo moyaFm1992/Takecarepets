@@ -1,7 +1,6 @@
 package com.fernandomoya.appproyectofinal;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class AboutUsActivity extends AppCompatActivity {

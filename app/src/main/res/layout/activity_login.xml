@@ -66,8 +66,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
-            android:visibility="gone"
-            android:text="" />
+            android:text=""
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/button2"
@@ -79,6 +79,7 @@
             android:text="@string/iniciar_sesi_n"
             android:textColor="#fff"
             android:textSize="16sp" />
+
 
         <TextView
             android:id="@+id/textView"

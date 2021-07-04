@@ -2,15 +2,12 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,7 +24,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reset_password);
         edtEmail = findViewById(R.id.edt_reset_email);
         btnResetPassword = findViewById(R.id.btn_reset_password);
-        btnBack = findViewById(R.id.btn_back);
+
 
         mAuth = FirebaseAuth.getInstance();
 

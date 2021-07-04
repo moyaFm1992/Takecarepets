@@ -2,6 +2,7 @@ package com.fernandomoya.appproyectofinal;
 
 import android.Manifest;
 import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,10 +16,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.model.Adoption;
 import com.fernandomoya.appproyectofinal.model.Message;
@@ -28,7 +27,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -345,7 +343,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
                                         btnCancelar.setVisibility(View.VISIBLE);
                                         mProgressBar.setVisibility(View.GONE);
                                         tiempoMensaje.setVisibility(View.GONE);
-
+                                        Intent intentFinalizar = new Intent(AdoptionFormActivity.this, ChoiceActivity.class);
+                                        startActivity(intentFinalizar);
                                         finish();
                                     }
                                 }

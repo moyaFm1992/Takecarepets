@@ -1,16 +1,15 @@
 package com.fernandomoya.appproyectofinal;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
-
 import static com.fernandomoya.appproyectofinal.model.Constant.ADMIN;
 import static com.fernandomoya.appproyectofinal.model.Constant.VETER;
 
@@ -50,6 +49,7 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
         lblEvaluation.setVisibility(View.GONE);
         lblFrmAdoption.setVisibility(View.GONE);
         lblAdoption.setVisibility(View.GONE);
+
 
         if (passengerID.equals(ADMIN)) {
             imgBtnFrmLocation.setVisibility(View.VISIBLE);
@@ -113,11 +113,28 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intentListAdoption);
                 break;
             case R.id.imgBtnSalir:
-                Intent intentSalir = new Intent(ChoiceActivity.this, LoginActivity.class);
-                startActivity(intentSalir);
-                FirebaseAuth fAuth = FirebaseAuth.getInstance();
-                fAuth.signOut();
-                finish();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle("Alerta");
+                alertDialogBuilder
+                        .setMessage("¿Estás seguro de salir de tu sesión de TakecarepetsApp?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intentSalir = new Intent(ChoiceActivity.this, LoginActivity.class);
+                                startActivity(intentSalir);
+                                FirebaseAuth fAuth = FirebaseAuth.getInstance();
+                                fAuth.signOut();
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                Intent intToMain = new Intent(ChoiceActivity.this, ChoiceActivity.class);
+                                startActivity(intToMain);
+                            }
+                        }).create().show();
+
                 break;
             default:
         }

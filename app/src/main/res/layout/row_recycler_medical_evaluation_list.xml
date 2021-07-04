@@ -13,11 +13,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:textAlignment="center"
-            android:layout_marginStart="5dp">
+            android:textAlignment="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,11 +28,11 @@
                     android:id="@+id/imgListPerroEvaluado"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     app:civ_border_color="@color/colorPrimaryDark"
-                    app:civ_border_width="2dp"
-                    android:layout_marginStart="5dp" />
+                    app:civ_border_width="2dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -44,58 +44,58 @@
                         android:id="@+id/lstEdadListEvaluacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
                         android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp" />
+                        android:textStyle="bold" />
 
 
                     <TextView
                         android:id="@+id/lstSexoListEvaluacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/lstObservacionesListEvaluacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/lstFracturasListEvaluacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/lstTiempoListEvaluacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/lstEstadoListEvaluacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
                         android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp" />
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -105,11 +105,11 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/colorPrimaryDark"
             android:layout_marginStart="100dp"
-            android:layout_marginEnd="5dp" />
+            android:layout_marginLeft="100dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorPrimaryDark" />
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

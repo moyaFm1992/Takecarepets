@@ -1,7 +1,6 @@
 package com.fernandomoya.appproyectofinal;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -41,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
                     Toast.makeText(SplashActivity.this, "!No existe conexion a Intenet!", Toast.LENGTH_LONG).show();
                 } else {
 
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
                     startActivity(intent);
                 }
                 finish();

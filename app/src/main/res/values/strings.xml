@@ -163,9 +163,21 @@
     <string name="cuadrados">m²</string>
     <string name="mas_informacion"><![CDATA[<u>Más información</u>]]></string>
     <string name="icons_description">animation frames container</string>
-    <string-array name="spTipo">
-        <item>Años</item>
-        <item>Meses</item>
-    </string-array>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">Siguiente</string>
+    <string name="skip">Saltar</string>
+    <string name="start">Continuar</string>
+
+    <string name="slide_1_title">Adopción responsable</string>
+    <string name="slide_1_desc">Adoptar un animal representa mucho más que conseguir una mascota, significa encontrar un compañero, un amigo agradecido por la nueva oportunidad que le brindas.</string>
+
+    <string name="slide_2_title">Planeación y reflexión</string>
+    <string name="slide_2_desc">Recuerda organizar los espacios que tienes en casa para que tu mascota permanezca en las mejores condiciones.</string>
+
+    <string name="slide_3_title">Ten mucha paciencia</string>
+    <string name="slide_3_desc">¡Gánate su confianza y bríndale un ambiente lleno de amor!</string>
+
+    <string name="slide_4_title">Calcula tus gastos</string>
+    <string name="slide_4_desc">Asegúrale una buena calidad de vida a tu nuevocompañero. Calcula los gastos que vas a tener como alimentación, visitas al veterinario, entre otros.</string>
 
 </resources>

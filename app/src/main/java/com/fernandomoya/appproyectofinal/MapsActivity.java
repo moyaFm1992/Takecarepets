@@ -2,7 +2,6 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -46,8 +46,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
@@ -87,7 +85,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 markerOptions.position(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)));
                 markerOptions.title(descripcion);
                 markerOptions.snippet("Ubicación actual");
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.location);
+                markerOptions.icon(icon);
                 LatLng latLng = new LatLng(markerOptions.getPosition().latitude, markerOptions.getPosition().longitude);
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
                 mMap.animateCamera(cameraUpdate);

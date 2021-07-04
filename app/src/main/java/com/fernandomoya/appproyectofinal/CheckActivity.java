@@ -2,7 +2,6 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.app.PendingIntent;
 import android.content.pm.PackageManager;
@@ -15,7 +14,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.fernandomoya.appproyectofinal.model.Adoption;
 import com.fernandomoya.appproyectofinal.model.MedicalEvaluation;
 import com.fernandomoya.appproyectofinal.model.Message;
@@ -28,11 +26,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
 import static com.fernandomoya.appproyectofinal.model.Constant.EVALUATION;
 import static com.fernandomoya.appproyectofinal.model.Constant.SALUDO;

@@ -52,29 +52,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="false" />
 
-        <activity android:name=".ViewActivity">
-            android:screenOrientation="portrait"
+        <activity
+            android:name=".ViewActivity"
+            android:clearTaskOnLaunch="true"
             android:hardwareAccelerated="false"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WelcomeActivity"
             android:clearTaskOnLaunch="true"
-
-        </activity>
-        <activity android:name=".UpdateDeleteEvaluationListActivity">
-            android:screenOrientation="portrait"
             android:hardwareAccelerated="false"
             android:launchMode="singleTask"
-            android:clearTaskOnLaunch="true"
-        </activity>
-        <activity android:name=".UpdateDeleteAdoptedActivity">
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".UpdateDeleteEvaluationListActivity"
+            android:clearTaskOnLaunch="true"
             android:hardwareAccelerated="false"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UpdateDeleteAdoptedActivity"
             android:clearTaskOnLaunch="true"
-        </activity>
+            android:hardwareAccelerated="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ResetPasswordActivity"
             android:clearTaskOnLaunch="true"
@@ -109,9 +116,9 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".list.MedicalEvaluationListActivity"
@@ -205,7 +212,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

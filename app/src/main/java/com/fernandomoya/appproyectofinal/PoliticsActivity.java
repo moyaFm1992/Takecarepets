@@ -2,14 +2,12 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
-
 import com.fernandomoya.appproyectofinal.list.AdoptionListActivity;
 
 public class PoliticsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -45,7 +43,7 @@ public class PoliticsActivity extends AppCompatActivity implements View.OnClickL
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                     alertDialogBuilder.setTitle("Alerta");
                     alertDialogBuilder
-                            .setMessage("Esta seguro de continuar con el proceso de adopción?")
+                            .setMessage("Está seguro de continuar con el proceso de adopción?")
                             .setCancelable(false)
                             .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {

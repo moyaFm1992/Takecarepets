@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -23,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.fernandomoya.appproyectofinal.list.ListActivity;
 import com.fernandomoya.appproyectofinal.model.Perros;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -39,13 +37,11 @@ import com.google.firebase.storage.OnPausedListener;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import static com.fernandomoya.appproyectofinal.model.Constant.DOGS;
 import static com.fernandomoya.appproyectofinal.model.Constant.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 import static com.fernandomoya.appproyectofinal.model.Constant.PHOTO;

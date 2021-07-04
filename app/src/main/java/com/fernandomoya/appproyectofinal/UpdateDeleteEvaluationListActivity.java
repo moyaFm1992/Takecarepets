@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.model.MedicalEvaluation;
 import com.google.firebase.FirebaseApp;

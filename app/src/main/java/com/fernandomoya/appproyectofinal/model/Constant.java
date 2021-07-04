@@ -20,6 +20,7 @@ public  class Constant {
             "<p>Takecarepetsapp team</p>";
     public static final String SALUDO = "Estimado ";
     public static final String ADMIN = "9WBx76PIkrh6Ww8QLwjGKFKsNXF3";
+    //public static final String ADMIN = "oPILEs5UujWD8M5PKfvXwtrkQux2";
     public static final String PHOTO = "com.fernandomoya.appproyectofinal.fileprovider";
     public static final String VETER = "b6q93u9z1lcRiJn19nfcJpKewUf2";
     public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS= 100;

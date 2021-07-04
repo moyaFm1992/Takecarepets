@@ -53,8 +53,6 @@
             android:textStyle="bold" />
 
 
-
-
         <ImageButton
             android:id="@+id/imgBtnFrmAdoption"
             android:layout_width="match_parent"

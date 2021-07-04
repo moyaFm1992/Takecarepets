@@ -25,7 +25,7 @@ public class Send {
     //Envio de correo electronico
     public void enviar(final String correo, final String mensaje) {
         final String correoPruebas = "takecarepetsapp@gmail.com";
-        final String passPruebas = "";
+        final String passPruebas = "************";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Properties properties = new Properties();

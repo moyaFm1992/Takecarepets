@@ -2,19 +2,16 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,15 +27,14 @@ public class LoginActivity extends AppCompatActivity {
     private TextView resetPassword;
     private Button btnSignIn;
     private FirebaseAuth mFirebaseAuth;
-    private String email;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private int RC_SIGN_IN = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mFirebaseAuth = FirebaseAuth.getInstance();
-
         emailId = findViewById(R.id.editText);
         password = findViewById(R.id.editText2);
         btnSignIn = findViewById(R.id.button2);
@@ -85,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Error de inicio de sesión, vuelva a iniciar sesión", Toast.LENGTH_SHORT).show();
                                 //mensaje.setVisibility(View.VISIBLE);
-                               //mensaje.setText("Error de inicio de sesión, vuelva a iniciar sesión");
+                                //mensaje.setText("Error de inicio de sesión, vuelva a iniciar sesión");
                                 //mensaje.requestFocus();
 
                             } else {
@@ -154,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+
     }
 
 }
