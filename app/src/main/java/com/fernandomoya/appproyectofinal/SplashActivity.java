@@ -38,10 +38,14 @@ public class SplashActivity extends AppCompatActivity {
 
                 if (!isNetDisponible() && !isOnlineNet()) {
                     Toast.makeText(SplashActivity.this, "!No existe conexion a Intenet!", Toast.LENGTH_LONG).show();
+                    Log.e("error", "ok");
+
                 } else {
 
                     Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
                     startActivity(intent);
+
+                    Log.e("message", "ok");
                 }
                 finish();
                 Log.e("netHabilitada", Boolean.toString(isNetDisponible()));

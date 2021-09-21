@@ -30,6 +30,7 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choice);
+
         passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         imgBtnFrmLocation = findViewById(R.id.imgBtnFrmLocation);
         imgBtnFrmChoiceEvaluation = findViewById(R.id.imgBtnFrmEvaluation);

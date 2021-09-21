@@ -60,7 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="5dp"
-            android:paddingLeft="5dp">
+            android:paddingLeft="5dp"
+            android:paddingEnd="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -158,8 +159,6 @@
                 android:id="@+id/cbkParteII"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/lstEstadoAdoptar"
-                android:layout_toRightOf="@+id/lstEstadoAdoptar"
                 android:text="@string/cumple"
                 android:textSize="13sp" />
 
@@ -169,7 +168,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="5dp"
-            android:paddingLeft="5dp">
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -199,6 +199,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="@string/Inmueble"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
@@ -218,7 +219,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="5dp"
-            android:paddingLeft="5dp">
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -259,6 +261,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="@string/relacion"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
@@ -282,6 +285,21 @@
             android:paddingLeft="5dp"
             android:paddingEnd="10dp"
             android:paddingRight="10dp">
+
+
+            <TextView
+                android:id="@+id/lblMascotasPrevias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mascotasPrevias"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/lblCheckPregunta1"
@@ -440,17 +458,20 @@
 
                 <Button
                     android:id="@+id/btnCheckGuardar"
+
                     android:layout_width="198dp"
                     android:layout_height="match_parent"
                     android:drawablePadding="8dp"
                     android:paddingStart="5dp"
                     android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:text="@string/guardar"
                     android:textSize="16sp"
                     tools:ignore="RtlSymmetry" />
 
                 <Button
                     android:id="@+id/btnCancelar"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawablePadding="8dp"

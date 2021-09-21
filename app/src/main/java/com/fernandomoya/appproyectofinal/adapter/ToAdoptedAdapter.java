@@ -30,7 +30,7 @@ public class ToAdoptedAdapter extends RecyclerView.Adapter<ToAdoptedAdapter.ToAd
     @Override
     public ToAdoptedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
-        return  (new ToAdoptedViewHolder(v));
+        return (new ToAdoptedViewHolder(v));
     }
 
     @Override

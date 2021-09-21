@@ -53,6 +53,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp"
             android:textStyle="bold" />
+
         <ImageButton
             android:id="@+id/imgBtnSalir"
             android:layout_width="match_parent"

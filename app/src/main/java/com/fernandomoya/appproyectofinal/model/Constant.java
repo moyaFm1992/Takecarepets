@@ -18,6 +18,19 @@ public  class Constant {
             "<p>Si no lo solicitaste, ignora este correo electrónico.</p>\n" +
             "<p>Gracias,</p>\n" +
             "<p>Takecarepetsapp team</p>";
+
+
+
+    public static final String APROVADO_SMS = ". Le informamos que su solicitud de adopción ha sido aceptada.\n" +
+            "Gracias,\n" +
+            "Takecarepetsapp team";
+    public static final String NEGADO_SMS = ". Le informamos que su solicitud de adopción ha sido rechazada.\n" +
+            "Gracias,\n" +
+            "Takecarepetsapp team";
+
+
+
+
     public static final String SALUDO = "Estimado ";
     public static final String ADMIN = "9WBx76PIkrh6Ww8QLwjGKFKsNXF3";
     //public static final String ADMIN = "oPILEs5UujWD8M5PKfvXwtrkQux2";

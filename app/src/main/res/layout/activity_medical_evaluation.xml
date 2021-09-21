@@ -202,8 +202,11 @@
                 android:id="@+id/txtTipoEdad"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:autofillHints="username"
+                android:inputType="text"
                 android:textSize="13sp"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                tools:ignore="LabelFor" />
 
         </LinearLayout>
 
@@ -225,9 +228,12 @@
                         android:id="@+id/txtEdadEvaluacion"
                         android:layout_width="108dp"
                         android:layout_height="match_parent"
+                        android:autofillHints="username"
                         android:hint="@string/edad_aproximada"
+                        android:inputType="text"
                         android:paddingStart="5dp"
                         android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
                         android:textSize="12sp" />
 
                     <RadioButton
@@ -321,6 +327,7 @@
             android:orientation="horizontal"
             android:paddingStart="5dp"
             android:paddingLeft="5dp"
+            android:paddingEnd="5dp"
             android:paddingRight="10dp">
 
 

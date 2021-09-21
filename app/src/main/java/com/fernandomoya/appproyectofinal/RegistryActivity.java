@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,16 +15,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistryActivity extends AppCompatActivity {
-    private EditText emailId;
-    private EditText password;
-    private TextView tvSignIn;
-    private Button btnSignUp;
-    private FirebaseAuth mFirebaseAuth;
+    EditText emailId, password;
+    Button btnSignUp;
+    TextView tvSignIn;
+    FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         mFirebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.editText);
@@ -38,7 +35,7 @@ public class RegistryActivity extends AppCompatActivity {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()) {
-                    emailId.setError("Por favor, ingrese un correo electrónico");
+                    emailId.setError("Por favor, introduzca la identificación del correo electrónico");
                     emailId.requestFocus();
                 } else if (pwd.isEmpty()) {
                     password.setError("Por favor, introduzca su contraseña");
@@ -47,26 +44,17 @@ public class RegistryActivity extends AppCompatActivity {
                     Toast.makeText(RegistryActivity.this, "¡Los campos están vacíos!", Toast.LENGTH_SHORT).show();
                 } else if (!(email.isEmpty() && pwd.isEmpty())) {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(RegistryActivity.this, new OnCompleteListener<AuthResult>() {
-
-
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
                             if (!task.isSuccessful()) {
                                 Toast.makeText(RegistryActivity.this, "Registro sin éxito, por favor intente nuevamente", Toast.LENGTH_SHORT).show();
-
                             } else {
-                                startActivity(new Intent(RegistryActivity.this, ChoiceActivity.class));
+                                startActivity(new Intent(RegistryActivity.this, LoginActivity.class));
+                                Toast.makeText(RegistryActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
                             }
-
                         }
-
-
                     });
-
-
                 } else {
-
                     Toast.makeText(RegistryActivity.this, "¡Se produjo un error!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -81,6 +69,4 @@ public class RegistryActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

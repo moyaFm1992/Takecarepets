@@ -61,7 +61,6 @@
                             android:id="@+id/imgListPerroEvaluado"
                             android:layout_width="155dp"
                             android:layout_height="144dp"
-                            android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
@@ -136,7 +135,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Estado"
+                            android:text="@string/estado"
                             android:textSize="12sp" />
 
 
@@ -144,10 +143,16 @@
                             android:id="@+id/lstEstadoInicial"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_toEndOf="@+id/imgListPerroEvaluado"
                             android:layout_toRightOf="@+id/imgListPerroEvaluado"
+                            android:autofillHints="username"
+                            android:inputType="text"
                             android:textSize="12sp"
-                            android:textStyle="bold" />
+
+                            android:textStyle="bold"
+                            tools:ignore="LabelFor" />
 
                         <EditText
                             android:id="@+id/lstObservacionesEvaluado"
@@ -157,8 +162,11 @@
                             android:layout_marginLeft="5dp"
                             android:layout_toEndOf="@+id/imgListPerroEvaluado"
                             android:layout_toRightOf="@+id/imgListPerroEvaluado"
+                            android:autofillHints="username"
+                            android:inputType="text"
                             android:textSize="12sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="LabelFor" />
 
                         <EditText
                             android:id="@+id/lstFracturasEvaluado"
@@ -168,8 +176,11 @@
                             android:layout_marginLeft="5dp"
                             android:layout_toEndOf="@+id/imgListPerroEvaluado"
                             android:layout_toRightOf="@+id/imgListPerroEvaluado"
+                            android:autofillHints="username"
+                            android:inputType="text"
                             android:textSize="12sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="LabelFor" />
 
 
                     </LinearLayout>
@@ -190,7 +201,7 @@
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/progress_bar"
+            android:layout_alignStart="@+id/progress_bar"
             android:layout_alignLeft="@+id/progress_bar"
             tools:visibility="gone" />
 
@@ -202,7 +213,6 @@
 
             <Button
                 android:id="@+id/btnActualizarList"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/actualizar" />

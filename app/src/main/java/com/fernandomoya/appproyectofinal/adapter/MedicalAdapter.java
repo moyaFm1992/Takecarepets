@@ -7,15 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.ItemClickListener;
 import com.fernandomoya.appproyectofinal.R;
 import com.fernandomoya.appproyectofinal.model.MedicalEvaluation;
-
 import java.util.List;
 
 public class MedicalAdapter extends RecyclerView.Adapter<MedicalAdapter.MedicalViewHolder> {
@@ -41,7 +38,7 @@ public class MedicalAdapter extends RecyclerView.Adapter<MedicalAdapter.MedicalV
     public void onBindViewHolder(MedicalViewHolder holder, int position) {
         MedicalEvaluation valoracion = listValoracion.get(position);
         Glide.with(mContext).load(valoracion.getUrl()).into(holder.imgPerroValoracion);
-        holder.lstRvEdad.setText("Edad: " + valoracion.getEdad() + " años");
+        holder.lstRvEdad.setText("Edad: " + valoracion.getEdad());
         holder.lstRvSexo.setText("Sexo: " + valoracion.getSexo());
         holder.lstRvTamano.setText("Tamaño: " + valoracion.getTamano());
         holder.lstRvTipo.setText("Tipo: " + valoracion.getTipo());

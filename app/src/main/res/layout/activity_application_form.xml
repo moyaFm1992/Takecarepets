@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".AdoptionFormActivity">
 
 
@@ -79,7 +79,6 @@
                             android:id="@+id/lstEdadAdopcion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="20dp"
@@ -92,8 +91,9 @@
                             android:id="@+id/lstTamanoAdopcion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_toEndOf="@+id/imgListPerroAdopcion"
                             android:layout_toRightOf="@+id/imgListPerroAdopcion"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -102,8 +102,9 @@
                             android:id="@+id/lstTipoAdopcion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_toEndOf="@+id/imgListPerroAdopcion"
                             android:layout_toRightOf="@+id/imgListPerroAdopcion"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -112,8 +113,9 @@
                             android:id="@+id/lstSexoAdopcion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_toEndOf="@+id/imgListPerroAdopcion"
                             android:layout_toRightOf="@+id/imgListPerroAdopcion"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -127,6 +129,7 @@
             android:id="@+id/lblDatosPersonales"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="5dp"
             android:paddingLeft="5dp"
             android:text="@string/personales"
             android:textColor="@color/colorPrimaryDark"
@@ -137,9 +140,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:orientation="vertical"
+            android:paddingStart="5dp"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
+            android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp">
 
@@ -151,7 +158,7 @@
                     android:id="@+id/txtNombresApellidos"
                     android:layout_width="379dp"
                     android:layout_height="wrap_content"
-                    android:hint="Nombres y Apellidos"
+                    android:hint="@string/nombApell"
                     android:textSize="13sp">
 
                     <requestFocus />
@@ -175,7 +182,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:digits="0123456789"
-                        android:hint="Cédula "
+                        android:hint="@string/cedula"
                         android:textSize="13sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -188,7 +195,7 @@
                         android:layout_width="147dp"
                         android:layout_height="match_parent"
                         android:digits="0123456789"
-                        android:hint="Teléfono"
+                        android:hint="@string/telefono"
                         android:inputType="phone"
                         android:textSize="13sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -201,7 +208,7 @@
                         android:id="@+id/txtEdad"
                         android:layout_width="88dp"
                         android:layout_height="match_parent"
-                        android:hint="Edad"
+                        android:hint="@string/edad"
                         android:textSize="13sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -229,7 +236,7 @@
                     android:id="@+id/txtOcupacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Ocupación"
+                    android:hint="@string/ocupacion"
                     android:textSize="13sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -242,7 +249,7 @@
                     android:id="@+id/txtDireccion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Dirección completa"
+                    android:hint="@string/completa"
                     android:textSize="13sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -254,6 +261,7 @@
             android:id="@+id/lblReferencias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="5dp"
             android:paddingLeft="5dp"
             android:text="@string/referencia"
             android:textColor="@color/colorPrimaryDark"
@@ -265,8 +273,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingStart="5dp"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
+            android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp">
 
@@ -278,7 +288,7 @@
                     android:id="@+id/txtNombresReferencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombres y Apellidos"
+                    android:hint="@string/nombApell"
                     android:textSize="13sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -312,7 +322,7 @@
                         android:layout_width="205dp"
                         android:layout_height="match_parent"
                         android:digits="0123456789"
-                        android:hint="Teléfono"
+                        android:hint="@string/telefono"
                         android:inputType="phone"
                         android:textSize="13sp" />
 
@@ -330,6 +340,7 @@
                 android:id="@+id/lblInstruccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:paddingLeft="5dp"
                 android:text="@string/instruccion"
                 android:textColor="@color/colorPrimaryDark"
@@ -341,8 +352,11 @@
                 android:id="@+id/txtInstruccion"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:autofillHints="username"
+                android:inputType="text"
                 android:textSize="13sp"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                tools:ignore="LabelFor" />
 
 
         </LinearLayout>
@@ -354,7 +368,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                tools:ignore="UselessParent">
 
                 <RadioGroup
                     android:layout_width="wrap_content"
@@ -405,6 +420,7 @@
                 android:id="@+id/lblInmueble"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:paddingLeft="5dp"
                 android:text="@string/Inmueble"
                 android:textColor="@color/colorPrimaryDark"
@@ -416,8 +432,11 @@
                 android:id="@+id/txtTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:autofillHints="username"
+                android:inputType="text"
                 android:textSize="13sp"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                tools:ignore="LabelFor" />
 
         </LinearLayout>
 
@@ -426,6 +445,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp">
 
@@ -490,8 +511,10 @@
                             android:layout_width="124dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:autofillHints="username"
                             android:gravity="center_horizontal"
                             android:hint="@string/cuadrados"
+                            android:inputType="text"
                             android:textAlignment="center"
                             android:textSize="13sp" />
 
@@ -523,11 +546,13 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    tools:ignore="UselessParent" />
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    tools:ignore="UselessParent" />
             </TableLayout>
 
 
@@ -537,28 +562,96 @@
             android:id="@+id/lblRelacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="5dp"
             android:paddingLeft="5dp"
             android:text="@string/relacion"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:ignore="RtlSymmetry">
-
-
-        </TextView>
+            tools:ignore="RtlSymmetry" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="10dp"
+            android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    android:id="@+id/mascotasPrevias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="@string/mascotasPrevias"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/pets_array"
+                    android:prompt="@string/mascotasPrevias"
+                    android:singleLine="true"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/situacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:text="@string/situacion"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eTPrevias"
+                    android:layout_width="match_parent"
+                    android:layout_height="104dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/describa"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="13sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/lblPregunta1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:paddingLeft="5dp"
                 android:text="@string/pregunta1"
                 android:textSize="13sp"
@@ -568,10 +661,10 @@
                 android:id="@+id/txtPregunta1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="username"
                 android:hint="@string/hint"
-                android:textSize="14sp">
-
-            </EditText>
+                android:inputType="text"
+                android:textSize="14sp"></EditText>
 
             <TextView
                 android:id="@+id/lblPregunta2"
@@ -579,6 +672,8 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
                 android:paddingLeft="5dp"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp"
                 android:text="@string/pregunta2"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -587,7 +682,9 @@
                 android:id="@+id/txtPregunta2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="username"
                 android:hint="@string/hint"
+                android:inputType="text"
                 android:textSize="14sp">
 
             </EditText>
@@ -596,6 +693,7 @@
                 android:id="@+id/lblPregunta3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:paddingLeft="5dp"
                 android:text="@string/pregunta3"
                 android:textSize="13sp"
@@ -605,7 +703,9 @@
                 android:id="@+id/txtPregunta3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="username"
                 android:hint="@string/hint"
+                android:inputType="text"
                 android:textSize="14sp">
 
             </EditText>
@@ -614,6 +714,7 @@
                 android:id="@+id/lblPregunta4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:paddingLeft="5dp"
                 android:text="@string/pregunta4"
                 android:textSize="13sp"
@@ -623,7 +724,9 @@
                 android:id="@+id/txtPregunta4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="username"
                 android:hint="@string/hint"
+                android:inputType="text"
                 android:textSize="14sp">
 
 
@@ -741,6 +844,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
+                android:paddingEnd="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 tools:ignore="RtlSymmetry">
@@ -770,6 +874,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
+                    android:paddingStart="5dp"
                     android:paddingLeft="5dp"
                     tools:ignore="RtlSymmetry">
 
@@ -796,11 +901,12 @@
                             android:gravity="start|top"
                             android:hint="@string/describa"
                             android:inputType="textMultiLine"
+                            android:paddingStart="5dp"
                             android:paddingLeft="5dp"
                             android:paddingTop="10dp"
+                            android:paddingEnd="10dp"
                             android:paddingRight="10dp"
                             android:paddingBottom="10dp"
-                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="13sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -828,7 +934,6 @@
                 android:id="@+id/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/progress_bar"
                 android:layout_alignLeft="@+id/progress_bar"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"

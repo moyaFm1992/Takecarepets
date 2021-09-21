@@ -31,7 +31,8 @@ public class Adoption {
     private String fechaAdopcion;
     private String uId;
     private String valoracion;
-
+    private String mascotaPrevia;
+    private String descripcion;
 
     public Adoption() {
 
@@ -56,8 +57,6 @@ public class Adoption {
         this.fechaRegistro = fechaRegistro;
     }
 
-
-
     public String getCedula() {
         return cedula;
     }
@@ -73,7 +72,6 @@ public class Adoption {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
 
     public String getEmail() {
         return email;
@@ -274,5 +272,21 @@ public class Adoption {
 
     public void setValoracion(String valoracion) {
         this.valoracion = valoracion;
+    }
+
+    public String getMascotaPrevia() {
+        return mascotaPrevia;
+    }
+
+    public void setMascotaPrevia(String mascotaPrevia) {
+        this.mascotaPrevia = mascotaPrevia;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

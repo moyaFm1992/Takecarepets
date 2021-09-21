@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_application_form.xml" value="0.9516129032258065" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_check.xml" value="0.536" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_choice.xml" value="0.24461152882205514" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_choice_medical.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_choice_to_adopt.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_home.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_maps.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_politics.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_splash.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_to_adopt_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_update_delete_adopted.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_update_delete_evaluartion_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_view.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/activity_welcome.xml" value="0.25416666666666665" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/row_recycler.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/row_recycler_evaluation_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/row_recycler_medical_evaluation.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/row_recycler_medical_evaluation_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/row_recycler_to_adopt.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/row_recycler_to_adopted_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/view_activity.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/view_evaluation_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/view_medical_evaluation.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/view_medical_evaluation_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/view_to_adopt.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/view_to_adopted_list.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/welcome_slide1.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/welcome_slide2.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/welcome_slide3.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/layout/welcome_slide4.xml" value="0.12360688956433637" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/menu/menu.xml" value="0.25025641025641027" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
+        <entry key="..\:/Universidad/10MO/COMPONENTE PRACTICO/AppProyectoFinal/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2703125" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

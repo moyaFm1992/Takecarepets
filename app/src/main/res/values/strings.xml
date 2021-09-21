@@ -2,6 +2,7 @@
     <string name="app_name">Takecarepets</string>
     <string name="version">Versión 1.2</string>
     <string name="acercade">Acerca de</string>
+    <string name="logo">Logo</string>
     <string name="nav_header_title">Takecarepets</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="menu_home">Inicio</string>
@@ -50,6 +51,16 @@
     <string name="periodica">Está de acuerdo en que se haga una visita periódica</string>
     <string name="si">Si</string>
     <string name="no">No</string>
+    <string name="mascotasPrevias">Mascotas previas</string>
+    <string name="situacion">¿Donde está ahora? fallecio, perdió, indique la causa</string>
+    <string-array name="pets_array">
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Loro</item>
+        <item>Conejo</item>
+        <item>Otro</item>
+        <item>Ninguna</item>
+    </string-array>
     <string name="solicitud">Solicitud de adopción</string>
     <string name="evaluacion">Formulario de evaluación médica</string>
     <string name="medica">Evaluación médica</string>
@@ -81,7 +92,7 @@
     <string name="personales">Datos personales</string>
     <string name="relacion">Relación con los animales</string>
     <string name="parentesco">Parentesco</string>
-    <string name="referencia">Referencias Personales</string>
+    <string name="referencia">Referencias personales</string>
     <string name="otras">Otras</string>
     <string name="otros">Otro</string>
     <string name="pregunta1">¿Por qué desea adoptar una mascota?</string>
@@ -91,21 +102,21 @@
     <string name="porque">¿Por qué?</string>
     <string name="cerrar">Cerrar sesión</string>
     <string name="legislacion">Legislación vigente</string>
-    <string name="codigo">Códigos Penal y Civil:</string>
+    <string name="codigo">Código Penal y Civil:</string>
     <string name="codigoParrafo">El Código Penal Ecuatoriano, en aquellas partes que se refieren a animales, habla lo siguiente:</string>
-    <string name="itemParrafo">1.Muerte de un animal doméstico en el lugar que el dueño del animal es propietario, usufructuario, locatario o inquilino.</string>
-    <string name="itemParrafo1">2.Prohibición de tenencia de animales domésticos o domesticados en bienes declarados en propiedad horizontal.</string>
-    <string name="itemParrafo2">3.La zoofilia.</string>
-    <string name="itemParrafo3">4.Contravenciones penales.</string>
+    <string name="itemParrafo">1. Muerte de un animal doméstico en el lugar que el dueño del animal es propietario, usufructuario, locatario o inquilino.</string>
+    <string name="itemParrafo1">2. Prohibición de tenencia de animales domésticos o domesticados en bienes declarados en propiedad horizontal.</string>
+    <string name="itemParrafo2">3. La zoofilia.</string>
+    <string name="itemParrafo3">4. Contravenciones penales.</string>
     <string name="ordenanza">Ordenanza 128 del DM de Quito:</string>
     <string name="codigoParrafo1">El objetivo que esta ordenanza metropolitana persigue es el de ”… establecer las condiciones en las que los habitantes y visitantes del Distrito Metropolitano de Quito deben mantener los perros y otros animales domésticos a su cargo, sean o no propietarios de éstos…”</string>
     <string name="codigoParrafo2">Obligaciones:</string>
-    <string name="itemParrafo4">1.Cubrir gastos médicos y psicológicos si su animal ataca a otra persona u otro animal.</string>
-    <string name="itemParrafo5">2.Mantener al animal en condiciones que no ocasionen molestias a los vecinos.</string>
+    <string name="itemParrafo4">1. Cubrir gastos médicos y psicológicos si su animal ataca a otra persona u otro animal.</string>
+    <string name="itemParrafo5">2. Mantener al animal en condiciones que no ocasionen molestias a los vecinos.</string>
     <string name="codigoParrafo3">Prohibiciones:</string>
-    <string name="itemParrafo6">1.La venta de perros en espacios públicos sin el debido permiso.</string>
-    <string name="itemParrafo7">2.Amarrar o encadenar dejando a los animales en situaciones de riesgo.</string>
-    <string name="itemParrafo8">3.Organizar y promover peleas de perros.</string>
+    <string name="itemParrafo6">1. La venta de perros en espacios públicos sin el debido permiso.</string>
+    <string name="itemParrafo7">2. Amarrar o encadenar dejando a los animales en situaciones de riesgo.</string>
+    <string name="itemParrafo8">3. Organizar y promover peleas de perros.</string>
     <string name="codigoParrafo4">Sanciones:</string>
     <string name="itemParrafo9">Multas que van entre los 50 y 200 dólares.</string>
     <string name="continuar">Continuar</string>
@@ -113,7 +124,7 @@
     <string name="dias">días</string>
     <string name="adoptado">Guardar</string>
     <string name="enadopcion">En adopción</string>
-    <string name="cumple">Aprobado?</string>
+    <string name="cumple">¿Aprobado?</string>
     <string name="revision">Validación de información</string>
     <string name="olvidar">¿Olvidaste tu contraseña?</string>
     <string name="instrucciones">Para restablecer la contraseña, ingrese su correo electrónico, presione el botón y revise el correo para seguir las instrucciones.</string>
@@ -136,7 +147,7 @@
     <string name="avistamiento">Avistamientos</string>
     <string name="equipo">Equipo</string>
     <string name="cancelar">Cancelar</string>
-    <string name="_2020_2021">2020-2021</string>
+    <string name="_2020_2021">2020&#8211;2021</string>
     <string name="fernando_moya_chiluiza">Fernando Moya Chiluiza</string>
     <string name="ya_tienes_una_cuenta_ingresar">¿Ya tienes una cuenta? Ingresar</string>
     <string name="registro_de_usuarios">Registro de usuarios</string>
@@ -144,7 +155,7 @@
     <string name="correo_electr_nico">Correo electrónico</string>
     <string name="contrase_a">Contraseña</string>
     <string name="descripci_n">Descripción</string>
-    <string name="recuperar_contrase_a">Recuperar Contraseña</string>
+    <string name="recuperar_contrase_a">Recuperar contraseña</string>
     <string name="no_registrado_registrate_aqu">¿No registrado? Regístrate aquí</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
     <string name="edad_aproximada">Edad</string>
@@ -167,17 +178,13 @@
     <string name="next">Siguiente</string>
     <string name="skip">Saltar</string>
     <string name="start">Continuar</string>
-
+    <string name="estado">Estado</string>
     <string name="slide_1_title">Adopción responsable</string>
     <string name="slide_1_desc">Adoptar un animal representa mucho más que conseguir una mascota, significa encontrar un compañero, un amigo agradecido por la nueva oportunidad que le brindas.</string>
-
     <string name="slide_2_title">Planeación y reflexión</string>
     <string name="slide_2_desc">Recuerda organizar los espacios que tienes en casa para que tu mascota permanezca en las mejores condiciones.</string>
-
     <string name="slide_3_title">Ten mucha paciencia</string>
     <string name="slide_3_desc">¡Gánate su confianza y bríndale un ambiente lleno de amor!</string>
-
     <string name="slide_4_title">Calcula tus gastos</string>
-    <string name="slide_4_desc">Asegúrale una buena calidad de vida a tu nuevocompañero. Calcula los gastos que vas a tener como alimentación, visitas al veterinario, entre otros.</string>
-
+    <string name="slide_4_desc">Asegúrale una buena calidad de vida a tu nuevo compañero. Calcula los gastos que vas a tener como alimentación, visitas al veterinario, entre otros.</string>
 </resources>

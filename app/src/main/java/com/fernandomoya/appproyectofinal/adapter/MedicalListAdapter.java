@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.ItemClickListener;
 import com.fernandomoya.appproyectofinal.R;
@@ -38,7 +40,7 @@ public class MedicalListAdapter extends RecyclerView.Adapter<MedicalListAdapter.
     public void onBindViewHolder(MedicalViewHolder holder, int position) {
         MedicalEvaluation medicalEvaluation = listMedicalEvaluation.get(position);
         Glide.with(mContext).load(medicalEvaluation.getUrl()).into(holder.imgListPerroValoracion);
-        holder.lstRvEstado.setText("Valoración: "+medicalEvaluation.getEstadoInicial());
+        holder.lstRvEstado.setText("Valoración: " + medicalEvaluation.getEstadoInicial());
         holder.lstRvEdad.setText("Edad: " + medicalEvaluation.getEdad() + " años");
         holder.lstRvSexo.setText("Sexo: " + medicalEvaluation.getSexo());
         holder.lstRvObservaciones.setText(medicalEvaluation.getObservaciones());

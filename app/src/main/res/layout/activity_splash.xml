@@ -13,6 +13,7 @@
         android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="250dp"
+        android:contentDescription="@string/logo"
         android:src="@drawable/animalkingdom" />
 
     <TextView

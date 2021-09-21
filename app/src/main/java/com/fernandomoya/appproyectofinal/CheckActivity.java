@@ -42,9 +42,10 @@ public class CheckActivity extends AppCompatActivity {
     private TextView direccion;
     private TextView ocupacion;
     private TextView instruccion;
-    private TextView casa;
+    private TextView tipoImb;
     private TextView propio;
     private TextView m2;
+    private TextView descripcion;
     private TextView pregunta1;
     private TextView pregunta2;
     private TextView pregunta3;
@@ -89,9 +90,10 @@ public class CheckActivity extends AppCompatActivity {
         ocupacion = findViewById(R.id.lblCheckOcupacion);
         direccion = findViewById(R.id.lblCheckDireccion);
         instruccion = findViewById(R.id.lblCheckPrimaria);
-        casa = findViewById(R.id.lblCheckCasa);
+        tipoImb = findViewById(R.id.lblCheckCasa);
         m2 = findViewById(R.id.lblCheckM2);
         propio = findViewById(R.id.lblCheckPropio);
+        descripcion = findViewById(R.id.lblDescripcion);
         pregunta1 = findViewById(R.id.lblRespuesta1);
         pregunta2 = findViewById(R.id.lblRespuesta2);
         pregunta3 = findViewById(R.id.lblRespuesta3);
@@ -122,11 +124,13 @@ public class CheckActivity extends AppCompatActivity {
         String inst = infoAdopt.getString("instruccion");
         instruccion.setText(inst);
         String tip = infoAdopt.getString("tipoinmueble");
-        casa.setText(tip);
+        tipoImb.setText(tip);
         String metros2 = infoAdopt.getString("m2");
         m2.setText(metros2 + " m²");
         String prop = infoAdopt.getString("propio");
         propio.setText(prop);
+        String observacion = infoAdopt.getString("descripcion");
+        descripcion.setText(observacion);
         String preg1 = infoAdopt.getString("pregunta1");
         pregunta1.setText(preg1);
         String preg2 = infoAdopt.getString("pregunta2");
@@ -215,11 +219,9 @@ public class CheckActivity extends AppCompatActivity {
                             }
                             envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailAceptado());
                             // Use SmsManager.
-                            PendingIntent sentIntent = null, deliveryIntent = null;
-                            SmsManager smsManager = SmsManager.getDefault();
-                            smsManager.sendTextMessage
-                                    (telf, scAddress, SALUDO + nombresApellidos.getText() + message.smsAceptado(),
-                                            sentIntent, deliveryIntent);
+                            //PendingIntent sentIntent = null, deliveryIntent = null;
+                            //SmsManager smsManager = SmsManager.getDefault();
+                            //smsManager.sendTextMessage (telf, scAddress, SALUDO + nombresApellidos.getText() + message.smsAceptado(),sentIntent, deliveryIntent);
 
                         }
 
@@ -271,11 +273,9 @@ public class CheckActivity extends AppCompatActivity {
                             }
                             envio.enviar(email.getText().toString(), SALUDO + nombresApellidos.getText() + message.emailNegado());
                             // Use SmsManager.
-                            PendingIntent sentIntent = null, deliveryIntent = null;
-                            SmsManager smsManager = SmsManager.getDefault();
-                            smsManager.sendTextMessage
-                                    (telf, scAddress, SALUDO + nombresApellidos.getText() + message.smsNegado(),
-                                            sentIntent, deliveryIntent);
+                            //PendingIntent sentIntent = null, deliveryIntent = null;
+                            //SmsManager smsManager = SmsManager.getDefault();
+                            //smsManager.sendTextMessage (telf, scAddress, SALUDO + nombresApellidos.getText() + message.smsNegado(),sentIntent, deliveryIntent);
                         }
 
                         @Override

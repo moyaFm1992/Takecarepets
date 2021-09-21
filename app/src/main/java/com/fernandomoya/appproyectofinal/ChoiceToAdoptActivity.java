@@ -38,16 +38,11 @@ public class ChoiceToAdoptActivity extends AppCompatActivity implements View.OnC
 
         if (passengerID.equals(ADMIN)) {
             imgBtnFrmAdoption.setVisibility(View.VISIBLE);
-            imgBtnFrmListToAdopt.setVisibility(View.VISIBLE);
             lblFrmAdoption.setVisibility(View.VISIBLE);
-            lblListToAdopt.setVisibility(View.VISIBLE);
         } else {
             if (passengerID.equals(VETER)) {
                 imgBtnFrmAdoption.setVisibility(View.VISIBLE);
                 lblFrmAdoption.setVisibility(View.VISIBLE);
-                imgBtnFrmListToAdopt.setVisibility(View.VISIBLE);
-                lblListToAdopt.setVisibility(View.VISIBLE);
-
             }
         }
     }

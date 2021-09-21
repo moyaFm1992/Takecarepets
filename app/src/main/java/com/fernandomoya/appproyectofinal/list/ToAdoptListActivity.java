@@ -55,7 +55,7 @@ public class ToAdoptListActivity extends AppCompatActivity implements ItemClickL
                 listaAdoptado.removeAll(listaAdoptado);
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     for (DataSnapshot dch : ds.getChildren()) {
-                        if (dch.child("estado").getValue(Boolean.class).equals(Boolean.FALSE) &&  !dch.child("fechaAdopcion").getValue(String.class).equals("")) {
+                        if (dch.child("estado").getValue(Boolean.class).equals(Boolean.FALSE) && !dch.child("fechaAdopcion").getValue(String.class).equals("")) {
                             Adoption adoption = dch.getValue(Adoption.class);
                             listaAdoptado.add(adoption);
                         }
@@ -87,6 +87,7 @@ public class ToAdoptListActivity extends AppCompatActivity implements ItemClickL
         i.putExtra("instruccion", adoption.getInstruccion());
         i.putExtra("tipoinmueble", adoption.getTipoInmueble());
         i.putExtra("m2", adoption.getM2());
+        i.putExtra("descripcion", adoption.getDescripcion());
         i.putExtra("propio", adoption.getPropio());
         i.putExtra("pregunta1", adoption.getPregunta1());
         i.putExtra("pregunta2", adoption.getPregunta2());

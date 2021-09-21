@@ -49,7 +49,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-
 import static com.fernandomoya.appproyectofinal.HomeActivity.REQUEST_TAKE_PHOTO;
 import static com.fernandomoya.appproyectofinal.model.Constant.EVALUATION;
 import static com.fernandomoya.appproyectofinal.model.Constant.MY_PERMISSIONS_REQUEST_READ_CONTACTS;

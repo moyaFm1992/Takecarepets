@@ -10,14 +10,19 @@ import android.telephony.SmsManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.model.Adoption;
 import com.fernandomoya.appproyectofinal.model.Message;
@@ -27,6 +32,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -37,7 +43,7 @@ import static com.fernandomoya.appproyectofinal.model.Constant.ADOPTION;
 import static com.fernandomoya.appproyectofinal.model.Constant.SALUDO;
 
 
-public class AdoptionFormActivity extends AppCompatActivity {
+public class AdoptionFormActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private DatabaseReference mDatabase;
     private EditText nombresApellidos;
@@ -51,6 +57,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
     private EditText telefonoReferencia;
     private EditText instruccion;
     private EditText visita;
+    private EditText observaciones;
     private EditText m2;
     private EditText ocupacion;
     private EditText otros;
@@ -63,6 +70,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
     private TextView tipoAdopcion;
     private TextView sexoAdopcion;
     private TextView tiempoMensaje;
+    private TextView tv;
     private RadioButton rdbPrimaria;
     private RadioButton rdbSecundario;
     private RadioButton rdbUniversidad;
@@ -73,6 +81,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
     private RadioButton rdbPropio;
     private RadioButton rdbOtros;
     private RadioButton rdbArrendado;
+    private RadioButton rdbServicio;
     private RadioButton rdbCinco;
     private RadioButton rdbVeinte;
     private RadioButton rdbCincuenta;
@@ -87,6 +96,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
     private ImageView imagenPerroAdopcion;
     private String urlPerroAdopcion;
     private String valoracionId;
+    private Spinner spn;
     private URL url;
     private FirebaseDatabase firebaseDatabase;
     private ProgressBar mProgressBar;
@@ -124,6 +134,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
         urlPerroAdopcion = urlAdoptante;
         String valoracion = infoMedicalEvaluation.getString("userId");
         valoracionId = valoracion;
+        spn = (Spinner) findViewById(R.id.spn);
+        spn.setOnItemSelectedListener(this);
 
 
         try {
@@ -148,6 +160,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
         instruccion = findViewById(R.id.txtInstruccion);
         otros = findViewById(R.id.txtTipo);
         visita = findViewById(R.id.eTMTVisitas);
+        observaciones = findViewById(R.id.eTPrevias);
         rdbPrimaria = findViewById(R.id.rbPrimaria);
         rdbSecundario = findViewById(R.id.rbSecundaria);
         rdbUniversidad = findViewById(R.id.rbGrado);
@@ -155,9 +168,10 @@ public class AdoptionFormActivity extends AppCompatActivity {
         rdbCasa = findViewById(R.id.rbCasa);
         rdbCampo = findViewById(R.id.rbCampo);
         rdbDepartamento = findViewById(R.id.rbDepartamento);
+        rdbOtros = findViewById(R.id.rbOtros);
         rdbPropio = findViewById(R.id.rbPropio);
         rdbArrendado = findViewById(R.id.rbArrendado);
-        rdbOtros = findViewById(R.id.rbOtros);
+        rdbServicio = findViewById(R.id.rbServicio);
         m2 = findViewById(R.id.txtm2);
         m2.setInputType(InputType.TYPE_CLASS_NUMBER);
         rdbCinco = findViewById(R.id.rb5a20);
@@ -194,6 +208,11 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 Adoption adoption = new Adoption();
                 Message message = new Message();
                 final Send envio = new Send();
+
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                        AdoptionFormActivity.this, R.array.pets_array, android.R.layout.simple_spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
                 final String userId = mDatabase.push().getKey();
                 final String apellido = nombresApellidos.getText().toString();
                 final String tieneEdad = edad.getText().toString();
@@ -211,6 +230,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 final String preg4 = pregunta4.getText().toString();
                 final String visitaMensual = visita.getText().toString();
                 final String ocupacionAdoptante = ocupacion.getText().toString();
+                final String descripcion = observaciones.getText().toString();
+                final String spinnerText = spn.getSelectedItem().toString();
 
                 if (rdbPrimaria.isChecked()) {
                     adoption.setInstruccion(rdbPrimaria.getText().toString());
@@ -226,6 +247,8 @@ public class AdoptionFormActivity extends AppCompatActivity {
                     adoption.setInstruccion(rdbPostgrado.getText().toString());
                 }
 
+                //Tipo de inmueble
+
                 if (rdbCasa.isChecked()) {
                     adoption.setTipoInmueble(rdbCasa.getText().toString());
                 }
@@ -234,12 +257,26 @@ public class AdoptionFormActivity extends AppCompatActivity {
                     adoption.setTipoInmueble(rdbDepartamento.getText().toString());
                 }
 
+                if (rdbCampo.isChecked()) {
+                    adoption.setTipoInmueble(rdbCampo.getText().toString());
+                }
+
+                if (rdbOtros.isChecked()) {
+                    adoption.setTipoInmueble(rdbOtros.getText().toString());
+                }
+
+                //Estado del inmueble
+
                 if (rdbPropio.isChecked()) {
                     adoption.setPropio(rdbPropio.getText().toString());
                 }
 
                 if (rdbArrendado.isChecked()) {
                     adoption.setPropio(rdbArrendado.getText().toString());
+                }
+
+                if (rdbServicio.isChecked()) {
+                    adoption.setPropio(rdbServicio.getText().toString());
                 }
 
                 if (rdbCinco.isChecked()) {
@@ -266,7 +303,6 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 if (rdbSane.isChecked()) {
                     adoption.setMascotaEnferma(rdbSane.getText().toString());
                 }
-
 
                 if (visitaMensual != null) {
                     adoption.setVisitaMensual(visitaMensual);
@@ -299,6 +335,13 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 adoption.setFechaRegistro(dt.format(new Date()));
                 adoption.setFechaAdopcion(dt.format(new Date()));
                 adoption.setuId(userId);
+                spn.setAdapter(adapter);
+
+                if (descripcion == null || descripcion.isEmpty()) {
+                    adoption.setDescripcion("");
+                } else {
+                    adoption.setDescripcion(spinnerText + " - " + descripcion);
+                }
 
                 Log.i("Valoracion", valoracionId);
                 adoption.setValoracion(valoracionId);
@@ -449,7 +492,7 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 || rdbUniversidad.isChecked()
                 || rdbPostgrado.isChecked())) {
             otros.setVisibility(View.VISIBLE);
-            otros.setError("Tipo inmbueble obligatorio.");
+            otros.setError("Tipo de formación profesional obligatorio.");
             otros.requestFocus();
             return true;
         }
@@ -460,13 +503,14 @@ public class AdoptionFormActivity extends AppCompatActivity {
                 || rdbOtros.isChecked()
                 || rdbCampo.isChecked())) {
             otros.setVisibility(View.VISIBLE);
-            otros.setError("Tipo inmbueble obligatorio.");
+            otros.setError("Inmbueble obligatorio.");
             otros.requestFocus();
             return true;
         }
 
         if (!(rdbPropio.isChecked()
-                || rdbArrendado.isChecked())) {
+                || rdbArrendado.isChecked()
+                || rdbServicio.isChecked())) {
             otros.setVisibility(View.VISIBLE);
             otros.setError("Tipo inmbueble obligatorio.");
             otros.requestFocus();
@@ -550,5 +594,15 @@ public class AdoptionFormActivity extends AppCompatActivity {
         passengerID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+        //tv.setText(item);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        //tv.setText("");
+    }
 }
 

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fernandomoya.appproyectofinal.ItemClickListener;
@@ -38,7 +37,7 @@ public class AdapterApp extends RecyclerView.Adapter<AdapterApp.PerroViewHolder>
     public void onBindViewHolder(PerroViewHolder holder, int position) {
         Perros perros = listPerros.get(position);
         Glide.with(mContext).load(perros.getUrl()).into(holder.imgPerro);
-        holder.lstRvFecha.setText(perros.getFechaRegistro()!=null?"Fecha: " + perros.getFechaRegistro():"");
+        holder.lstRvFecha.setText(perros.getFechaRegistro() != null ? "Fecha: " + perros.getFechaRegistro() : "");
         holder.lstRvDescripcion.setText("Descripción: " + perros.getDescripcion());
         holder.lstRvLatitud.setText(perros.getLatitud() != null ? "Latitud: " + perros.getLatitud().toString() : "");
         holder.lstRvLongitud.setText(perros.getLongitud() != null ? "Longitud: " + perros.getLongitud().toString() : "");
@@ -63,7 +62,7 @@ public class AdapterApp extends RecyclerView.Adapter<AdapterApp.PerroViewHolder>
         public PerroViewHolder(View itemView) {
             super(itemView);
             imgPerro = itemView.findViewById(R.id.dog_photo);
-            lstRvFecha=itemView.findViewById(R.id.lstFecha);
+            lstRvFecha = itemView.findViewById(R.id.lstFecha);
             lstRvDescripcion = itemView.findViewById(R.id.lstDescripcion);
             lstRvLatitud = itemView.findViewById(R.id.lstLatitud);
             lstRvLongitud = itemView.findViewById(R.id.lstLongitud);

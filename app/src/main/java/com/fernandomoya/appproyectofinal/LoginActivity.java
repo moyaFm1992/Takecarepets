@@ -2,6 +2,7 @@ package com.fernandomoya.appproyectofinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -70,9 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                     password.requestFocus();
                 } else if (email.isEmpty() && pwd.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "¡Los campos están vacíos!", Toast.LENGTH_SHORT).show();
-                    //mensaje.setVisibility(View.VISIBLE);
-                    //mensaje.setText("¡Los campos están vacíos!");
-                    //mensaje.requestFocus();
 
                 } else if (!(email.isEmpty() && pwd.isEmpty())) {
                     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -80,9 +79,6 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Error de inicio de sesión, vuelva a iniciar sesión", Toast.LENGTH_SHORT).show();
-                                //mensaje.setVisibility(View.VISIBLE);
-                                //mensaje.setText("Error de inicio de sesión, vuelva a iniciar sesión");
-                                //mensaje.requestFocus();
 
                             } else {
                                 Intent intToHome = new Intent(LoginActivity.this, ChoiceActivity.class);
@@ -91,9 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    //mensaje.setVisibility(View.VISIBLE);
-                    //mensaje.setText("¡Se produjo un error!");
-                    //mensaje.requestFocus();
                     Toast.makeText(LoginActivity.this, "¡Se produjo un error!", Toast.LENGTH_SHORT).show();
                 }
 
@@ -133,16 +126,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return false;
-    }
-
-    private boolean isNetDisponible() {
-
-        ConnectivityManager connectivityManager = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo actNetInfo = connectivityManager.getActiveNetworkInfo();
-
-        return (actNetInfo != null && actNetInfo.isConnected());
     }
 
 

@@ -2,7 +2,6 @@ package com.fernandomoya.appproyectofinal;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import static com.fernandomoya.appproyectofinal.model.Constant.EVALUATION;
 
 public class UpdateDeleteEvaluationListActivity extends AppCompatActivity {

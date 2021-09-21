@@ -3,13 +3,13 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: "org.sonarqube"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.fernandomoya.appproyectofinal"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.2"
         multiDexEnabled true
@@ -41,9 +41,6 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'  //with androidx libraries
     implementation platform('com.google.firebase:firebase-bom:25.12.0')
     implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.android.support:design:29.0.0'
-    implementation 'com.android.support:support-v4:29.0.0'
-    implementation 'com.android.support:design:29.1.1'
     implementation 'com.google.firebase:firebase-analytics:19.0.0'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
@@ -74,6 +71,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     sonarqube {
         properties {

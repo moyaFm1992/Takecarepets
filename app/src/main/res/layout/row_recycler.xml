@@ -44,7 +44,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_toEndOf="@+id/dog_photo"
                         android:layout_toRightOf="@+id/dog_photo"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -54,7 +56,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_toEndOf="@+id/dog_photo"
                         android:layout_toRightOf="@+id/dog_photo"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -63,8 +67,9 @@
                         android:id="@+id/lstLatitud"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lstDescripcion"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_toEndOf="@+id/dog_photo"
                         android:layout_toRightOf="@+id/dog_photo"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -73,8 +78,9 @@
                         android:id="@+id/lstLongitud"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/lstLatitud"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_toEndOf="@+id/dog_photo"
                         android:layout_toRightOf="@+id/dog_photo"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -88,6 +94,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginStart="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"

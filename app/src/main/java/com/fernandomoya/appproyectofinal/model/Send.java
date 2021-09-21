@@ -25,7 +25,7 @@ public class Send {
     //Envio de correo electronico
     public void enviar(final String correo, final String mensaje) {
         final String correoPruebas = "takecarepetsapp@gmail.com";
-        final String passPruebas = "*********";
+        final String passPruebas = "fernando&Edward7052";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Properties properties = new Properties();
@@ -34,7 +34,7 @@ public class Send {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.host", "smtp.googlemail.com");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.timeout", 1000);
         properties.put("mail.smtp.socketFactory.port", "465");
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
